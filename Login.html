@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom Beauty - Login</title>
+    <link rel="stylesheet" href="inicio.css">
+</head>
+<body>
+    <!-- Botón para abrir el modal -->
+    <button onclick="abrirLogin()" class="open-btn">Iniciar Sesión</button>
+
+    <!-- Modal de Inicio de Sesión -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="cerrar" onclick="cerrarLogin()">&times;</span>
+            <h2>Bloom Beauty</h2>
+            <form>
+                <input type="email" placeholder="Correo Electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button class="btn pink">Iniciar Sesión</button>
+            </form>
+
+            <hr>
+
+            <button class="btn brown">Crear Cuenta</button>
+
+            <div class="divider">o</div>
+
+            <button class="btn google">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22.svg/20px-Google_%22G%22.svg.png" alt="Google">
+                Iniciar sesión con Google
+            </button>
+        </div>
+    </div>
+
+    <script src="javainicio.js"></script>
+</body>
+</html>
