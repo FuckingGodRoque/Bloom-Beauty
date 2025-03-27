@@ -191,7 +191,7 @@ nav:hover {
     display: grid;
     grid-template-columns: repeat(4, minmax(160px, 1fr)); /* Reducimos aún más el tamaño mínimo de las columnas */
     gap: 50px; /* Espacio entre los productos */
-    max-width: 1200px; /* Limita el ancho máximo */
+    max-width: 1500px; /* Limita el ancho máximo */
     margin: 0 auto; /* Centrar el contenedor */
     padding: 30px;
 }
@@ -201,10 +201,14 @@ nav:hover {
     background: white;
     border-radius: 15px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 8px; /* Reducimos el padding un 10% más */
+    padding: 20px; /* Reducimos el padding un 10% más */
     text-align: left;
-    width: 145px; /* Reducimos el ancho un 10% más */
+    width: 190px; /* Reducimos el ancho un 10% más */
+    height: 430px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Asegura que el contenido se distribuye bien */
+    flex-direction: column; 
+    justify-content: space-between;
 }
 
 .producto:hover {
@@ -215,7 +219,10 @@ nav:hover {
 .producto img {
     width: 100%;
     border-radius: 10px;
+    max-height: 280px; 
     transition: transform 0.3s ease;
+    object-fit: cover; /* Evita que se deforme */
+    flex-shrink: 0;
 }
 
 .producto img:hover {
@@ -223,22 +230,28 @@ nav:hover {
 }
 
 .producto h3 {
-    font-size: 13.2px; /* Reducimos el tamaño de fuente un 10% más */
-    margin: 10px 0;
+    font-size: 16px; /* Reducimos el tamaño de fuente un 10% más */
+    margin: 5px 0;
     font-family: Bludhaven;
+    margin-bottom: 0px;
 }
 
 .producto .descripcion {
-    font-size: 11px; /* Reducimos el tamaño de fuente un 10% más */
+    font-size: 13px; /* Reducimos el tamaño de fuente un 10% más */
     color: #7a6f6f;
-    margin-bottom: 10px;
+    margin: 1px 0;
+    margin-top: 0px;
+    font-family: Cambria Math;
+    margin-bottom: 0px;
 }
 
 .producto .precio {
-    font-size: 12px; /* Reducimos el tamaño de fuente un 10% más */
+    font-size: 14px; /* Reducimos el tamaño de fuente un 10% más */
     font-family: Cambria Math;
     font-weight: bold;
+    margin: 5px 0;
     color: #000;
+    margin-bottom: 0px;
 }
 
 .producto .rating {
@@ -246,20 +259,23 @@ nav:hover {
     font-family: Cambria Math;
     align-items: center;
     justify-content: flex-start;
-    gap: 4px; /* Reducimos el espacio entre íconos */
-    margin: 10px 0;
+    gap: 5px; /* Reducimos el espacio entre íconos */
+    margin: 1px 0;
+    margin-top: 0px;
 }
 
 .producto .rating img {
     width: 13px; /* Reducimos el tamaño de los íconos un 10% más */
     height: 13px;
+    margin:1px 0;
+    margin-top: 0px ;
 }
 
 .producto .botones {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4px; /* Reducimos el espacio entre botones */
+    gap: 6px; /* Reducimos el espacio entre botones */
     margin-top: 10px;
 }
 
@@ -267,13 +283,13 @@ nav:hover {
     background: #ECC7CD;
     font-family: Cambria Math;
     border: none;
-    padding: 4px 9px; /* Reducimos el padding un 10% más */
+    padding: 6px 12px; /* Reducimos el padding un 10% más */
     border-radius: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 9px; /* Reducimos el espacio entre íconos */
+    gap: 10px; /* Reducimos el espacio entre íconos */
     transition: background 0.3s ease;
 }
 
@@ -284,7 +300,7 @@ nav:hover {
 .producto .btn-add-carrito {
     background: #ECC7CD;
     border: none;
-    padding: 4px; /* Reducimos el padding un 10% más */
+    padding: 6px; /* Reducimos el padding un 10% más */
     border-radius: 10px;
     cursor: pointer;
     display: flex;
@@ -298,8 +314,8 @@ nav:hover {
 }
 
 .producto .btn-add-carrito img {
-    width: 13px; /* Reducimos el tamaño de los íconos un 10% más */
-    height: 13px;
+    width: 16px; /* Reducimos el tamaño de los íconos un 10% más */
+    height: 16px;
 }
 
 /* Estilo para ocultar productos */
