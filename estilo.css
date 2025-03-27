@@ -420,12 +420,14 @@ footer {
 footer h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    font-family: Bludhaven;
 }
 
 footer p {
     font-size: 14px;
-    color: #7a6f6f;
+    color: #000000;
     margin-bottom: 20px;
+    font-family: Safira March Personal Use Only;
 }
 
 .footer-links {
@@ -433,7 +435,15 @@ footer p {
     justify-content: center;
     gap: 20px;
     margin-bottom: 20px;
+    font-family: CAmbria Math;
 }
+
+.footer-line {
+    border-top: 2px solid #000000; /* Color de la línea */
+    width: 100%; /* Que ocupe todo el ancho */
+    margin: 20px 0; /* Espaciado arriba y abajo */
+}
+
 
 .footer-links a {
     text-decoration: none;
