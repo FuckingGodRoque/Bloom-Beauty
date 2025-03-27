@@ -75,6 +75,7 @@ nav:hover {
     background-size: contain;
     padding: 20px; /* Adjust padding to fit the logo */
     text-align: center;
+    font-family: bludhaven;
 }
 
 .logo-container:hover h1 {
@@ -116,17 +117,22 @@ nav:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 150px 20px;
+    justify-content: flex-start; /* Empuja el contenido hacia arriba */
+    padding: 20px 20px; /* Reduce el padding superior */
     text-align: center;
+    height: 80vh; /* Mantiene la altura */
 }
 
 .contenido h2 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 36px;
+    font-family: "Great Vibes", cursive;
+    font-size: 80px;
     color: #ECC7CD;
-    margin-bottom: 40px;
+    margin: 70px;
+    padding-right: 400px;
+    padding-bottom: 30px;
 }
+
+
 
 /* Contenedor de las etiquetas */
 .etiquetas-container {
