@@ -71,7 +71,7 @@ nav:hover {
     color: #000;
     position: relative;
     z-index: 1;
-    background: url('recursos/Logo.png') no-repeat center;
+    background: url('Recursos/Logo.png') no-repeat center;
     background-size: contain;
     padding: 50px; /* Adjust padding to fit the logo */
     text-align: center;
@@ -107,7 +107,7 @@ nav:hover {
 
 /* Sección hero */
 .hero {
-    background: url('recursos/hero.jpg') center/cover;
+    background: url('Recursos/hero.jpg') center/cover;
     text-align: center;
     padding: 80px 20px;
     color: white;
@@ -115,7 +115,7 @@ nav:hover {
 }
 
 .hero:hover {
-    background: url('recursos/hero-hover.jpg') center/cover;
+    background: url('Recursos/hero-hover.jpg') center/cover;
 }
 
 .hero h1 {
@@ -146,7 +146,7 @@ nav:hover {
 /* Sección de contenido principal */
 .contenido {
     position: relative;
-    background: url('recursos/FamilySkincare.png') center/cover no-repeat;
+    background: url('Recursos/FamilySkincare.png') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
