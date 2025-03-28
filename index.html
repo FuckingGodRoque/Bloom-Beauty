@@ -25,9 +25,12 @@
                 <h1>Bloom Beauty</h1>
             </div>
             <div class="icons">
-                <img src="Recursos/BtnPerfil.png" alt="Perfil" class="icon btn-user">
+                <div class="search-container">
+                    <input type="text" id="search-bar" class="search-bar" placeholder="Buscar...">
+                    <img src="Recursos/BtnSearch.png" alt="Buscar" class="icon" id="search-icon">
+                </div>
                 <img src="Recursos/BtnCarrito.png" alt="Carrito" class="icon">
-                <img src="Recursos/BtnSearch.png" alt="Buscar" class="icon">
+                <img src="Recursos/BtnPerfil.png" alt="Perfil" class="icon btn-user">
             </div>
         </nav>
     </header>
@@ -344,27 +347,6 @@
             <button type="submit">→</button>
         </div>
     </footer>
-
-    <!-- Menú de Usuario -->
-    <div id="user-menu" class="user-menu">
-        <div class="user-menu-header">
-            <img src="Recursos/BtnPerfil.png" alt="Perfil">
-            <div>
-                <p>Username</p>
-                <a href="#">Mi perfil ></a>
-            </div>
-        </div>
-        <ul class="user-menu-list">
-            <li><img src="Recursos/notificaciones.png" alt="Notificaciones"> Notificaciones</li>
-            <li><img src="Recursos/misCompras.png" alt="Mis compras"> Mis compras</li>
-            <li><img src="Recursos/favoritos.png" alt="Favoritos"> Favoritos</li>
-            <li><img src="Recursos/ofertas.png" alt="Ofertas"> Ofertas</li>
-            <li><img src="Recursos/soporte.png" alt="Soporte"> Soporte</li>
-        </ul>
-        <div class="user-menu-footer">
-            <img src="Recursos/cerrarSesion.png" alt="Cerrar Sesión"> Cerrar Sesión
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>

@@ -25,15 +25,31 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Evento para abrir el menú de usuario
-    btnMenu.addEventListener("click", function () {
-        userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchIcon = document.getElementById("search-icon");
+        const searchBar = document.getElementById("search-bar");
+    
+        // Evento para alternar la barra de búsqueda
+        searchIcon.addEventListener("click", function (event) {
+            event.stopPropagation(); // Evita que el clic se propague
+            searchBar.classList.toggle("active");
+    
+            // Enfocar la barra de búsqueda si está activa
+            if (searchBar.classList.contains("active")) {
+                searchBar.focus();
+            }
+        });
+    
+        // Cierra la barra de búsqueda si se hace clic fuera de ella
+        document.addEventListener("click", function (event) {
+            if (!searchBar.contains(event.target) && !searchIcon.contains(event.target)) {
+                searchBar.classList.remove("active");
+            }
+        });
     });
+    
 
-    // Cerrar el menú si se hace clic fuera de él
-    window.addEventListener("click", function (event) {
-        if (event.target !== btnMenu && !userMenu.contains(event.target)) {
-            userMenu.style.display = "none";
-        }
-    });
+
+    
+      
 });
