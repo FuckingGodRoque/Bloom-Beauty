@@ -45,4 +45,63 @@ document.addEventListener("DOMContentLoaded", function () {
             searchBar.classList.remove("active");
         }
     });
+
+    const btnCarrito = document.getElementById("btn-carrito");
+    const btnPerfil = document.getElementById("btn-perfil");
+
+    // Abrir carrito.html en una nueva pestaña
+    btnCarrito.addEventListener("click", function () {
+        window.open("carrito.html", "_blank");
+    });
+
+    // Mostrar login.html como ventana flotante
+    btnPerfil.addEventListener("click", function () {
+        const loginModal = document.createElement("div");
+        loginModal.id = "login-modal";
+        loginModal.innerHTML = `
+            <div class="modal-content">
+                <span class="cerrar" onclick="document.getElementById('login-modal').remove()">&times;</span>
+                <iframe src="Login.html" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+            </div>
+        `;
+        loginModal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        `;
+        document.body.appendChild(loginModal);
+    });
+
+    // Función para manejar el registro y redirigir al login
+    window.handleRegister = function () {
+        document.getElementById("register-modal").remove();
+        const loginModal = document.createElement("div");
+        loginModal.id = "login-modal";
+        loginModal.innerHTML = `
+            <div class="modal-content">
+                <span class="cerrar" onclick="document.getElementById('login-modal').remove()">&times;</span>
+                <iframe src="Login.html" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+            </div>
+        `;
+        loginModal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        `;
+        document.body.appendChild(loginModal);
+    };
 });

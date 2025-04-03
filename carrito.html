@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Bloom Beauty</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="estiloCarrito.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="menu-section">
+                <div class="icons">
+                    <img src="Recursos/BtnMenu.png" alt="Menú" class="icon btn-menu">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Productos</a></li>
+                </ul>
+            </div>
+            <div class="logo-container">
+                <h1>Bloom Beauty</h1>
+            </div>
+            <div class="icons">
+                <div class="search-container">
+                    <input type="text" id="search-bar" class="search-bar" placeholder="Buscar...">
+                    <img src="Recursos/BtnSearch.png" alt="Buscar" class="icon" id="search-icon">
+                </div>
+                <img src="Recursos/BtnCarrito.png" alt="Carrito" class="icon">
+                <img src="Recursos/BtnPerfil.png" alt="Perfil" class="icon btn-user">
+            </div>
+        </nav>
+    </header>
+
+    <main class="cart-page">
+        <div class="cart-container">
+            <div class="cart-header">
+                <h2>Carrito (4)</h2>
+                <div class="location-pill">
+                    <img src="recursos/Gps.png" alt="GPS" class="gps-icon">
+                    <span>Enviar a Morelia</span>
+                </div>
+            </div>
+
+            <div class="cart-items-scroll">
+                <div class="cart-items">
+                    <!-- Producto 1 -->
+                    <div class="cart-item">
+                        <div class="product-image">
+                            <img src="recursos/BloomPunch.png" alt="Bloom Punch">
+                        </div>
+                        
+                        <div class="item-details">
+                            <h3>Bloom Punch</h3>
+                            <p class="product-description">Ilumina, protege y suaviza tu piel como los pétalos de flor.</p>
+                            
+                            <div class="controls-container">
+                                <div class="size-quantity">
+                                    <p class="product-size">Cont. 100 ml</p>
+                                    <div class="quantity-controls">
+                                        <button class="quantity-btn" onclick="restarCantidad(this)">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="quantity-btn" onclick="sumarCantidad(this)">+</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="price-remove-section">
+                                    <p class="precio">$499.00 MXN</p>
+                                    <button class="remove-btn">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ícono de check -->
+                        <div class="check-icon">
+                            <img src="recursos/Check.png" alt="Check" onclick="toggleCheck(this)">
+                        </div>
+                    </div>
+                
+                    <!-- Producto 2 -->
+                    <div class="cart-item">
+                        <div class="product-image">
+                            <img src="recursos/SilkGlow.png" alt="Silk Glow">
+                        </div>
+                        
+                        <div class="item-details">
+                            <h3>Silk Glow</h3>
+                            <p class="product-description">Serum iluminador de larga duración...</p>
+                            
+                            <div class="controls-container">
+                                <div class="size-quantity">
+                                    <p class="product-size">Cont. 200 ml</p>
+                                    <div class="quantity-controls">
+                                        <button class="quantity-btn" onclick="restarCantidad(this)">−</button>
+                                        <span class="quantity">2</span>
+                                        <button class="quantity-btn" onclick="sumarCantidad(this)">+</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="price-remove-section">
+                                    <p class="precio">$899.00 MXN</p>
+                                    <button class="remove-btn">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Ícono de check -->
+                        <div class="check-icon">
+                            <img src="recursos/Check.png" alt="Check" onclick="toggleCheck(this)">
+                        </div>
+                    </div>
+                    <div class="cart-item">
+                        <div class="product-image">
+                            <img src="recursos/BloomPunch.png" alt="Bloom Punch">
+                        </div>
+                        
+                        <div class="item-details">
+                            <h3>Bloom Punch</h3>
+                            <p class="product-description">Ilumina, protege y suaviza tu piel como los pétalos de flor.</p>
+                            
+                            <div class="controls-container">
+                                <div class="size-quantity">
+                                    <p class="product-size">Cont. 100 ml</p>
+                                    <div class="quantity-controls">
+                                        <button class="quantity-btn" onclick="restarCantidad(this)">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="quantity-btn" onclick="sumarCantidad(this)">+</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="price-remove-section">
+                                    <p class="precio">$499.00 MXN</p>
+                                    <button class="remove-btn">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ícono de check -->
+                        <div class="check-icon">
+                            <img src="recursos/Check.png" alt="Check" onclick="toggleCheck(this)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-summary">
+                <div class="summary-content">
+                    <div class="discount-section">
+                        <input type="text" placeholder="Código de descuento">
+                        <button class="btn apply-btn">Aplicar</button>
+                    </div>
+                    
+                    <div class="price-breakdown">
+                        <div class="price-row">
+                            <span>Subtotal (4 productos)</span>
+                            <span>$1,398.00 MXN</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Envío</span>
+                            <span>$99.00 MXN</span>
+                        </div>
+                        <div class="price-row total">
+                            <span>Total</span>
+                            <span>$1,497.00 MXN</span>
+                        </div>
+                    </div>
+                    
+                    <button class="checkout-btn">Pagar ahora</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function sumarCantidad(button) {
+            const quantitySpan = button.previousElementSibling;
+            let quantity = parseInt(quantitySpan.textContent);
+            quantity++;
+            quantitySpan.textContent = quantity;
+            actualizarTotales();
+        }
+
+        function restarCantidad(button) {
+            const quantitySpan = button.nextElementSibling;
+            let quantity = parseInt(quantitySpan.textContent);
+            if (quantity > 1) {
+                quantity--;
+                quantitySpan.textContent = quantity;
+                actualizarTotales();
+            }
+        }
+
+        function actualizarTotales() {
+            // Lógica para actualizar precios
+        }
+
+        function toggleCheck(icon) {
+            // Lógica para alternar el estado del ícono de check
+        }
+    </script>
+</body>
+</html>

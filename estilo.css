@@ -165,6 +165,7 @@ nav:hover {
 
 
 
+
 /* Sección de contenido principal */
 .contenido {
     position: relative;
@@ -569,6 +570,25 @@ footer p {
 
 .footer-subscribe button:hover {
     background: #d4a6b0;
+}
+
+/* Estilos para el contenido modal */
+.modal-content {
+    background: white;
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.modal-content .cerrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
 }
 
 
