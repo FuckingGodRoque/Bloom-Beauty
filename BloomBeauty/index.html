@@ -1,0 +1,94 @@
+/* estilologin.css */
+
+/* General modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+/* Modal content */
+.modal-content {
+    background-color: #fefefe; /* White background */
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888; /* Gray border */
+    width: 300px; /* Could be more or less, depending on screen size */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+/* Close button */
+.cerrar {
+    color: #aaa; /* Gray color */
+    float: right; /* Right align */
+    font-size: 28px; /* Larger font */
+    font-weight: bold; /* Bold text */
+}
+
+.cerrar:hover,
+.cerrar:focus {
+    color: black; /* Change color on hover */
+    text-decoration: none; /* No underline */
+    cursor: pointer; /* Pointer cursor */
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column; /* Stack inputs vertically */
+}
+
+/* Input styles */
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    margin: 10px 0; /* Space between inputs */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+}
+
+/* Button styles */
+.btn {
+    padding: 10px;
+    margin: 10px 0; /* Space between buttons */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 16px; /* Font size */
+}
+
+.btn.pink {
+    background-color: #ff69b4; /* Pink background */
+    color: white; /* White text */
+}
+
+.btn.brown {
+    background-color: #8B4513; /* Brown background */
+    color: white; /* White text */
+}
+
+.btn.google {
+    background-color: #db4437; /* Google red */
+    color: white; /* White text */
+    display: flex; /* Flexbox for image and text */
+    align-items: center; /* Center vertically */
+}
+
+.btn.google img {
+    margin-right: 8px; /* Space between image and text */
+}
+
+/* Divider styles */
+.divider {
+    text-align: center; /* Center text */
+    margin: 10px 0; /* Space above and below */
+    font-weight: bold; /* Bold text */
+}

@@ -1,11 +1,15 @@
 /* Configuración general */
 body {
-    background: #f5f5f7;
+    background: #EFEBE7;
     font-family: 'Safira March Personal Use Only', sans-serif;
-    margin-top:100px;
+    margin: 0; /* ¡Todos los márgenes en 0! */
+    margin-top: 100px; /* Elimina el margen superior */
     padding: 0;
+    width: 100%;
+    overflow-x: hidden;
     transition: background-color 0.3s ease;
 }
+
 
 
 
@@ -25,6 +29,8 @@ nav {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
     border-radius: 25px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px; /* Elimina el borde redondeado superior */
     z-index: 1000; /* Asegura que esté por encima de otros elementos */
 }
 
@@ -96,21 +102,45 @@ nav:hover {
     position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 10px; /* Espaciado entre el ícono y la barra */
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.search-container:hover {
+    border-color: #000000; /* Cambia el color del borde al pasar el mouse */
 }
 
 .search-bar {
-    width: 200px; /* Ancho fijo para que siempre esté visible */
-    padding: 8px;
-    border: 2px solid #ccc;
-    border-radius: 50px;
+    flex: 1;
+    padding: 8px 40px 8px 15px; /* Espaciado interno (derecha para el ícono) */
+    border: none;
     outline: none;
-    transition: all 0.3s ease-in-out;
     font-size: 14px;
+    border-radius: 50px;
 }
 
-.search-bar:focus {
-    border-color: #ECC7CD; /* Cambia el color del borde al enfocar */
+.search-button {
+    position: absolute;
+    right: 10px; /* Ajusta la posición del ícono */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-button img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.search-button:hover img {
+    transform: scale(1.2); /* Efecto de zoom al pasar el mouse */
 }
 
 .icon {
@@ -146,6 +176,8 @@ nav:hover {
     padding: 20px 20px; /* Reduce el padding superior */
     text-align: center;
     height: 80vh; /* Mantiene la altura */
+
+    margin:0%
 }
 
 .contenido h2 {
@@ -439,7 +471,7 @@ nav:hover {
 }
 /* Estilos del pie de página */
 footer {
-    background: #f5f5f7;
+    background: #EFEBE7;
     padding: 40px 20px;
     text-align: center;
     
