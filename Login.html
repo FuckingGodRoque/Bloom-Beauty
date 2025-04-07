@@ -7,42 +7,92 @@
     <link rel="stylesheet" href="estiloLogin.css">
 </head>
 <body>
-
-    <!-- Botón para abrir el modal -->
-    <button onclick="abrirLogin()" class="open-btn">Iniciar Sesión</button>
-
     <!-- Modal de Inicio de Sesión -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="cerrar" onclick="cerrarLogin()">&times;</span>
-
-            <!-- Logo y título -->
-            <div class="logo-container">
-                <h1>Bloom Beauty</h1>
-            </div>
-
-            <!-- Formulario -->
-            <form>
-                <input type="email" placeholder="Correo Electrónico" required>
-                <input type="password" placeholder="Contraseña" required>
-                <button type="submit" class="btn pink">Iniciar Sesión</button>
-            </form>
-
-            <hr>
-
-            <!-- Botón de Registro -->
-            <!-- En tu login.html -->
-<button class="btn brown" onclick="cerrarLogin(); abrirRegister()">Crear Cuenta</button>
-
-            <!-- Iniciar sesión con Google -->
-            <div class="divider">o</div>
-            <button class="btn google">
-                <img src="recursos/Google.png" alt="Google">
-                Iniciar sesión con Google
-            </button>
+    <div class="modal-content">
+        <div class="logo-container">
+            <h1>Bloom Beauty</h1>
         </div>
+
+        <span class="cerrar" onclick="parent.cerrarModal()">&times;</span>
+
+        <form id="loginForm" onsubmit="iniciarSesion(event)">
+            <input type="email" id="loginCorreo" placeholder="Correo Electrónico" required>
+            <input type="password" id="loginContraseña" placeholder="Contraseña" required>
+            <button type="submit" class="btn pink">Iniciar Sesión</button>
+        </form>
+
+        <hr>
+
+        <button class="btn brown" onclick="parent.abrirModal('registro.html')">Crear Cuenta</button>
+
+        <div class="divider">o</div>
+        <button class="btn google">
+            <img src="recursos/Google.png" alt="Google">
+            Iniciar sesión con Google
+        </button>
     </div>
 
-    <script src="javainicio.js"></script>
+    <script src="Clases/Usuario.js"></script>
+    <script>
+        async function iniciarSesion(event) {
+            event.preventDefault();
+
+            const correo = document.getElementById('loginCorreo').value;
+            const contrasena = document.getElementById('loginContraseña').value;
+
+            try {
+                const response = await fetch('http://localhost/bloombeauty/endPointLoginUsuario.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ correo, contrasena }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error del servidor: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Guardar el usuario en sessionStorage
+                    sessionStorage.setItem('usuario', JSON.stringify(data.usuario));
+
+                    // Actualizar el menú con el nombre del usuario
+                    if (window.parent && window.parent.actualizarMenuUsuario) {
+                        window.parent.actualizarMenuUsuario(data.usuario.nombre);
+                    }
+
+                    // Cerrar todos los modales
+                    if (window.parent && window.parent.cerrarModal) {
+                        window.parent.cerrarModal();
+                    }
+
+                    // Recargar la página para reflejar los cambios
+                    window.parent.location.reload();
+                } else {
+                    alert(data.error || 'Correo o contraseña incorrectos');
+                }
+            } catch (error) {
+                console.error('Error al iniciar sesión:', error);
+                alert('Hubo un problema al iniciar sesión.');
+            }
+        }
+
+        // Manejar el botón de crear cuenta
+        document.addEventListener("DOMContentLoaded", () => {
+            const crearCuentaBtn = document.querySelector(".btn.brown");
+            
+            crearCuentaBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (window.parent && window.parent.abrirModal) {
+                    window.parent.abrirModal("registro.html");
+                } else {
+                    window.location.href = "registro.html";
+                }
+            });
+        });
+    </script>
 </body>
 </html>

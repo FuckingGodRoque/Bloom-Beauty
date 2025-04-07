@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bloom Beauty - Registro</title>
     <link rel="stylesheet" href="estiloLogin.css">
+    <style>
+        .modal-content {
+            width: 400px;
+            max-width: 90%;
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow-y: auto; /* Permite desplazamiento si el contenido es demasiado grande */
+            max-height: 90vh; /* Limita la altura máxima del modal */
+        }
+    </style>
 </head>
 <body>
 
     <!-- Modal de Registro -->
-    <div id="registerModal" class="modal">
         <div class="modal-content-registro">
-            <span class="cerrar" onclick="cerrarRegister()">&times;</span>
 
             <!-- Logo y título -->
             <div class="logo-container">
@@ -19,40 +29,84 @@
             </div>
 
             <!-- Formulario de Registro -->
-            <form>
-                <input type="text" placeholder="Nombre Completo" required>
-                <input type="email" placeholder="Correo Electrónico" required>
-                <input type="password" placeholder="Contraseña" required>
-                <input type="password" placeholder="Confirmar Contraseña" required>
-                <button type="submit" class="btn pink" onclick="handleRegister()">Registrarse</button>
+            <form onsubmit="crearUsuario(event)">
+                <input type="text" id="nombre" placeholder="Nombre Completo" required>
+                <input type="email" id="correo" placeholder="Correo Electrónico" required>
+                <input type="password" id="contraseña" placeholder="Contraseña" required>
+                <input type="password" id="confirmarContraseña" placeholder="Confirmar Contraseña" required>
+                <button type="submit" class="btn pink">Registrarse</button>
             </form>
 
             <div class="divider">o</div>
-            
+
             <!-- Botón de Google -->
             <button class="btn google">
                 <img src="recursos/Google.png" alt="Google">
                 Registrarse con Google
             </button>
-            
+
             <!-- Enlace para volver a Login -->
             <p style="margin-top: 15px; font-size: 14px;">
                 ¿Ya tienes cuenta? 
-                <a href="#" onclick="cerrarRegister(); abrirLogin()" style="color: #E6BAA8; text-decoration: none;">
+                <a href="#" onclick="parent.abrirModal('login.html')" style="color: #E6BAA8; text-decoration: none;">
                     Iniciar Sesión
                 </a>
             </p>
         </div>
-    </div>
 
+    <script src="Clases/Usuario.js"></script>
     <script>
         // Funciones para controlar el modal de registro
         function abrirRegister() {
-            document.getElementById('registerModal').style.display = 'flex';
+            const registerContent = `
+                <div class="logo-container">
+                    <h1>Bloom Beauty</h1>
+                </div>
+                <form onsubmit="crearUsuario(event)">
+                    <input type="text" id="nombre" placeholder="Nombre Completo" required>
+                    <input type="email" id="correo" placeholder="Correo Electrónico" required>
+                    <input type="password" id="contraseña" placeholder="Contraseña" required>
+                    <input type="password" id="confirmarContraseña" placeholder="Confirmar Contraseña" required>
+                    <button type="submit" class="btn pink">Registrarse</button>
+                </form>
+                <div class="divider">o</div>
+                <button class="btn google">
+                    <img src="recursos/Google.png" alt="Google">
+                    Registrarse con Google
+                </button>
+                <p style="margin-top: 15px; font-size: 14px;">
+                    ¿Ya tienes cuenta? 
+                    <a href="#" onclick="abrirLogin()" style="color: #E6BAA8; text-decoration: none;">
+                        Iniciar Sesión
+                    </a>
+                </p>
+            `;
+            abrirModal(registerContent);
         }
 
         function cerrarRegister() {
             document.getElementById('registerModal').style.display = 'none';
+        }
+
+        async function crearUsuario(event) {
+    event.preventDefault();
+    
+    const nombre = document.getElementById('nombre').value;
+    const correo = document.getElementById('correo').value;
+    const contraseña = document.getElementById('contraseña').value;
+    
+    try {
+        const usuario = new Usuario(nombre, correo, contraseña);
+        await Usuario.guardarUsuario(usuario);
+        alert('Registro exitoso!');
+        window.location.href = 'login.html'; // Redirigir
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+}
+
+        function cerrarRegistroAbrirLogin() {
+            window.parent.abrirLogin(); // Abre el modal de login
         }
     </script>
 </body>

@@ -14,7 +14,7 @@
         <nav>
             <div class="menu-section">
                 <div class="icons">
-                    <img src="Recursos/BtnMenu.png" alt="Menú" class="icon btn-menu">
+                    <img src="Recursos/BtnMenu.png" alt="Menú" class="icon btn-menu" id="btn-menu">
                 </div>
                 <ul class="nav-links">
                     <li><a href="#">Inicio</a></li>
@@ -34,6 +34,8 @@
             </div>
         </nav>
     </header>
+    <!-- Contenedor para cargar el menú lateral -->
+    <div id="menu-container"></div>
     <section class="contenido">
         <h2>Tu piel, tu esencia, tu belleza</h2>
         <div class="etiquetas-container">
@@ -133,7 +135,7 @@
                     </button>
                 </div>
             </div>
-            <div class="producto hidden">
+<div class="producto hidden">
                 <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
                 <h3>Bloom Punch</h3>
                 <p class="descripcion">Una breve descripción del producto Bloom Punch.</p>
@@ -213,7 +215,47 @@
                     </button>
                 </div>
             </div>
+<div class="producto hidden">
+                <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
+                <h3>Bloom Punch</h3>
+                <p class="descripcion">Una breve descripción del producto Bloom Punch.</p>
+                <p class="precio">$40.00 MXN</p>
+                <div class="rating">
+                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
+                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
+                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
+                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
+                    <img src="Recursos/EstrellaBlanca.png" alt="Estrella">
+                    <span>(4.0)</span>
+                </div>
+                <div class="botones">
+                    <button class="btn-comprar">Comprar ahora</button>
+                    <button class="btn-add-carrito">
+                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
+                    </button>
+                </div>
+            </div>
             <div class="producto hidden">
+                <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
+                <h3>Bloom Punch</h3>
+                <p class="descripcion">Una breve descripción del producto Bloom Punch.</p>
+                <p class="precio">$40.00 MXN</p>
+                <div class="rating">
+                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
+                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
+                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
+                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
+                    <img src="Recursos/EstrellaBlanca.png" alt="Estrella">
+                    <span>(4.0)</span>
+                </div>
+                <div class="botones">
+                    <button class="btn-comprar">Comprar ahora</button>
+                    <button class="btn-add-carrito">
+                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
+                    </button>
+                </div>
+            </div>
+<div class="producto hidden">
                 <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
                 <h3>Bloom Punch</h3>
                 <p class="descripcion">Una breve descripción del producto Bloom Punch.</p>
@@ -347,6 +389,8 @@
             <button type="submit">→</button>
         </div>
     </footer>
+<!-- Contenedor para insertar dinámicamente el menú lateral -->
+<div id="menu-container"></div>
 
     <script src="script.js"></script>
 </body>
