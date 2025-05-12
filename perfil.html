@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom Beauty - Mi Perfil</title>
+    <link rel="stylesheet" href="estiloPerfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="menu-section">
+            <div class="icons">
+                <img src="Recursos/BtnMenu.png" alt="Menú" class="icon btn-menu" id="btn-menu">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+            </ul>
+        </div>
+        <div class="logo-container">
+            <h1>Bloom Beauty</h1>
+        </div>
+        <div class="icons">
+            <div class="search-container">
+                <input type="text" id="search-bar" class="search-bar" placeholder="Buscar...">
+                <img src="Recursos/BtnSearch.png" alt="Buscar" class="icon" id="search-icon">
+            </div>
+            <img src="Recursos/BtnCarrito.png" alt="Carrito" class="icon" id="btn-carrito">
+            <img src="Recursos/BtnPerfil.png" alt="Perfil" class="icon btn-user" id="btn-perfil">
+        </div>
+    </nav>
+
+    <!-- Contenido del Perfil -->
+    <div class="profile-container">
+        <div class="profile-content">
+            <div class="profile-sidebar">
+                <ul class="profile-menu">
+                    <li><a href="#" class="tab-link" data-tab="personal"><i class="fas fa-user"></i> Información Personal</a></li>
+                    <li><a href="#" class="tab-link active" data-tab="orders"><i class="fas fa-shopping-bag"></i> Mis Pedidos</a></li>
+                    <li><a href="#" class="tab-link" data-tab="favorites"><i class="fas fa-heart"></i> Favoritos</a></li>
+                    <li><a href="#" class="tab-link" data-tab="addresses"><i class="fas fa-map-marker-alt"></i> Direcciones</a></li>
+                    <li><a href="#" class="tab-link" data-tab="security"><i class="fas fa-lock"></i> Seguridad</a></li>
+                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                </ul>
+            </div>
+
+            <div class="profile-main">
+                <!-- Sección de Pedidos (activa por defecto) -->
+                <div class="profile-section active" id="orders">
+                    <h2><i class="fas fa-shopping-bag"></i> Mis Pedidos</h2>
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>N° Pedido</th>
+                                <th>Fecha</th>
+                                <th>Productos</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#BB-2023-001</td>
+                                <td>15/01/2023</td>
+                                <td>Bloom Punch, Silk Glow</td>
+                                <td>$1,398.00 MXN</td>
+                                <td>Entregado</td>
+                            </tr>
+                            <tr>
+                                <td>#BB-2023-002</td>
+                                <td>28/02/2023</td>
+                                <td>HydraBloom</td>
+                                <td>$499.00 MXN</td>
+                                <td>En camino</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Sección de Favoritos -->
+                <div class="profile-section" id="favorites">
+                    <h2><i class="fas fa-heart"></i> Mis Favoritos</h2>
+                    <table class="favorites-table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Disponibilidad</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bloom Punch</td>
+                                <td>$499.00 MXN</td>
+                                <td>En stock</td>
+                                <td>
+                                    <button class="btn-small">Añadir al carrito</button>
+                                    <button class="btn-small btn-remove">Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Silk Glow</td>
+                                <td>$899.00 MXN</td>
+                                <td>En stock</td>
+                                <td>
+                                    <button class="btn-small">Añadir al carrito</button>
+                                    <button class="btn-small btn-remove">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Sección de Direcciones -->
+                <div class="profile-section" id="addresses">
+                    <h2><i class="fas fa-map-marker-alt"></i> Mis Direcciones</h2>
+                    <div class="address-card">
+                        <h3>Dirección Principal</h3>
+                        <p>María González</p>
+                        <p>Calle Flores #123, Colonia Centro</p>
+                        <p>Morelia, Michoacán, 58000</p>
+                        <p>Teléfono: +52 612 345 6789</p>
+                        <div class="address-actions">
+                            <button>Editar</button>
+                            <button>Eliminar</button>
+                            <button>Marcar como principal</button>
+                        </div>
+                    </div>
+                    <button class="save-btn">+ Añadir nueva dirección</button>
+                </div>
+
+                <!-- Sección de Seguridad -->
+                <div class="profile-section" id="security">
+                    <h2><i class="fas fa-lock"></i> Seguridad</h2>
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h3>Contraseña</h3>
+                            <p>Última actualización hace 3 meses</p>
+                        </div>
+                        <div class="security-action">
+                            <button>Cambiar contraseña</button>
+                        </div>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h3>Autenticación en dos pasos</h3>
+                            <p>Protege tu cuenta con un segundo factor de autenticación</p>
+                        </div>
+                        <div class="security-action">
+                            <button>Activar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-line"></div> 
+        <h2>Bloom Beauty</h2>
+        <p>
+            Belleza auténtica, cuidado natural. Consciéntete con fórmulas sofisticadas que nutren tu piel y realzan tu esencia. Porque tu bienestar es nuestra inspiración.
+        </p>
+        <div class="footer-line"></div> 
+        <div class="footer-links">
+            <a href="#">Información de Contacto</a>
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Política de Envío</a>
+            <a href="#">Política de Devolución</a>
+        </div>
+        <div class="footer-social">
+            <a href="#"><img src="Recursos/LogoInstagram.png" alt="Instagram"></a>
+            <a href="#"><img src="Recursos/LogoFacebook.png" alt="Facebook"></a>
+        </div>
+        <div class="footer-subscribe">
+            <input type="email" placeholder="Correo Electrónico">
+            <button type="submit">→</button>
+        </div>
+    </footer>
+
+    <script>
+        // Funcionalidad de las pestañas
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remover clase active de todos los links y secciones
+                document.querySelectorAll('.tab-link').forEach(el => el.classList.remove('active'));
+                document.querySelectorAll('.profile-section').forEach(el => el.classList.remove('active'));
+                
+                // Añadir clase active al link clickeado
+                this.classList.add('active');
+                
+                // Mostrar la sección correspondiente
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

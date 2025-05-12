@@ -1,0 +1,102 @@
+/* Estilo para la sección de filtros */
+.filtros {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.filtros h2 {
+    font-family: 'Bludhaven';
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.categorias {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-categoria {
+    background: #ECC7CD;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-categoria:hover {
+    background: #d4a6b0;
+}
+
+/* Estilo para los productos */
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.producto {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.producto img {
+    width: 100%;
+    border-radius: 10px;
+    max-height: 180px;
+    object-fit: cover;
+}
+
+.producto h3 {
+    font-size: 16px;
+    margin: 10px 0;
+    font-family: 'Bludhaven';
+}
+
+.producto .descripcion {
+    font-size: 14px;
+    color: #7a6f6f;
+    margin: 5px 0;
+}
+
+.producto .precio {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+}
+
+.producto .botones {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-comprar, .btn-add-carrito {
+    background: #ECC7CD;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: background 0.3s ease;
+}
+
+.btn-comprar:hover, .btn-add-carrito:hover {
+    background: #d4a6b0;
+}

@@ -154,28 +154,46 @@ document.addEventListener("DOMContentLoaded", function () {
     
 
     // Cargar el menú lateral desde menu.html
-    fetch("menu.html")
-        .then(response => response.text())
-        .then(data => {
-            menuContainer.innerHTML = data;
-
-            // Obtener el menú lateral después de cargarlo
-            const menuLateral = document.getElementById("menuLateral");
-
-            // Abrir y cerrar el menú lateral
-            btnMenu.addEventListener("click", function () {
-                menuLateral.classList.toggle("abierto");
-            });
-
-            // Cerrar el menú al hacer clic fuera de él
-            document.addEventListener("click", function (event) {
-                if (!menuLateral.contains(event.target) && event.target !== btnMenu) {
-                    menuLateral.classList.remove("abierto");
+    document.addEventListener("DOMContentLoaded", function() {
+        const btnMenu = document.getElementById("btn-menu");
+        const menuContainer = document.getElementById("menu-container");
+    
+        fetch("menu.html")
+            .then(response => response.text())
+            .then(data => {
+                menuContainer.innerHTML = data;
+                const menuLateral = document.getElementById("menuLateral");
+    
+                // Mostrar/Ocultar el menú
+                btnMenu.addEventListener("click", function() {
+                    menuLateral.classList.toggle("abierto");
+                });
+    
+                // Cargar nombre de usuario
+                const usuario = JSON.parse(sessionStorage.getItem('usuario'));
+                const usernameElement = document.getElementById('username');
+                const logoutBtn = document.getElementById('logoutBtn');
+                
+                if (usuario && usuario.nombre) {
+                    usernameElement.textContent = usuario.nombre;
+    
+                    logoutBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        sessionStorage.removeItem('usuario');
+                        window.location.href = 'login.html';
+                    });
+                } else {
+                    usernameElement.textContent = 'Invitado';
+                    logoutBtn.textContent = 'Iniciar Sesión';
+                    logoutBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.location.href = 'login.html';
+                    });
                 }
-            });
-        })
-        .catch(error => console.error("Error al cargar el menú:", error));
-
+            })
+            .catch(error => console.error("Error al cargar el menú:", error));
+    });
+    
     // Obtener el nombre del usuario desde la base de datos
     async function obtenerNombreUsuario() {
         try {
@@ -200,6 +218,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Llamar a la función para obtener el nombre del usuario
     obtenerNombreUsuario();
+
+    document.addEventListener('click', function(event) {
+        const menuLateral = document.getElementById('menuLateral');
+        const btnMenu = document.getElementById('btn-menu');
+    
+        if (
+            menuLateral &&
+            !menuLateral.contains(event.target) &&
+            !btnMenu.contains(event.target)
+        ) {
+            menuLateral.classList.remove('abierto');
+        }
+    });
+    
 
     // Abrir el registro desde dentro del iframe (Login.html)
     window.abrirRegister = function () {

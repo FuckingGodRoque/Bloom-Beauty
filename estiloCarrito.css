@@ -1,3 +1,4 @@
+/* Configuración general */
 body {
     font-family: 'Helvetica Neue', sans-serif;
     background: #F9F7F5;
@@ -6,7 +7,7 @@ body {
     padding: 0;
 }
 
-/* Navbar */
+/* Navbar (coherente con el estilo principal) */
 nav {
     position: fixed;
     top: 0;
@@ -18,22 +19,25 @@ nav {
     padding: 20px 50px;
     background: white;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     z-index: 1000;
 }
 
 /* Contenedor principal del carrito */
 .cart-page {
-    padding-top: 90px;
+    padding-top: 100px;
     min-height: 100vh;
 }
 
 .cart-container {
     max-width: 1600px;
     margin: 0 auto;
-    padding: 0 4rem;
+    padding: 0 2rem;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 4rem;
+    gap: 2rem;
 }
 
 /* Encabezado del carrito */
@@ -48,28 +52,21 @@ nav {
 
 .cart-header h2 {
     font-family: 'Bludhaven';
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #333;
     margin: 0;
 }
 
-.send-to {
-    color: #aaaaaa;
-    font-weight: 600;
-    text-decoration: underline;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
 /* Lista de productos */
 .cart-items-scroll {
-    max-height: 70vh;
+    max-height: 65vh;
     overflow-y: auto;
-    padding-right: 1.5rem;
+    padding-right: 1rem;
 }
 
+/* Scrollbar personalizada */
 .cart-items-scroll::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 .cart-items-scroll::-webkit-scrollbar-track {
@@ -88,23 +85,22 @@ nav {
     gap: 1rem;
 }
 
-/* Contenedor del producto */
+/* Item del carrito */
 .cart-item {
-    position: relative; /* Necesario para posicionar el ícono de check dentro del contenedor */
+    position: relative;
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 180px 1fr;
     gap: 1.5rem;
     padding: 1.5rem;
     background: white;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    align-items: start;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .product-image {
-    width: 200px;
-    height: 300px;
-    border-radius: 15px;
+    width: 100%;
+    height: 220px;
+    border-radius: 12px;
     overflow: hidden;
 }
 
@@ -117,58 +113,47 @@ nav {
 .item-details {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem; /* Reducido */
+    gap: 0.8rem;
 }
 
 .item-details h3 {
     font-family: 'Safira March Personal Use Only';
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #333;
     margin: 0;
 }
 
-/* Ajustar el estilo de la descripción del producto */
 .product-description {
-    font-size: 1.1rem;
-    line-height: 1.5; /* Espaciado entre líneas */
+    font-size: 1rem;
+    line-height: 1.4;
     color: #666;
     margin: 0;
-    padding-bottom: 1rem; /* Espacio inferior */
-    white-space: normal; /* Permitir que el texto se ajuste automáticamente */
-    overflow: hidden; /* Ocultar el texto que exceda el límite */
-    display: -webkit-box; /* Usar un contenedor flexible */
-    -webkit-line-clamp: 2; /* Mostrar un máximo de 2 líneas */
-    -webkit-box-orient: vertical; /* Orientar el texto verticalmente */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 /* Controles de cantidad */
-.size-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1.5rem; /* Reducido */
-}
-
 .quantity-controls {
     display: flex;
     align-items: center;
-    gap: 1.0rem;
-    padding-bottom: 0.5rem; /* Reducido */
+    gap: 0.8rem;
 }
 
 .quantity-btn {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     border: 2px solid #ECC7CD;
     border-radius: 50%;
     background: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #ECC7CD;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
-    justify-content: center;;
+    justify-content: center;
 }
 
 .quantity-btn:hover {
@@ -176,41 +161,31 @@ nav {
     color: white;
 }
 
-/* Sección precio y eliminar */
+/* Sección de precio */
 .price-section {
     display: flex;
     align-items: center;
-    gap: 1.5rem; /* Espacio entre precio y botón */
-    margin-top: 0.5rem; /* Reducido */
-    padding-top: 0.8rem; /* Reducido */
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1rem;
     border-top: 1px solid #eee;
 }
 
 .precio {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 1.4rem;
+    font-family: 'Cambria Math';
+    font-size: 1.2rem;
     font-weight: 600;
     color: #333;
-    margin: 0;
-    padding-bottom: 0.5rem; /* Reducido */
-}
-
-.precio span {
-    font-size: 0.9rem;
-    color: #666;
-    display: block;
-    margin-top: 0.2rem; /* Reducido */
 }
 
 .remove-btn {
     background: none;
     border: 2px solid #ddd;
     color: #666;
-    padding: 0.5rem 1.2rem; /* Compacto */
+    padding: 0.4rem 1rem;
     border-radius: 15px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-left: auto; /* Alinea a la derecha */
+    transition: all 0.2s ease;
 }
 
 .remove-btn:hover {
@@ -218,64 +193,59 @@ nav {
     color: #db4437;
 }
 
-/* Estilo para el ícono de check */
+/* Ícono de check */
 .check-icon {
-    position: absolute; /* Posicionarlo dentro del contenedor del producto */
-    top: 1rem; /* Ajustar la distancia desde la parte superior */
-    right: 1rem; /* Ajustar la distancia desde la parte derecha */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     cursor: pointer;
 }
 
 .check-icon img {
-    width: 30px;
-    height: 30px;
-    transition: transform 0.3s ease;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease;
 }
 
 .check-icon img:hover {
-    transform: scale(1.1); /* Efecto de zoom al pasar el cursor */
+    transform: scale(1.1);
 }
 
 /* Resumen del carrito */
 .cart-summary {
     background: white;
-    padding: 2rem; /* Reducir ligeramente el padding */
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     height: fit-content;
-    font-size: 1rem; /* Mantener un tamaño de fuente legible */
-    color: #333; /* Mantener el color del texto */
 }
 
-/* Sección de descuento */
 .discount-section {
     display: flex;
-    gap: 1rem; /* Reducir el espacio entre elementos */
-    margin-bottom: 2rem; /* Reducir el margen inferior */
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
 }
 
 .discount-section input {
     flex: 1;
-    padding: 1rem; /* Reducir el padding */
+    padding: 0.8rem;
     border: 2px solid #ddd;
-    border-radius: 20px; /* Mantener el borde redondeado */
-    font-size: 1rem; /* Ajustar el tamaño de fuente */
+    border-radius: 15px;
+    font-size: 0.9rem;
 }
 
 /* Botones */
 .btn {
-    padding: 1rem 2rem; /* Reducir el padding */
-    border-radius: 25px; /* Mantener el estilo redondeado */
-    font-size: 1rem; /* Ajustar el tamaño de fuente */
-    transition: all 0.3s ease;
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
 }
 
 .apply-btn {
     background: #333;
     color: white;
+    border: none;
 }
 
 .apply-btn:hover {
@@ -286,87 +256,110 @@ nav {
 .price-breakdown {
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Reducir el espacio entre filas */
-    margin: 2rem 0; /* Reducir el margen superior e inferior */
+    gap: 0.8rem;
+    margin: 1.5rem 0;
 }
 
 .price-row {
     display: flex;
     justify-content: space-between;
-    padding: 0.8rem 0; /* Reducir el padding entre filas */
-    font-size: 1rem; /* Ajustar el tamaño de fuente */
 }
 
 .price-row.total {
-    padding-top: 1.5rem; /* Reducir el padding superior */
-    font-size: 1.2rem; /* Mantener un tamaño destacado para el total */
+    padding-top: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
+    border-top: 1px solid #eee;
 }
 
-/* Botón de checkout */
+/* Botón de pago */
 .checkout-btn {
     width: 100%;
     background: #ECC7CD;
     color: #333;
-    padding: 1.2rem; /* Reducir el padding */
-    font-size: 1.2rem; /* Ajustar el tamaño de fuente */
+    padding: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    border-radius: 30px; /* Mantener el borde redondeado */
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.2s ease;
 }
 
 .checkout-btn:hover {
-    background: #dbb3b9; /* Mantener el efecto hover */
+    background: #dbb3b9;
 }
 
-/* Estilo para la píldora de ubicación */
+/* Píldora de ubicación */
 .location-pill {
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* Espacio entre el ícono y el texto */
-    background: #f0f0f0; /* Fondo gris claro */
-    color: #333; /* Color del texto */
-    padding: 0.5rem 1rem; /* Espaciado interno */
-    border-radius: 20px; /* Bordes redondeados */
-    font-size: 1rem; /* Tamaño de fuente */
-    font-weight: 600; /* Peso del texto */
-    cursor: pointer; /* Cambiar el cursor al pasar */
-    transition: background 0.3s ease;
+    gap: 0.5rem;
+    background: #f0f0f0;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
 }
 
 .location-pill:hover {
-    background: #e0e0e0; /* Cambiar el fondo al pasar el cursor */
+    background: #e0e0e0;
 }
 
 .gps-icon {
-    width: 20px; /* Tamaño del ícono */
-    height: 20px;
+    width: 18px;
+    height: 18px;
 }
 
 /* Responsive */
-@media (max-width: 1400px) {
+@media (max-width: 1024px) {
     .cart-container {
-        padding: 2rem;
-        gap: 2rem;
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    
+    .cart-items-scroll {
+        max-height: none;
     }
 }
 
 @media (max-width: 768px) {
+    nav {
+        padding: 15px 20px;
+    }
+    
+    .cart-page {
+        padding-top: 90px;
+    }
+    
     .cart-item {
         grid-template-columns: 1fr;
-        gap: 1rem;
     }
     
     .product-image {
-        width: 100%;
-        height: 250px;
+        height: 180px;
     }
     
-    .price-section {
-        flex-direction: row;
-        justify-content: space-between;
+    .cart-header h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
     }
     
-    .remove-btn {
-        margin-left: 0;
+    .discount-section {
+        flex-direction: column;
+    }
+    
+    .item-details h3 {
+        font-size: 1.3rem;
     }
 }

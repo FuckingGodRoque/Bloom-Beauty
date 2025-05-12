@@ -2,59 +2,54 @@
 body {
     background: #EFEBE7;
     font-family: 'Safira March Personal Use Only', sans-serif;
-    margin: 0; /* ¡Todos los márgenes en 0! */
-    margin-top: 100px; /* Elimina el margen superior */
+    margin: 0;
+    margin-top: 100px;
     padding: 0;
     width: 100%;
     overflow-x: hidden;
-    transition: background-color 0.3s ease;
 }
 
-
-
-
-
-
-/* Ajustar el navbar */ 
+/* Navbar */
 nav {
-    position: fixed; /* Fija el navbar en la parte superior */
-    top: 0; /* Lo coloca en la parte superior de la página */
-    left: 0; /* Lo coloca a la izquierda */
-    right: 0; /* Lo coloca a la derecha */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:20px 50px; /* Aumentar el padding */
+    padding: 20px 50px;
     background: white;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
     border-radius: 25px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px; /* Elimina el borde redondeado superior */
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    z-index: 1000;
+    transition: box-shadow 0.3s ease;
 }
 
 nav:hover {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos específicos del navbar */
 .menu-section {
     display: flex;
     align-items: center;
-    gap: 10px; /* Ajustar espaciado */
+    gap: 10px;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 10px; /* Ajustar espaciado */
+    gap: 10px;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-links li a {
     text-decoration: none;
     font-size: 18px;
-    color: #000; /* Ajusta el color según la maqueta */
+    color: #000;
     transition: color 0.3s ease;
 }
 
@@ -78,23 +73,15 @@ nav:hover {
     position: relative;
     z-index: 1;
     background: url('Recursos/Logo.png') no-repeat center;
-    background-size: contain;
-    padding: 20px; /* Adjust padding to fit the logo */
+    background-size: 40px 55px;
+    padding: 20px;
     text-align: center;
     font-family: bludhaven;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
+    margin: 0;
 }
 
 .logo-container:hover h1 {
-    transform: scale(1.1);
-}
-
-.logo {
-    width: 120px; /* Ajusta el tamaño según la maqueta */
-    transition: transform 0.3s ease;
-}
-
-.logo-container:hover .logo {
     transform: scale(1.1);
 }
 
@@ -109,12 +96,12 @@ nav:hover {
 }
 
 .search-container:hover {
-    border-color: #000000; /* Cambia el color del borde al pasar el mouse */
+    border-color: #000;
 }
 
 .search-bar {
     flex: 1;
-    padding: 8px 40px 8px 15px; /* Espaciado interno (derecha para el ícono) */
+    padding: 8px 40px 8px 15px;
     border: none;
     outline: none;
     font-size: 14px;
@@ -123,7 +110,7 @@ nav:hover {
 
 .search-button {
     position: absolute;
-    right: 10px; /* Ajusta la posición del ícono */
+    right: 10px;
     background: none;
     border: none;
     cursor: pointer;
@@ -140,7 +127,7 @@ nav:hover {
 }
 
 .search-button:hover img {
-    transform: scale(1.2); /* Efecto de zoom al pasar el mouse */
+    transform: scale(1.2);
 }
 
 .icon {
@@ -159,13 +146,6 @@ nav:hover {
     gap: 15px;
 }
 
-
-
-
-
-
-
-
 /* Sección de contenido principal */
 .contenido {
     position: relative;
@@ -173,12 +153,11 @@ nav:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Empuja el contenido hacia arriba */
-    padding: 20px 20px; /* Reduce el padding superior */
+    justify-content: flex-start;
+    padding: 20px;
     text-align: center;
-    height: 80vh; /* Mantiene la altura */
-
-    margin:0%
+    height: 80vh;
+    margin: 0;
 }
 
 .contenido h2 {
@@ -190,9 +169,7 @@ nav:hover {
     padding-bottom: 30px;
 }
 
-
-
-/* Contenedor de las etiquetas */
+/* Contenedor de etiquetas */
 .etiquetas-container {
     background-color: #ECC7CD;
     padding: 20px;
@@ -204,7 +181,7 @@ nav:hover {
     width: fit-content;
     max-width: 600px;
     margin-left: auto;
-    margin-right: 0px;
+    margin-right: 0;
     transition: background-color 0.3s ease;
 }
 
@@ -212,7 +189,6 @@ nav:hover {
     background-color: #d4a6b0;
 }
 
-/* Cada etiqueta */
 .etiqueta {
     display: flex;
     align-items: center;
@@ -227,13 +203,11 @@ nav:hover {
     background-color: #f5c6c6;
 }
 
-/* Tamaño de los íconos */
 .etiqueta img {
     width: 24px;
     height: 24px;
 }
 
-/* Texto dentro de las etiquetas */
 .etiqueta span {
     font-size: 18px;
     font-weight: bold;
@@ -242,36 +216,33 @@ nav:hover {
 }
 
 /* Sección de productos */
-/* Contenedor principal de productos */
 .productos {
     display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
+    justify-content: center;
+    align-items: center;
     padding: 20px;
 }
 
-/* Contenedor de la cuadrícula de productos */
 #productos-container {
     display: grid;
-    grid-template-columns: repeat(4, minmax(160px, 1fr)); /* Reducimos aún más el tamaño mínimo de las columnas */
-    gap: 50px; /* Espacio entre los productos */
-    max-width: 1500px; /* Limita el ancho máximo */
-    margin: 0 auto; /* Centrar el contenedor */
+    grid-template-columns: repeat(4, minmax(160px, 1fr));
+    gap: 50px;
+    max-width: 1500px;
+    margin: 0 auto;
     padding: 30px;
 }
 
-/* Estilos para cada producto */
 .producto {
     background: white;
     border-radius: 15px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px; /* Reducimos el padding un 10% más */
+    padding: 20px;
     text-align: left;
-    width: 190px; /* Reducimos el ancho un 10% más */
+    width: 190px;
     height: 430px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex; /* Asegura que el contenido se distribuye bien */
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -283,9 +254,9 @@ nav:hover {
 .producto img {
     width: 100%;
     border-radius: 10px;
-    max-height: 280px; 
+    max-height: 280px;
     transition: transform 0.3s ease;
-    object-fit: cover; /* Evita que se deforme */
+    object-fit: cover;
     flex-shrink: 0;
 }
 
@@ -294,28 +265,24 @@ nav:hover {
 }
 
 .producto h3 {
-    font-size: 16px; /* Reducimos el tamaño de fuente un 10% más */
-    margin: 5px 0;
+    font-size: 16px;
+    margin: 5px 0 0;
     font-family: Bludhaven;
-    margin-bottom: 0px;
 }
 
 .producto .descripcion {
-    font-size: 13px; /* Reducimos el tamaño de fuente un 10% más */
+    font-size: 13px;
     color: #7a6f6f;
-    margin: 1px 0;
-    margin-top: 0px;
+    margin: 1px 0 0;
     font-family: Cambria Math;
-    margin-bottom: 0px;
 }
 
 .producto .precio {
-    font-size: 14px; /* Reducimos el tamaño de fuente un 10% más */
+    font-size: 14px;
     font-family: Cambria Math;
     font-weight: bold;
-    margin: 5px 0;
+    margin: 5px 0 0;
     color: #000;
-    margin-bottom: 0px;
 }
 
 .producto .rating {
@@ -323,72 +290,61 @@ nav:hover {
     font-family: Cambria Math;
     align-items: center;
     justify-content: flex-start;
-    gap: 5px; /* Reducimos el espacio entre íconos */
-    margin: 1px 0;
-    margin-top: 0px;
+    gap: 5px;
+    margin: 1px 0 0;
 }
 
 .producto .rating img {
-    width: 13px; /* Reducimos el tamaño de los íconos un 10% más */
+    width: 13px;
     height: 13px;
-    margin:1px 0;
-    margin-top: 0px ;
+    margin: 0;
 }
 
 .producto .botones {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 6px; /* Reducimos el espacio entre botones */
+    gap: 6px;
     margin-top: 10px;
 }
 
-.producto .btn-comprar {
+.btn-comprar, .btn-add-carrito {
     background: #ECC7CD;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
     font-family: Cambria Math;
-    border: none;
-    padding: 6px 12px; /* Reducimos el padding un 10% más */
-    border-radius: 10px;
-    cursor: pointer;
+}
+
+.btn-comprar {
+    padding: 6px 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px; /* Reducimos el espacio entre íconos */
-    transition: background 0.3s ease;
+    gap: 10px;
 }
 
-.producto .btn-comprar:hover {
+.btn-comprar:hover, .btn-add-carrito:hover {
     background: #d4a6b0;
 }
 
-.producto .btn-add-carrito {
-    background: #ECC7CD;
-    border: none;
-    padding: 6px; /* Reducimos el padding un 10% más */
-    border-radius: 10px;
-    cursor: pointer;
+.btn-add-carrito {
+    padding: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s ease;
 }
 
-.producto .btn-add-carrito:hover {
-    background: #d4a6b0;
-}
-
-.producto .btn-add-carrito img {
-    width: 16px; /* Reducimos el tamaño de los íconos un 10% más */
+.btn-add-carrito img {
+    width: 16px;
     height: 16px;
 }
 
-/* Estilo para ocultar productos */
 .hidden {
     display: none;
 }
 
-
-/* Estilos para el botón "Ver más" */
 .btn-ver-mas {
     display: block;
     margin: 20px auto;
@@ -405,49 +361,45 @@ nav:hover {
 .btn-ver-mas:hover {
     background: #d4a6b0;
 }
+
 /* Sección recomendado */
 .recomendado {
     padding: 5px 5%; 
     text-align: center;
 }
 
-/* Título */
 .recomendado h2 {
     font-size: 24px;
     margin-bottom: 20px;
-    font-family: Safira March Personal Use Only;
+    font-family: 'Safira March Personal Use Only';
 }
 
-/* Contenedor flexible */
 .recomendado-container {
     display: flex;
-    justify-content: space-evenly; /* Distribuye mejor los elementos */
-    flex-wrap: wrap; /* Permite que se acomoden en varias líneas si es necesario */
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     gap: 30px;
-    max-width: 1200px; /* Limita el ancho máximo */
-    margin: 0 auto; /* Centra el contenedor */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Cada tarjeta de producto */
 .recomendado-item {
     background: #fff;
     border-radius: 15px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
-    width: 320px; /* Aumenta el tamaño de cada item */
-    max-width: 100%; /* Evita que se desborde */
+    width: 320px;
+    max-width: 100%;
     overflow: hidden;
 }
 
-/* Contenedor de imagen */
 .recomendado-img-container {
     position: relative;
     overflow: hidden;
     border-radius: 15px;
 }
 
-/* Imagen */
 .recomendado-item img {
     width: 100%;
     transition: transform 0.3s ease;
@@ -457,41 +409,44 @@ nav:hover {
     transform: scale(1.1);
 }
 
-/* Título del producto */
 .recomendado-item h3 {
     font-size: 18px;
     margin-bottom: 10px;
-    font-family: Safira March Personal Use Only;
+    font-family: 'Safira March Personal Use Only';
 }
 
-/* Descripción */
 .recomendado-item p {
     font-size: 14px;
     color: #7a6f6f;
     font-family: Cambria Math;
 }
-/* Estilos del pie de página */
+
+/* Footer */
 footer {
     background: #EFEBE7;
     padding: 40px 20px;
     text-align: center;
-    
 }
 
 footer h2 {
     font-size: 24px;
     margin-bottom: 10px;
     font-family: Bludhaven;
-    
 }
 
 footer p {
     font-size: 14px;
-    color: #000000;
+    color: #000;
     margin-bottom: 20px;
-    font-family: Safira March Personal Use Only;
+    font-family: 'Safira March Personal Use Only';
     max-width: 600px;
     margin: 0 auto;
+}
+
+.footer-line {
+    border-top: 2px solid #000;
+    width: 90%;
+    margin: 30px auto;
 }
 
 .footer-links {
@@ -499,16 +454,9 @@ footer p {
     justify-content: center;
     gap: 20px;
     margin-bottom: 20px;
-    font-family: CAmbria Math;
+    font-family: 'Cambria Math';
+    flex-wrap: wrap;
 }
-
-.footer-line {
-    border-top: 2px solid #000000; /* Color de la línea */
-    width: 90%; /* Ajusta el ancho de la línea */
-    margin: 30px auto; /* Centra la línea horizontalmente */
-}
-
-
 
 .footer-links a {
     text-decoration: none;
@@ -543,6 +491,7 @@ footer p {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .footer-subscribe input {
@@ -552,6 +501,7 @@ footer p {
     outline: none;
     font-size: 14px;
     transition: border-color 0.3s ease;
+    min-width: 250px;
 }
 
 .footer-subscribe input:focus {
@@ -559,40 +509,79 @@ footer p {
 }
 
 .footer-subscribe button {
-    background: #ECC7CD;
+    background: #d4a6b0;
     border: none;
     padding: 10px 20px;
     border-radius: 20px;
     cursor: pointer;
     font-size: 14px;
     transition: background 0.3s ease;
+    color: white;
 }
 
 .footer-subscribe button:hover {
-    background: #d4a6b0;
+    background: #c2939d;
 }
 
-/* Estilos para el contenido modal */
-.modal-content {
-    background: white;
-    width: 400px;
-    height: 500px;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
+/* Responsive */
+@media (max-width: 1024px) {
+    #productos-container {
+        grid-template-columns: repeat(3, minmax(160px, 1fr));
+    }
+    
+    .contenido h2 {
+        padding-right: 200px;
+        font-size: 60px;
+    }
 }
 
-.modal-content .cerrar {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    color: #333;
+@media (max-width: 768px) {
+    #productos-container {
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
+        gap: 30px;
+    }
+    
+    .contenido h2 {
+        padding-right: 100px;
+        font-size: 50px;
+        margin: 40px;
+    }
+    
+    .etiquetas-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    nav {
+        padding: 15px 20px;
+    }
+    
+    .logo-container h1 {
+        font-size: 24px;
+        padding: 15px;
+    }
 }
 
-
-
-
-
-
+@media (max-width: 480px) {
+    #productos-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .contenido h2 {
+        padding-right: 0;
+        font-size: 40px;
+        margin: 30px 20px;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .search-container {
+        width: 150px;
+    }
+    
+    .recomendado-item {
+        width: 100%;
+    }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Bloom Beauty</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="estiloProductos.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="menu-section">
+                <div class="icons">
+                    <img src="Recursos/BtnMenu.png" alt="Menú" class="icon btn-menu" id="btn-menu">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                </ul>
+            </div>
+            <div class="logo-container">
+                <h1>Bloom Beauty</h1>
+            </div>
+            <div class="icons">
+                <div class="search-container">
+                    <input type="text" id="search-bar" class="search-bar" placeholder="Buscar...">
+                    <img src="Recursos/BtnSearch.png" alt="Buscar" class="icon" id="search-icon">
+                </div>
+                <img src="Recursos/BtnCarrito.png" alt="Carrito" class="icon" id="btn-carrito">
+                <img src="Recursos/BtnPerfil.png" alt="Perfil" class="icon btn-user" id="btn-perfil">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="filtros">
+            <h2>Filtrar por Categoría</h2>
+            <div class="categorias">
+                <button class="btn-categoria" data-categoria="todos">Todos</button>
+                <button class="btn-categoria" data-categoria="cuidado-piel">Cuidado de la Piel</button>
+                <button class="btn-categoria" data-categoria="maquillaje">Maquillaje</button>
+                <button class="btn-categoria" data-categoria="accesorios">Accesorios</button>
+            </div>
+        </section>
+
+        <section class="productos">
+            <div id="productos-container">
+                <div class="producto" data-categoria="accesorios">
+                    <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
+                    <h3>Bloom Punch</h3>
+                    <p class="descripcion">Bolsa de lino.</p>
+                    <p class="precio">$40.00 MXN</p>
+                    <div class="botones">
+                        <button class="btn-comprar">Comprar ahora</button>
+                        <button class="btn-add-carrito">
+                            <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
+                        </button>
+                    </div>
+                </div>
+                <div class="producto" data-categoria="maquillaje">
+                    <img src="Recursos/GlowRestore.png" alt="Glow Restore">
+                    <h3>Glow Restore</h3>
+                    <p class="descripcion">Suave, bello y natural.</p>
+                    <p class="precio">$240.00 MXN</p>
+                    <div class="botones">
+                        <button class="btn-comprar">Comprar ahora</button>
+                        <button class="btn-add-carrito">
+                            <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
+                        </button>
+                    </div>
+                </div>
+                <div class="producto" data-categoria="cuidado-piel">
+                    <img src="Recursos/HydraBloom.png" alt="HydraBloom">
+                    <h3>HydraBloom</h3>
+                    <p class="descripcion">Simple y eficaz.</p>
+                    <p class="precio">$140.00 MXN</p>
+                    <div class="botones">
+                        <button class="btn-comprar">Comprar ahora</button>
+                        <button class="btn-add-carrito">
+                            <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-line"></div>
+        <h2>Bloom Beauty</h2>
+        <p>
+            Belleza auténtica, cuidado natural. Consciéntete con fórmulas sofisticadas que nutren tu piel y realzan tu esencia. Porque tu bienestar es nuestra inspiración.
+        </p>
+        <div class="footer-line"></div>
+        <div class="footer-links">
+            <a href="#">Información de Contacto</a>
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Política de Envío</a>
+            <a href="#">Política de Devolución</a>
+        </div>
+        <div class="footer-social">
+            <a href="#"><img src="Recursos/LogoInstagram.png" alt="Instagram"></a>
+            <a href="#"><img src="Recursos/LogoFacebook.png" alt="Facebook"></a>
+        </div>
+        <div class="footer-subscribe">
+            <input type="email" placeholder="Correo Electrónico">
+            <button type="submit">→</button>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const botonesCategoria = document.querySelectorAll('.btn-categoria');
+            const productos = document.querySelectorAll('.producto');
+
+            botonesCategoria.forEach(boton => {
+                boton.addEventListener('click', () => {
+                    const categoria = boton.getAttribute('data-categoria');
+
+                    productos.forEach(producto => {
+                        if (categoria === 'todos' || producto.getAttribute('data-categoria') === categoria) {
+                            producto.style.display = 'block';
+                        } else {
+                            producto.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
