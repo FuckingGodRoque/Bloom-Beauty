@@ -389,7 +389,25 @@
             <button type="submit">→</button>
         </div>
     </footer>
-<!-- Contenedor para insertar dinámicamente el menú lateral -->
+
+    <div class="assistant-container">
+        <button class="assistant-button">
+          <img src="Recursos/IA.png" alt="Asistente" class="assistant-icon">
+          <span>Asesor de Belleza</span>
+        </button>
+        <div class="assistant-chat hidden">
+          <div class="chat-header">
+            <h3>BeautyIA</h3>
+            <button class="close-chat">&times;</button>
+          </div>
+          <div class="chat-messages"></div>
+          <div class="chat-input">
+            <input type="text" placeholder="Describa su tipo de piel o preocupaciones...">
+            <button class="send-button">Enviar</button>
+          </div>
+        </div>
+      </div>
+
 <div id="menu-container"></div>
 
     <script src="script.js"></script>
