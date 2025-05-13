@@ -527,7 +527,7 @@ footer p {
 /* Asistente Flotante con IA */
 .assistant-container {
     position: fixed;
-    bottom: 30px;
+    bottom: 25px;
     right: 30px;
     z-index: 999;
     font-family: 'Safira March Personal Use Only', sans-serif;
@@ -578,7 +578,7 @@ footer p {
 
 .chat-header {
     background: #ECC7CD;
-    padding: 15px;
+    padding: 13px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -587,14 +587,20 @@ footer p {
 .chat-header h3 {
     margin: 0;
     color: rgb(0, 0, 0);
-    font-size: 18px;
+    font-size: 24px;
+    font-family: bludhaven;
 }
+.chat-header img {
+    width: 20px;
+    height: 20px;
+}
+
 
 .close-chat {
     background: none;
     border: none;
     color: rgb(0, 0, 0);
-    font-size: 20px;
+    font-size: 25px;
     cursor: pointer;
     padding: 0;
 }
