@@ -3,7 +3,7 @@ body {
     background: #EFEBE7;
     font-family: 'Safira March Personal Use Only', sans-serif;
     margin: 0;
-    margin-top: 100px;
+    margin-top: 77px;
     padding: 0;
     width: 100%;
     overflow-x: hidden;
@@ -156,7 +156,7 @@ nav:hover {
     justify-content: flex-start;
     padding: 20px;
     text-align: center;
-    height: 80vh;
+    height: 81vh;
     margin: 0;
 }
 
@@ -215,21 +215,38 @@ nav:hover {
     text-align: center;
 }
 
-/* Sección de productos */
-.productos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+/* Sección de productos destacados */
+.productos-destacados {
+ 
+    text-align: center;
 }
 
-#productos-container {
+.section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-family: 'Safira March Personal Use Only';
+    color: #7a6f6f;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #ECC7CD;
+}
+
+.destacados-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(160px, 1fr));
-    gap: 50px;
-    max-width: 1500px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 30px;
 }
 
 .producto {
@@ -238,7 +255,7 @@ nav:hover {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: left;
-    width: 190px;
+    width: 90%;
     height: 430px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
@@ -308,7 +325,7 @@ nav:hover {
     margin-top: 10px;
 }
 
-.btn-comprar, .btn-add-carrito {
+.btn-comprar, .btn-add-carrito, .btn-ver-detalles {
     background: #ECC7CD;
     border: none;
     border-radius: 10px;
@@ -325,7 +342,13 @@ nav:hover {
     gap: 10px;
 }
 
-.btn-comprar:hover, .btn-add-carrito:hover {
+.btn-ver-detalles {
+    padding: 6px 12px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.btn-comprar:hover, .btn-add-carrito:hover, .btn-ver-detalles:hover {
     background: #d4a6b0;
 }
 
@@ -360,6 +383,123 @@ nav:hover {
 
 .btn-ver-mas:hover {
     background: #d4a6b0;
+}
+
+/* Modal de producto */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: modalopen 0.4s;
+}
+
+@keyframes modalopen {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: #d4a6b0;
+}
+
+.modal-producto {
+    display: flex;
+    gap: 30px;
+}
+
+.modal-producto img {
+    width: 40%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.modal-info {
+    flex: 1;
+    text-align: left;
+}
+
+.modal-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: 'Safira March Personal Use Only';
+}
+
+.modal-info .modal-rating {
+    margin: 10px 0;
+}
+
+.modal-botones {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.modal-detalles {
+    margin-top: 30px;
+}
+
+.modal-detalles h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #d4a6b0;
+    font-family: 'Safira March Personal Use Only';
+}
+
+.modal-detalles p, .modal-detalles ul {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #7a6f6f;
+    font-family: 'Cambria Math';
+}
+
+.modal-detalles ul {
+    padding-left: 20px;
+}
+
+.modal-detalles li {
+    margin-bottom: 8px;
+}
+
+/* Responsive para modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        margin: 10% auto;
+        padding: 20px;
+    }
+    
+    .modal-producto {
+        flex-direction: column;
+    }
+    
+    .modal-producto img {
+        width: 100%;
+    }
 }
 
 /* Sección recomendado */
@@ -523,7 +663,6 @@ footer p {
     background: #c2939d;
 }
 
-
 /* Asistente Flotante con IA */
 .assistant-container {
     position: fixed;
@@ -594,7 +733,6 @@ footer p {
     width: 20px;
     height: 20px;
 }
-
 
 .close-chat {
     background: none;
@@ -781,24 +919,9 @@ footer p {
     30% { transform: translateY(-5px); }
 }
 
-
-@media (max-width: 480px) {
-    .assistant-container {
-        bottom: 20px;
-        right: 20px;
-    }
-    
-    .assistant-chat {
-        width: 280px;
-        right: -20px;
-    }
-}
-
-
-
 /* Responsive */
 @media (max-width: 1024px) {
-    #productos-container {
+    .destacados-grid {
         grid-template-columns: repeat(3, minmax(160px, 1fr));
     }
     
@@ -809,7 +932,7 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    #productos-container {
+    .destacados-grid {
         grid-template-columns: repeat(2, minmax(160px, 1fr));
         gap: 30px;
     }
@@ -836,7 +959,7 @@ footer p {
 }
 
 @media (max-width: 480px) {
-    #productos-container {
+    .destacados-grid {
         grid-template-columns: 1fr;
     }
     
@@ -856,5 +979,15 @@ footer p {
     
     .recomendado-item {
         width: 100%;
+    }
+
+    .assistant-container {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .assistant-chat {
+        width: 280px;
+        right: -20px;
     }
 }

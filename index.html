@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bloom Beauty</title>
     <link rel="stylesheet" href="estilo.css">
@@ -34,8 +34,38 @@
             </div>
         </nav>
     </header>
+
+    <!-- Modal de vista detallada del producto -->
+    <div id="producto-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-producto">
+                <img id="modal-imagen" src="" alt="Producto">
+                <div class="modal-info">
+                    <h3 id="modal-titulo"></h3>
+                    <p id="modal-descripcion"></p>
+                    <p id="modal-precio"></p>
+                    <div class="modal-rating" id="modal-rating"></div>
+                    <div class="modal-botones">
+                        <button class="btn-comprar">Comprar ahora</button>
+                        <button class="btn-add-carrito">
+                            <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
+                        </button>
+                    </div>
+                    <div class="modal-detalles">
+                        <h4>Detalles del producto</h4>
+                        <p id="modal-detalles-texto"></p>
+                        <h4>Beneficios</h4>
+                        <ul id="modal-beneficios"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Contenedor para cargar el menú lateral -->
     <div id="menu-container"></div>
+    
     <section class="contenido">
         <h2>Tu piel, tu esencia, tu belleza</h2>
         <div class="etiquetas-container">
@@ -53,8 +83,10 @@
             </div>
         </div>
     </section>
-    <section class="productos">
-        <div id="productos-container">
+
+    <section class="productos-destacados">
+        <h2 class="section-title">Productos Destacados</h2>
+        <div id="destacados-container" class="destacados-grid">
             <div class="producto">
                 <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
                 <h3>Bloom Punch</h3>
@@ -335,11 +367,9 @@
                     </button>
                 </div>
             </div>
-            <!-- Repite para otros productos -->
         </div>
     </section>
-    <button id="ver-mas" class="btn-ver-mas">Ver más</button>
-    <script src="script.js"></script>
+
     <section class="recomendado">
         <h2>Recomendado para usted</h2>
         <div class="recomendado-container">
@@ -366,6 +396,7 @@
             </div>
         </div>
     </section>
+
     <footer>
         <div class="footer-line"></div> 
         <h2>Bloom Beauty</h2>
@@ -408,9 +439,7 @@
             <button class="send-button">Enviar</button>
           </div>
         </div>
-      </div>
-
-<div id="menu-container"></div>
+    </div>
 
     <script src="script.js"></script>
 </body>
