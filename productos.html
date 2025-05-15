@@ -11,9 +11,6 @@
     <header>
         <nav>
             <div class="menu-section">
-                <div class="icons">
-                    <img src="Recursos/BtnMenu.png" alt="Menú" class="icon btn-menu" id="btn-menu">
-                </div>
                 <ul class="nav-links">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="productos.html">Productos</a></li>
@@ -28,16 +25,20 @@
                     <img src="Recursos/BtnSearch.png" alt="Buscar" class="icon" id="search-icon">
                 </div>
                 <img src="Recursos/BtnCarrito.png" alt="Carrito" class="icon" id="btn-carrito">
+                <span id="contador-carrito" class="contador-carrito">0</span>
                 <img src="Recursos/BtnPerfil.png" alt="Perfil" class="icon btn-user" id="btn-perfil">
             </div>
         </nav>
     </header>
 
+    <!-- Contenedor para el menú lateral -->
+    <div id="menu-container"></div>
+
     <main>
         <section class="filtros">
             <h2>Filtrar por Categoría</h2>
             <div class="categorias">
-                <button class="btn-categoria" data-categoria="todos">Todos</button>
+                <button class="btn-categoria active" data-categoria="todos">Todos</button>
                 <button class="btn-categoria" data-categoria="cuidado-piel">Cuidado de la Piel</button>
                 <button class="btn-categoria" data-categoria="maquillaje">Maquillaje</button>
                 <button class="btn-categoria" data-categoria="accesorios">Accesorios</button>
@@ -45,43 +46,8 @@
         </section>
 
         <section class="productos">
-            <div id="productos-container">
-                <div class="producto" data-categoria="accesorios">
-                    <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
-                    <h3>Bloom Punch</h3>
-                    <p class="descripcion">Bolsa de lino.</p>
-                    <p class="precio">$40.00 MXN</p>
-                    <div class="botones">
-                        <button class="btn-comprar">Comprar ahora</button>
-                        <button class="btn-add-carrito">
-                            <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                        </button>
-                    </div>
-                </div>
-                <div class="producto" data-categoria="maquillaje">
-                    <img src="Recursos/GlowRestore.png" alt="Glow Restore">
-                    <h3>Glow Restore</h3>
-                    <p class="descripcion">Suave, bello y natural.</p>
-                    <p class="precio">$240.00 MXN</p>
-                    <div class="botones">
-                        <button class="btn-comprar">Comprar ahora</button>
-                        <button class="btn-add-carrito">
-                            <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                        </button>
-                    </div>
-                </div>
-                <div class="producto" data-categoria="cuidado-piel">
-                    <img src="Recursos/HydraBloom.png" alt="HydraBloom">
-                    <h3>HydraBloom</h3>
-                    <p class="descripcion">Simple y eficaz.</p>
-                    <p class="precio">$140.00 MXN</p>
-                    <div class="botones">
-                        <button class="btn-comprar">Comprar ahora</button>
-                        <button class="btn-add-carrito">
-                            <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                        </button>
-                    </div>
-                </div>
+            <div id="productos-container" class="grid-productos">
+                <!-- Los productos se cargarán dinámicamente con JavaScript -->
             </div>
         </section>
     </main>
@@ -110,25 +76,32 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const botonesCategoria = document.querySelectorAll('.btn-categoria');
-            const productos = document.querySelectorAll('.producto');
+    <!-- Modal para vista rápida de producto -->
+    <div id="modal-producto" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-producto">
+                <img id="modal-imagen" src="" alt="Producto">
+                <div class="modal-info">
+                    <h3 id="modal-titulo"></h3>
+                    <p id="modal-descripcion"></p>
+                    <p id="modal-precio"></p>
+                    <div class="modal-botones">
+                        <button class="btn-comprar">Comprar ahora</button>
+                        <button class="btn-add-carrito-modal">
+                            <img src="Recursos/AddCarrito.png" alt="Añadir al carrito"> Añadir al carrito
+                        </button>
+                    </div>
+                    <div class="modal-detalles">
+                        <h4>Detalles del producto</h4>
+                        <p id="modal-detalles-texto"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            botonesCategoria.forEach(boton => {
-                boton.addEventListener('click', () => {
-                    const categoria = boton.getAttribute('data-categoria');
-
-                    productos.forEach(producto => {
-                        if (categoria === 'todos' || producto.getAttribute('data-categoria') === categoria) {
-                            producto.style.display = 'block';
-                        } else {
-                            producto.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
+    <script src="productos.js"></script>
 </body>
 </html>

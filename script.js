@@ -57,17 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.open("carrito.html", "_blank");
     });
     
-    // Función para cerrar el modal
-    function cerrarModal() {
-        console.log("Intentando cerrar el modal...");
-        if (modal) {
-            modal.remove(); // Elimina el modal del DOM
-            modal = null; // Reinicia la variable para evitar referencias a modales antiguos
-            console.log("Modal cerrado correctamente.");
-        } else {
-            console.log("No hay modal abierto.");
-        }
-    }
+
     document.addEventListener("DOMContentLoaded", function() {
         // ... (tu código existente)
         
@@ -111,39 +101,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Función para abrir un modal
-    function abrirModal(url) {
-        cerrarModal(); // Cierra cualquier modal existente antes de abrir uno nuevo
+   
 
-        modal = document.createElement("div");
-        modal.id = "modal";
-        modal.innerHTML = `
-            <div class="modal-content">
-                <span class="cerrar" onclick="cerrarModal()">&times;</span>
-                <iframe src="${url}" frameborder="0" style="width:100%;height:100%;"></iframe>
-            </div>
-        `;
-        modal.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        `;
-        document.body.appendChild(modal);
-
-        // Ajustar el tamaño del iframe dinámicamente
-        const iframe = modal.querySelector("iframe");
-        iframe.onload = function () {
-            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-            const iframeHeight = iframeDocument.body.scrollHeight;
-            iframe.style.height = `${iframeHeight}px`;
-        };
-    }
+// Evento del botón de perfil (debe llamar a abrirModal con 'login')
+btnPerfil.addEventListener("click", function() {
+    abrirModal("Login.html", "login");
+});
 
     // Abrir el modal de login al hacer clic en el botón de perfil
     btnPerfil.addEventListener("click", function () {
@@ -232,6 +195,54 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
     
+ // Funciones de modal
+function abrirModal(url) {
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            const modalContainer = document.getElementById("modalContainer");
+            const modalContent = document.getElementById("modalContent");
+            
+            modalContent.innerHTML = data;
+            modalContainer.classList.remove("hidden");
+            
+            // Manejar el botón brown si es login
+            if (url.includes("Login.html")) {
+                const btnBrown = modalContent.querySelector(".btn.brown");
+                if (btnBrown) {
+                    btnBrown.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        abrirModal("registro.html");
+                    });
+                }
+            }
+        })
+        .catch(error => console.error("Error al cargar el modal:", error));
+}
+
+function cerrarModal() {
+    document.getElementById("modalContainer").classList.add("hidden");
+}
+
+// Evento para el botón de perfil
+document.addEventListener("DOMContentLoaded", function() {
+    const btnPerfil = document.getElementById("btn-perfil");
+    if (btnPerfil) {
+        btnPerfil.addEventListener("click", function() {
+            abrirModal("Login.html");
+        });
+    }
+
+    // Cerrar modal al hacer clic en la X o fuera
+    document.addEventListener("click", function(e) {
+        const modalContainer = document.getElementById("modalContainer");
+        if (e.target.classList.contains("close-modal") || 
+            (e.target === modalContainer && !modalContainer.querySelector(".modal-content").contains(e.target))) {
+            cerrarModal();
+        }
+    });
+});
+
 
     // Abrir el registro desde dentro del iframe (Login.html)
     window.abrirRegister = function () {
@@ -253,44 +264,8 @@ document.addEventListener("DOMContentLoaded", function () {
 // Variable global para almacenar el modal
 let modal = null;
 
-// Función para cerrar el modal
-function cerrarModal() {
-    console.log("Intentando cerrar el modal...");
-    if (modal) {
-        modal.remove(); // Elimina el modal del DOM
-        modal = null; // Reinicia la variable
-        console.log("Modal cerrado correctamente.");
-    } else {
-        console.log("No hay modal abierto.");
-    }
-}
 
-// Función para abrir un modal
-function abrirModal(url) {
-    cerrarModal(); // Cierra cualquier modal existente antes de abrir uno nuevo
 
-    modal = document.createElement("div");
-    modal.id = "modal";
-    modal.innerHTML = `
-        <div class="modal-content">
-            <span class="cerrar" onclick="cerrarModal()">&times;</span>
-            <iframe src="${url}" frameborder="0" style="width:100%;height:100%;"></iframe>
-        </div>
-    `;
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-    `;
-    document.body.appendChild(modal);
-}
 
 document.addEventListener("DOMContentLoaded", function () {
     // Verificar sesión al cargar

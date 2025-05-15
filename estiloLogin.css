@@ -13,7 +13,7 @@ body {
 
 /* Modal styles */
 .modal {
-    display: none;
+    /* display: none;  <-- ELIMINADO */
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -206,4 +206,28 @@ a:hover {
 /* Ajuste de padding para formularios más largos */
 .modal-content {
     padding: 25px 30px;
+}
+
+/* Añade esto al final de tu CSS existente */
+.modal-content iframe {
+    width: 100%;
+    border: none;
+    min-height: 500px; /* Ajusta según necesidad */
+}
+
+/* Estilos específicos para el modal de login */
+.modal-content.login {
+    width: 400px;
+    max-height: 600px;
+}
+
+/* Estilos específicos para el modal de registro */
+.modal-content.registro {
+    width: 450px;
+    max-height: 700px; /* Más alto para contenido adicional */
+}
+
+/* Asegura que el contenido del modal no tenga scroll interno */
+.modal-content .modal-body {
+    overflow: visible;
 }

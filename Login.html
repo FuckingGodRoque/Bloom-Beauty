@@ -22,8 +22,17 @@
         </form>
 
         <hr>
+<button class="btn brown" id="btnRegistro">Crear Cuenta</button>
 
-        <button class="btn brown" onclick="parent.abrirModal('registro.html')">Crear Cuenta</button>
+<script>
+document.getElementById("btnRegistro").addEventListener("click", function(e) {
+    e.preventDefault();
+    if (window.parent && window.parent.abrirModal) {
+        window.parent.abrirModal("registro.html");
+    }
+});
+</script>
+
 
         <div class="divider">o</div>
         <button class="btn google">

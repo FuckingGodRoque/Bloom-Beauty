@@ -14,12 +14,9 @@
     <header>
         <nav>
             <div class="menu-section">
-                <div class="icons">
-                    <img src="Recursos/BtnMenu.png" alt="Menú" class="icon btn-menu">
-                </div>
                 <ul class="nav-links">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Productos</a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
                 </ul>
             </div>
             <div class="logo-container">
@@ -108,12 +105,13 @@
                             </div>
                         </div>
 
-
                         <!-- Ícono de check -->
                         <div class="check-icon">
                             <img src="recursos/Check.png" alt="Check" onclick="toggleCheck(this)">
                         </div>
                     </div>
+                    
+                    <!-- Producto 3 -->
                     <div class="cart-item">
                         <div class="product-image">
                             <img src="recursos/BloomPunch.png" alt="Bloom Punch">
@@ -175,6 +173,33 @@
             </div>
         </div>
     </main>
+
+    <!-- Footer idéntico al index.html -->
+    <footer>
+        <h2>Bloom Beauty</h2>
+        <p>Descubre la belleza natural con nuestros productos de cuidado premium</p>
+        
+        <div class="footer-line"></div>
+        
+        <div class="footer-links">
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="#">Nosotros</a>
+            <a href="#">Contacto</a>
+            <a href="#">Términos y condiciones</a>
+        </div>
+        
+        <div class="footer-social">
+            <a href="#"><img src="Recursos/Facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="Recursos/Instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="Recursos/Twitter.png" alt="Twitter"></a>
+        </div>
+        
+        <div class="footer-subscribe">
+            <input type="email" placeholder="Tu correo electrónico">
+            <button>Suscribirse</button>
+        </div>
+    </footer>
 
     <script>
         function sumarCantidad(button) {
