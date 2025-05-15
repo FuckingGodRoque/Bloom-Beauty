@@ -176,30 +176,48 @@
 
     <!-- Footer idéntico al index.html -->
     <footer>
+        <div class="footer-line"></div> 
         <h2>Bloom Beauty</h2>
-        <p>Descubre la belleza natural con nuestros productos de cuidado premium</p>
-        
-        <div class="footer-line"></div>
-        
+        <p>
+            Belleza auténtica, cuidado natural. Consciéntete con fórmulas sofisticadas que nutren tu piel y realzan tu esencia. Porque tu bienestar es nuestra inspiración.
+        </p>
+        <div class="footer-line"></div> 
         <div class="footer-links">
-            <a href="index.html">Inicio</a>
-            <a href="productos.html">Productos</a>
-            <a href="#">Nosotros</a>
-            <a href="#">Contacto</a>
-            <a href="#">Términos y condiciones</a>
+            <a href="#">Información de Contacto</a>
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Política de Envío</a>
+            <a href="#">Política de Devolución</a>
         </div>
-        
         <div class="footer-social">
-            <a href="#"><img src="Recursos/Facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="Recursos/Instagram.png" alt="Instagram"></a>
-            <a href="#"><img src="Recursos/Twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="Recursos/LogoInstagram.png" alt="Instagram"></a>
+            <a href="#"><img src="Recursos/LogoFacebook.png" alt="Facebook"></a>
         </div>
-        
         <div class="footer-subscribe">
-            <input type="email" placeholder="Tu correo electrónico">
-            <button>Suscribirse</button>
+            <input type="email" placeholder="Correo Electrónico">
+            <button type="submit">→</button>
         </div>
     </footer>
+
+    <div class="assistant-container">
+        <button class="assistant-button">
+          <img src="Recursos/IA.png" alt="Asistente" class="assistant-icon">
+          <span>Asesor de Belleza</span>
+        </button>
+        <div class="assistant-chat hidden">
+          <div class="chat-header">
+            <h3>BeautyIA 
+            <img src="Recursos/IA.png" alt="Asistente" class="assistant-icon">
+            </h3>
+            <button class="close-chat">&times;</button>
+          </div>
+          <div class="chat-messages"></div>
+          <div class="chat-input">
+            <input type="text" placeholder="Describa su tipo de piel o preocupaciones...">
+            <button class="send-button">Enviar</button>
+          </div>
+        </div>
+    </div>
 
     <script>
         function sumarCantidad(button) {
