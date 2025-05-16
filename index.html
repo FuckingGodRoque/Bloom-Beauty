@@ -147,9 +147,9 @@
                 </div>
             </div>
             <div class="producto">
-                <img src="Recursos/HydraBloom.png" alt="Bloom Punch">
-                <h3>HydraBloom</h3>
-                <p class="descripcion">Simple y eficaz.</p>
+                <img src="Recursos/HydraBloom.png" alt="Bloom Deep Hydration Serum">
+                <h3>Bloom Deep Hydration Serum</h3>
+                <p class="descripcion">Tipo de piel: Seca</p>
                 <p class="precio">$140.00 MXN</p>
                 <div class="rating">
                     <img src="Recursos/EstrellaNegra.png" alt="Estrella">
@@ -167,10 +167,10 @@
                 </div>
             </div>
             <div class="producto">
-                <img src="Recursos/LumiDrops.png" alt="Bloom Punch">
-                <h3>Lumi Drops</h3>
-                <p class="descripcion">Gotitas de buho.</p>
-                <p class="precio">$100.00 MXN</p>
+                <img src="Recursos/SilkGlow.png" alt="Bloom Fresh Cleanser">
+                <h3>Bloom Fresh Cleanser</h3>
+                <p class="descripcion">Tipo de piel: Mixta</p>
+                <p class="precio">$130.00 MXN</p>
                 <div class="rating">
                     <img src="Recursos/EstrellaNegra.png" alt="Estrella">
                     <img src="Recursos/EstrellaNegra.png" alt="Estrella">
@@ -269,7 +269,7 @@
 <div class="producto hidden">
                 <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
                 <h3>Bloom Punch</h3>
-                <p class="descripcion">Una breve descripción del producto Bloom Punch.</p>
+                <p class="descripcion">Bolsa de lino con extractos naturales para una piel radiante.</p>
                 <p class="precio">$40.00 MXN</p>
                 <div class="rating">
                     <img src="Recursos/EstrellaNegra.png" alt="Estrella">
@@ -329,10 +329,10 @@
             </div>
             <div class="recomendado-item">
                 <div class="recomendado-img-container">
-                    <img src="Recursos/Modelo2.png" alt="Dew Essence">
+                    <img src="Recursos/skincare.jpg" alt="Dew Essence">
                 </div>
-                <h3>Dew Essence</h3>
-                <p>Esencia ligera que hidrata y revitaliza con el frescor del rocío.</p>
+                <h3>Bloom Deep Hydration Serum</h3>
+                <p>Hidrata y suaviza tu piel.</p>
             </div>
         </div>
     </section>
@@ -361,25 +361,7 @@
         </div>
     </footer>
 
-    <div class="assistant-container">
-        <button class="assistant-button">
-          <img src="Recursos/IA.png" alt="Asistente" class="assistant-icon">
-          <span>Asesor de Belleza</span>
-        </button>
-        <div class="assistant-chat hidden">
-          <div class="chat-header">
-            <h3>BeautyIA 
-            <img src="Recursos/IA.png" alt="Asistente" class="assistant-icon">
-            </h3>
-            <button class="close-chat">&times;</button>
-          </div>
-          <div class="chat-messages"></div>
-          <div class="chat-input">
-            <input type="text" placeholder="Describa su tipo de piel o preocupaciones...">
-            <button class="send-button">Enviar</button>
-          </div>
-        </div>
-    </div>
+   
 
     <script>
   function abrirModal() {
@@ -401,5 +383,29 @@
 
 
     <script src="script.js"></script>
+
+
+    <script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const btnPerfil = document.getElementById('btn-perfil');
+
+  try {
+    const response = await fetch('session.php');
+    const data = await response.json();
+
+    if (data.loggedIn) {
+      btnPerfil.onclick = () => window.location.href = 'perfil.html';
+    } else {
+      btnPerfil.onclick = () => window.location.href = 'login.html';
+    }
+  } catch (error) {
+    console.error('Error al verificar sesión:', error);
+    btnPerfil.onclick = () => window.location.href = 'login.html';
+  }
+});
+</script>
+
+    <script src="https://cdn.botpress.cloud/webchat/v2.5/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/05/16/08/20250516082520-SUL9PG9Y.js"></script>
 </body>
 </html>

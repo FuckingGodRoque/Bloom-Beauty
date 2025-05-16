@@ -2,63 +2,103 @@
 const productos = [
     {
         id: 1,
-        nombre: "Bloom Punch",
+        nombre: "Bloom Tote Bag",
         imagen: "Recursos/BloomPunch.png",
-        descripcion: "Bolsa de lino con extractos naturales para una piel radiante.",
-        precio: "$40.00 MXN",
+        descripcion: "Material: Yute orgánico (100% biodegradable) + algodón reciclado.   ",
+        precio: "$200.00 MXN",
         categoria: "accesorios",
-        detalles: "El Bloom Punch es nuestro producto estrella, formulado con ingredientes 100% naturales que nutren y revitalizan la piel. Perfecto para uso diario.",
-        rating: 4
+        detalles: " Material: Yute orgánico (100% biodegradable) + algodón reciclado.   - Capacidad: 35x40 cm.",
+        rating: 3
     },
     {
         id: 2,
-        nombre: "Glow Restore",
+        nombre: "Bloom Clarify Serum",
         imagen: "Recursos/GlowRestore.png",
-        descripcion: "Suave, bello y natural. Restaura el brillo natural de tu piel.",
+        descripcion: "Para una piel grasa",
         precio: "$240.00 MXN",
-        categoria: "maquillaje",
-        detalles: "El Glow Restore es un tratamiento intensivo que devuelve el brillo natural a tu piel en solo 7 días de uso continuo.",
-        rating: 4
+        categoria: "cuidado-piel",
+        detalles: "- Ingredientes: Agua de hamamelis (70%), Niacinamida (5%), Aceite de jojoba (5%), Arcilla blanca (5%).   - Vegano: Sí   ",
+        rating: 5
     },
     {
         id: 3,
-        nombre: "HydraBloom",
+        nombre: "Bloom Deep Hydration Serum",
         imagen: "Recursos/HydraBloom.png",
-        descripcion: "Simple y eficaz. Hidratación intensiva para pieles secas.",
+        descripcion: "Tipo de piel: Seca ",
         precio: "$140.00 MXN",
         categoria: "cuidado-piel",
-        detalles: "HydraBloom es nuestra solución para pieles secas y deshidratadas, con una fórmula que retiene la humedad por hasta 24 horas.",
+        detalles: "- Ingredientes: Ácido hialurónico (2%), Manteca de mango (10%), Aceite de argán (8%), Miel de manuka (5%).   - Vegano: No (contiene miel) ",
         rating: 4
     },
     {
         id: 4,
-        nombre: "Lumi Drops",
+        nombre: "Bloom Purify Scrub",
         imagen: "Recursos/LumiDrops.png",
-        descripcion: "Gotitas de búho. Iluminación instantánea para un look fresco.",
+        descripcion: "Tipo de piel: Grasa",
         precio: "$100.00 MXN",
         categoria: "maquillaje",
-        detalles: "Las Lumi Drops son tu secreto para un cutis radiante en segundos. Fórmula ligera que no obstruye los poros.",
+        detalles: " Ingredientes: Azúcar de caña (30%), Aceite de árbol de té (5%), Jugo de limón (5%), Semillas de frambuesa (5%).   - Vegano: Sí  ",
         rating: 4
     },
     {
         id: 5,
-        nombre: "Bloom Balm",
+        nombre: "Bloom Sunny Shield ",
         imagen: "Recursos/Modelo1.png",
-        descripcion: "Bálsamo nutritivo para labios y cutículas.",
+        descripcion: "Protector solar (FPS 30)",
         precio: "$60.00 MXN",
         categoria: "cuidado-piel",
-        detalles: "Bálsamo formulado con cera de abejas y aceites esenciales para hidratación profunda.",
-        rating: 4
+        detalles: "- Ingredientes: Óxido de zinc (15%), Aceite de zanahoria (10%), Manteca de karité (5%), Caléndula (5%).   - Vegano: Sí   .",
+        rating: 5
     },
     {
         id: 6,
-        nombre: "Dew Essence",
+        nombre: "Bloom Calm Wash",
         imagen: "Recursos/Modelo2.png",
-        descripcion: "Esencia ligera para hidratación instantánea.",
+        descripcion: "Tipo de piel: Seca/Sensible   ",
         precio: "$180.00 MXN",
         categoria: "cuidado-piel",
-        detalles: "Esencia ultraligera que absorbe rápidamente sin dejar residuos grasos.",
+        detalles: " Ingredientes: Leche de avena (50%), Aceite de almendras (10%), Miel (5%), Caléndula (5%).   - Vegano: No (contiene miel)   ",
+        rating: 5
+    },
+    {
+        id: 7,
+        nombre: "Bloom Volume Shampoo",
+        imagen: "Recursos/PureMist.png",
+        descripcion: "Tipo de cabello: Fino",
+        precio: "$110.00 MXN",
+        categoria: "maquillaje",
+        detalles: "- Ingredientes: Infusión de romero (60%), Aloe vera (20%), Proteína de quinoa (5%), Aceite de menta (3%).   - Vegano: Sí   ",
         rating: 4
+    },
+    {
+        id: 8,
+        nombre: "Bloom Repair Conditioner",
+        imagen: "Recursos/SolarVeil.png",
+        descripcion: " Tipo de cabello: Dañado",
+        precio: "$130.00 MXN",
+        categoria: "maquillaje",
+        detalles: " Ingredientes: Manteca de karité (15%), Aceite de argán (10%), Keratina vegetal (5%), Leche de coco (20%).   - Vegano: Sí  ",
+        rating: 5
+    },
+    {
+        id: 9,
+        nombre: "Bloom Relax Soap",
+        imagen: "Recursos/NourishBalm.png",
+        descripcion: " Aroma: Lavanda",
+        precio: "$130.00 MXN",
+        categoria: "cuidado-piel",
+        detalles: "- Ingredientes: Aceite de oliva (40%), Aceite esencial de lavanda (5%), Arcilla blanca (10%).   - Vegano: Sí   ",
+        rating: 5
+    },
+     {
+        id: 10,
+        nombre: "Bloom Fresh Cleanser ",
+        imagen: "Recursos/SilkGlow.png",
+        descripcion: "Tipo de piel: Mixta  ",
+        precio: "$130.00 MXN",
+        categoria: "cuidado-piel",
+        detalles: " Ingredientes: Aceite de oliva (40%), Arcilla rosa (10%), Miel (5%), Extracto de manzanilla (5%).   - Vegano: No (contiene miel)  ",
+        rating: 5
     }
 ];
 

@@ -30,7 +30,7 @@
     </nav>
 
     <!-- Contenido del Perfil -->
-    <div class="profile-container">
+      <div class="profile-container">
         <div class="profile-content">
             <div class="profile-sidebar">
                 <ul class="profile-menu">
@@ -38,11 +38,19 @@
                     <li><a href="#" class="tab-link active" data-tab="orders"><i class="fas fa-shopping-bag"></i> Mis Pedidos</a></li>
                     <li><a href="#" class="tab-link" data-tab="addresses"><i class="fas fa-map-marker-alt"></i> Direcciones</a></li>
                     <li><a href="#" class="tab-link" data-tab="security"><i class="fas fa-lock"></i> Seguridad</a></li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                    <li><a href="#" id="btn-logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
                 </ul>
             </div>
 
             <div class="profile-main">
+
+                <div class="profile-section" id="personal">
+                      <h2><i class="fas fa-user"></i> Información Personal</h2>
+                         <div id="info-personal">
+                         <!-- Aquí se insertarán los datos del usuario -->
+                         </div>
+                </div>
+
                 <!-- Sección de Pedidos (activa por defecto) -->
                 <div class="profile-section active" id="orders">
                     <h2><i class="fas fa-shopping-bag"></i> Mis Pedidos</h2>
@@ -102,19 +110,28 @@
                     <button class="save-btn">+ Añadir nueva dirección</button>
                 </div>
 
-                <!-- Sección de Seguridad -->
-                <div class="profile-section" id="security">
-                    <h2><i class="fas fa-lock"></i> Seguridad</h2>
-                    <div class="security-item">
-                        <div class="security-info">
-                            <h3>Contraseña</h3>
-                            <p>Última actualización hace 3 meses</p>
-                        </div>
-                        <div class="security-action">
-                            <button>Cambiar contraseña</button>
-                        </div>
-                    </div>
-                </div>
+               <!-- Sección de Seguridad -->
+<div class="profile-section" id="security">
+    <h2><i class="fas fa-lock"></i> Seguridad</h2>
+    <div class="security-item">
+        <div class="security-info">
+            <h3>Contraseña</h3>
+            <p>Última actualización hace 3 meses</p>
+        </div>
+        <div class="security-action">
+            <button onclick="mostrarFormularioContrasena()">Cambiar contraseña</button>
+        </div>
+    </div>
+
+    <!-- Formulario para cambiar contraseña -->
+    <div id="form-cambiar-contrasena" style="display: none; margin-top: 20px;">
+        <input type="password" id="actualContrasena" placeholder="Contraseña actual" required>
+        <input type="password" id="nuevaContrasena" placeholder="Nueva contraseña" required>
+        <button onclick="cambiarContrasena()">Guardar nueva contraseña</button>
+        <p id="mensajeCambio" style="color: red;"></p>
+    </div>
+</div>
+
             </div>
         </div>
     </div>
@@ -163,5 +180,73 @@
             });
         });
     </script>
+     <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const btnLogout = document.getElementById('btn-logout');
+    if (btnLogout) {
+        btnLogout.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevenir comportamiento por defecto
+            window.location.href = 'logout.php'; // Redirige a logout.php
+        });
+    }
+});
+</script>
+<script>
+    // Cargar datos del usuario desde localStorage al hacer clic en "Información Personal"
+    document.querySelector('[data-tab="personal"]').addEventListener('click', function () {
+        const userData = JSON.parse(localStorage.getItem('usuario'));
+        const infoDiv = document.getElementById('info-personal');
+
+        if (userData) {
+            infoDiv.innerHTML = `
+                <p><strong>Nombre:</strong> ${userData.nombre}</p>
+                <p><strong>Correo:</strong> ${userData.correo}</p>
+            `;
+        } else {
+            infoDiv.innerHTML = `<p>No hay información del usuario disponible.</p>`;
+        }
+    });
+</script>
+
+    <script>
+        function mostrarFormularioContrasena() {
+    document.getElementById('form-cambiar-contrasena').style.display = 'block';
+}
+
+    async function cambiarContrasena() {
+    const actual = document.getElementById('actualContrasena').value;
+    const nueva = document.getElementById('nuevaContrasena').value;
+    const mensaje = document.getElementById('mensajeCambio');
+
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    if (!usuario) {
+        mensaje.textContent = 'No se encontró sesión activa.';
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost/Bloom-Beauty/cambiar_contrasena.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                correo: usuario.correo,
+                actual: actual,
+                nueva: nueva
+            })
+        });
+
+        const data = await response.json();
+        mensaje.style.color = data.success ? 'green' : 'red';
+        mensaje.textContent = data.message;
+
+        if (data.success) {
+            document.getElementById('actualContrasena').value = '';
+            document.getElementById('nuevaContrasena').value = '';
+        }
+    } catch (error) {
+        mensaje.textContent = 'Error al conectar con el servidor.';
+    }
+}
+</script>
 </body>
 </html>
