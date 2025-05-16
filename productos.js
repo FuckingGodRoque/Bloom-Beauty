@@ -18,7 +18,7 @@ const productos = [
         precio: "$240.00 MXN",
         categoria: "maquillaje",
         detalles: "El Glow Restore es un tratamiento intensivo que devuelve el brillo natural a tu piel en solo 7 días de uso continuo.",
-        rating: 4.5
+        rating: 4
     },
     {
         id: 3,
@@ -28,7 +28,7 @@ const productos = [
         precio: "$140.00 MXN",
         categoria: "cuidado-piel",
         detalles: "HydraBloom es nuestra solución para pieles secas y deshidratadas, con una fórmula que retiene la humedad por hasta 24 horas.",
-        rating: 4.2
+        rating: 4
     },
     {
         id: 4,
@@ -38,7 +38,7 @@ const productos = [
         precio: "$100.00 MXN",
         categoria: "maquillaje",
         detalles: "Las Lumi Drops son tu secreto para un cutis radiante en segundos. Fórmula ligera que no obstruye los poros.",
-        rating: 4.7
+        rating: 4
     },
     {
         id: 5,
@@ -48,7 +48,7 @@ const productos = [
         precio: "$60.00 MXN",
         categoria: "cuidado-piel",
         detalles: "Bálsamo formulado con cera de abejas y aceites esenciales para hidratación profunda.",
-        rating: 4.3
+        rating: 4
     },
     {
         id: 6,
@@ -58,7 +58,7 @@ const productos = [
         precio: "$180.00 MXN",
         categoria: "cuidado-piel",
         detalles: "Esencia ultraligera que absorbe rápidamente sin dejar residuos grasos.",
-        rating: 4.8
+        rating: 4
     }
 ];
 
