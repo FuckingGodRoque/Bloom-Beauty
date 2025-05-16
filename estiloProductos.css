@@ -81,7 +81,7 @@
     text-align: left;
     width: 90%; /* Ocupa el ancho completo del grid item */
     max-width: 200px; /* Ancho máximo fijo */
-    height: 400px;
+    height: 415px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -164,6 +164,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 15px;
 }
 
 .btn-comprar {
@@ -178,6 +179,7 @@
 .btn-ver-detalles {
     padding: 6px 12px;
     margin-top: 5px;
+
     width: 100%;
     background: #EFEBE7;
     color: #7a6f6f;
@@ -189,10 +191,11 @@
 }
 
 .btn-add-carrito {
-    padding: 6px;
+    padding: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    ;
 }
 
 .btn-add-carrito img {
@@ -420,21 +423,21 @@
     background: #EFEBE7;
     color: #7a6f6f;
     border: 1px solid #ECC7CD;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 6px 12px;
-    font-size: 16px;
+    padding: 3px 5px;
+    font-size: 12px;
     font-family: 'Cambria Math';
 }
 
 .btn-add-carrito-modal img {
-    width: 16px;
-    height: 16px;
+    width: 10px;
+    height: 10px;
 }
 
 .btn-add-carrito-modal:hover {
