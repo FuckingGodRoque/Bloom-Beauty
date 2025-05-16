@@ -11,9 +11,6 @@
     <!-- Navbar -->
     <nav>
         <div class="menu-section">
-            <div class="icons">
-                <img src="Recursos/BtnMenu.png" alt="Menú" class="icon btn-menu" id="btn-menu">
-            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
@@ -39,7 +36,6 @@
                 <ul class="profile-menu">
                     <li><a href="#" class="tab-link" data-tab="personal"><i class="fas fa-user"></i> Información Personal</a></li>
                     <li><a href="#" class="tab-link active" data-tab="orders"><i class="fas fa-shopping-bag"></i> Mis Pedidos</a></li>
-                    <li><a href="#" class="tab-link" data-tab="favorites"><i class="fas fa-heart"></i> Favoritos</a></li>
                     <li><a href="#" class="tab-link" data-tab="addresses"><i class="fas fa-map-marker-alt"></i> Direcciones</a></li>
                     <li><a href="#" class="tab-link" data-tab="security"><i class="fas fa-lock"></i> Seguridad</a></li>
                     <li><a href="#"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
@@ -79,41 +75,6 @@
                     </table>
                 </div>
 
-                <!-- Sección de Favoritos -->
-                <div class="profile-section" id="favorites">
-                    <h2><i class="fas fa-heart"></i> Mis Favoritos</h2>
-                    <table class="favorites-table">
-                        <thead>
-                            <tr>
-                                <th>Producto</th>
-                                <th>Precio</th>
-                                <th>Disponibilidad</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Bloom Punch</td>
-                                <td>$499.00 MXN</td>
-                                <td>En stock</td>
-                                <td>
-                                    <button class="btn-small">Añadir al carrito</button>
-                                    <button class="btn-small btn-remove">Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Silk Glow</td>
-                                <td>$899.00 MXN</td>
-                                <td>En stock</td>
-                                <td>
-                                    <button class="btn-small">Añadir al carrito</button>
-                                    <button class="btn-small btn-remove">Eliminar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
                 <!-- Sección de Direcciones -->
                 <div class="profile-section" id="addresses">
                     <h2><i class="fas fa-map-marker-alt"></i> Mis Direcciones</h2>
@@ -124,9 +85,18 @@
                         <p>Morelia, Michoacán, 58000</p>
                         <p>Teléfono: +52 612 345 6789</p>
                         <div class="address-actions">
-                            <button>Editar</button>
-                            <button>Eliminar</button>
-                            <button>Marcar como principal</button>
+                            <button>
+                                <span class="img-container">
+                                    <img src="Recursos/editar.png" alt="Editar">
+                                </span>
+                                <span>Editar</span>
+                            </button>
+                            <button>
+                                <span class="img-container">
+                                    <img src="Recursos/eliminar.png" alt="Eliminar">
+                                </span>
+                                <span>Eliminar</span>
+                            </button>
                         </div>
                     </div>
                     <button class="save-btn">+ Añadir nueva dirección</button>
@@ -142,15 +112,6 @@
                         </div>
                         <div class="security-action">
                             <button>Cambiar contraseña</button>
-                        </div>
-                    </div>
-                    <div class="security-item">
-                        <div class="security-info">
-                            <h3>Autenticación en dos pasos</h3>
-                            <p>Protege tu cuenta con un segundo factor de autenticación</p>
-                        </div>
-                        <div class="security-action">
-                            <button>Activar</button>
                         </div>
                     </div>
                 </div>
@@ -174,8 +135,8 @@
             <a href="#">Política de Devolución</a>
         </div>
         <div class="footer-social">
-            <a href="#"><img src="Recursos/LogoInstagram.png" alt="Instagram"></a>
-            <a href="#"><img src="Recursos/LogoFacebook.png" alt="Facebook"></a>
+            <a href="#"><img src="Recursos/LogoInstagram.png" alt="Instagram" class="icon"></a>
+            <a href="#"><img src="Recursos/LogoFacebook.png" alt="Facebook" class="icon"></a>
         </div>
         <div class="footer-subscribe">
             <input type="email" placeholder="Correo Electrónico">

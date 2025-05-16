@@ -3,12 +3,13 @@ body {
     background: #EFEBE7;
     font-family: 'Safira March Personal Use Only', sans-serif;
     margin: 0;
-    padding: 0;
+    padding-top: 70px;
     width: 100%;
     overflow-x: hidden;
     color: #333;
 }
 
+/* Estilos generales del Navbar - Coherente con Bloom Beauty */
 nav {
     position: fixed;
     top: 0;
@@ -40,37 +41,44 @@ nav:hover {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 10px;
     padding: 0;
     margin: 0;
 }
 
 .nav-links li a {
     text-decoration: none;
-    font-size: 16px;
-    color: #555; /* Cambiado de negro a gris */
-    transition: color 0.2s ease;
-    font-family: 'Cambria Math';
+    font-size: 18px;
+    color: #000;
+    transition: color 0.3s ease;
 }
 
 .nav-links li a:hover {
-    color: #333; /* Gris oscuro en lugar de rosa */
+    color: #d4a6b0;
 }
 
 .logo-container {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo-container h1 {
-    font-family: 'Bludhaven';
-    font-size: 24px;
-    color: #333; /* Gris oscuro */
-    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+    position: relative;
+    z-index: 1;
     background: url('Recursos/Logo.png') no-repeat center;
     background-size: 40px 55px;
-    padding: 15px 40px;
+    padding: 20px;
+    text-align: center;
+    font-family: bludhaven;
+    transition: transform 0.3s ease;
+    margin: 0;
 }
 
 .logo-container:hover h1 {
@@ -79,44 +87,100 @@ nav:hover {
 
 .search-container {
     position: relative;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     border: 2px solid #ccc;
     border-radius: 50px;
     overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.search-container:hover {
+    border-color: #000;
 }
 
 .search-bar {
     flex: 1;
-    padding: 8px 15px;
+    padding: 8px 40px 8px 15px;
     border: none;
     outline: none;
     font-size: 14px;
-    font-family: 'Cambria Math';
+    border-radius: 50px;
 }
 
 .search-button {
+    position: absolute;
+    right: 10px;
     background: none;
     border: none;
-    padding: 0 10px;
     cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.search-button img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.search-button:hover img {
+    transform: scale(1.2);
+}
+
+/* ESTILOS UNIFICADOS PARA IMÁGENES */
 .icon {
     width: 24px;
     height: 24px;
+    object-fit: contain;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease;
 }
 
 .icon:hover {
     transform: scale(1.1);
 }
 
+.btn-small img, 
+.address-actions button img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+/* Contenedores para imágenes */
+.img-container {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+}
+
+/* Estilo específico para imágenes en tablas */
+.orders-table img, 
+.address-actions img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
 .icons {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+.icon-link {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.icon-link:hover {
+    opacity: 0.8;
 }
 
 /* Contenido del Perfil */
@@ -136,7 +200,7 @@ nav:hover {
 
 .profile-sidebar {
     width: 250px;
-    background: #f9f9f9; /* Gris claro */
+    background: #f9f9f9;
     padding: 25px 0;
     border-right: 1px solid #ddd;
 }
@@ -155,7 +219,7 @@ nav:hover {
     display: flex;
     align-items: center;
     padding: 12px 25px;
-    color: #555; /* Gris medio */
+    color: #555;
     text-decoration: none;
     font-family: 'Cambria Math';
     transition: all 0.2s ease;
@@ -170,9 +234,9 @@ nav:hover {
 
 .profile-menu li a:hover,
 .profile-menu li.active a {
-    background: #f0f0f0; /* Gris claro */
-    color: #333; /* Gris oscuro */
-    border-left: 3px solid #d4a6b0; /* Toque de rosa */
+    background: #f0f0f0;
+    color: #333;
+    border-left: 3px solid #d4a6b0;
 }
 
 .profile-main {
@@ -183,12 +247,17 @@ nav:hover {
 /* Secciones del perfil */
 .profile-section {
     margin-bottom: 30px;
+    display: none;
+}
+
+.profile-section.active {
+    display: block;
 }
 
 .profile-section h2 {
     font-family: 'Bludhaven';
     font-size: 20px;
-    color: #333; /* Gris oscuro */
+    color: #333;
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
@@ -198,40 +267,102 @@ nav:hover {
 
 .profile-section h2 i {
     margin-right: 10px;
-    color: #777; /* Gris medio */
+    color: #777;
 }
 
-/* Formulario */
-.profile-form .form-group {
-    margin-bottom: 20px;
-}
-
-.profile-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-family: 'Cambria Math';
-    color: #555;
-    font-size: 14px;
-}
-
-.profile-form input {
+/* Tablas */
+.orders-table {
     width: 100%;
-    max-width: 400px;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-family: 'Cambria Math';
-    font-size: 14px;
-    transition: border-color 0.2s ease;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-.profile-form input:focus {
+.orders-table th {
+    background: #f8f8f8;
+    padding: 12px 15px;
+    text-align: left;
+    font-family: 'Bludhaven';
+    color: #333;
+    border-bottom: 2px solid #d4a6b0;
+}
+
+.orders-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    font-family: 'Cambria Math';
+}
+
+.orders-table tr:hover {
+    background: #fff8f9;
+}
+
+/* Botones pequeños */
+.btn-small {
+    padding: 5px 8px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 3px;
+}
+
+.btn-small:hover {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.btn-remove:hover {
+    background: #ffebee !important;
+}
+
+/* Direcciones */
+.address-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.address-card h3 {
+    font-family: 'Bludhaven';
+    color: #d4a6b0;
+    margin-top: 0;
+}
+
+.address-card p {
+    font-family: 'Cambria Math';
+    margin: 8px 0;
+}
+
+.address-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.address-actions button {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Cambria Math';
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.address-actions button:hover {
+    background: #d4a6b0;
+    color: white;
     border-color: #d4a6b0;
-    outline: none;
 }
 
 .save-btn {
-    background: #333; /* Gris oscuro */
+    background: #333;
     color: white;
     border: none;
     padding: 12px 25px;
@@ -243,89 +374,71 @@ nav:hover {
 }
 
 .save-btn:hover {
-    background: #555; /* Gris más claro */
+    background: #555;
 }
 
-/* Preferencias */
-.preferences {
+/* Sección de Seguridad */
+.security-item {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
 }
 
-.checkbox-container {
-    display: block;
-    position: relative;
-    padding-left: 30px;
-    cursor: pointer;
-    user-select: none;
+.security-info {
+    flex: 1;
+}
+
+.security-info h3 {
+    font-family: 'Bludhaven';
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.security-info p {
     font-family: 'Cambria Math';
+    margin: 0;
+    color: #666;
+    font-size: 14px;
 }
 
-.checkbox-container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 18px;
-    width: 18px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-}
-
-.checkbox-container:hover input ~ .checkmark {
-    background: #f5f5f5;
-}
-
-.checkbox-container input:checked ~ .checkmark {
+.security-action button {
     background: #d4a6b0;
-    border-color: #d4a6b0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Cambria Math';
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-    left: 6px;
-    top: 2px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
+.security-action button:hover {
+    background: #c2939d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.checkbox-container input:checked ~ .checkmark:after {
-    display: block;
-}
-
-/* Footer - Estilo exacto de Bloom Beauty */
+/* Footer */
 footer {
     background: #EFEBE7;
-    padding: 40px 20px;
+    padding: 20px;
     text-align: center;
 }
 
 footer h2 {
     font-family: 'Bludhaven';
     font-size: 24px;
-    color: #333; /* Gris oscuro */
+    color: #333;
     margin-bottom: 15px;
 }
 
 footer p {
     font-family: 'Cambria Math';
     font-size: 14px;
-    color: #555; /* Gris medio */
+    color: #555;
     max-width: 600px;
     margin: 0 auto 20px;
     line-height: 1.5;
@@ -348,13 +461,13 @@ footer p {
 .footer-links a {
     font-family: 'Cambria Math';
     font-size: 14px;
-    color: #555; /* Gris medio */
+    color: #555;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
-    color: #333; /* Gris oscuro */
+    color: #333;
 }
 
 .footer-social {
@@ -456,6 +569,21 @@ footer p {
     .profile-main {
         padding: 20px;
     }
+    
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .btn-small img, 
+    .address-actions button img {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .security-action button {
+        padding: 8px 16px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -463,246 +591,33 @@ footer p {
         display: none;
     }
     
-    .profile-form input {
-        max-width: 100%;
-    }
-    
     .footer-links {
         flex-direction: column;
         gap: 10px;
     }
-}
-
-/* Mantenemos todos los estilos anteriores hasta .profile-content */
-
-.profile-content {
-    display: flex;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    margin-top: 30px; /* Añadido espacio arriba */
-}
-
-/* Eliminamos .profile-header ya que no lo necesitamos más */
-
-/* Menú lateral - Estilo mejorado */
-.profile-sidebar {
-    width: 250px;
-    background: #fff8f9;
-    padding: 25px 0;
-    border-right: 1px solid #f0f0f0;
-}
-
-.profile-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.profile-menu li {
-    margin-bottom: 5px;
-}
-
-.profile-menu li a {
-    display: flex;
-    align-items: center;
-    padding: 12px 25px;
-    color: #555;
-    text-decoration: none;
-    font-family: 'Cambria Math';
-    transition: all 0.2s ease;
-    position: relative;
-}
-
-.profile-menu li a i {
-    width: 20px;
-    margin-right: 10px;
-    text-align: center;
-    font-size: 16px;
-    color: #d4a6b0;
-}
-
-.profile-menu li a:hover,
-.profile-menu li.active a {
-    background: #ffebf0;
-    color: #d4a6b0;
-}
-
-.profile-menu li.active a:after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 3px;
-    background: #d4a6b0;
-}
-
-/* Contenido principal */
-.profile-main {
-    flex: 1;
-    padding: 30px;
-}
-
-/* Estilos para las diferentes secciones */
-.profile-section {
-    display: none; /* Ocultamos todas las secciones por defecto */
-}
-
-.profile-section.active {
-    display: block; /* Mostramos solo la sección activa */
-}
-
-/* Estilo para las tablas de pedidos y favoritos */
-.orders-table, .favorites-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.orders-table th, 
-.favorites-table th {
-    background: #f8f8f8;
-    padding: 12px 15px;
-    text-align: left;
-    font-family: 'Bludhaven';
-    color: #333;
-    border-bottom: 2px solid #d4a6b0;
-}
-
-.orders-table td, 
-.favorites-table td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #eee;
-    font-family: 'Cambria Math';
-}
-
-.orders-table tr:hover, 
-.favorites-table tr:hover {
-    background: #fff8f9;
-}
-
-/* Estilos para las direcciones */
-.address-card {
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.address-card h3 {
-    font-family: 'Bludhaven';
-    color: #d4a6b0;
-    margin-top: 0;
-}
-
-.address-card p {
-    font-family: 'Cambria Math';
-    margin: 8px 0;
-}
-
-.address-actions {
-    margin-top: 15px;
-}
-
-.address-actions button {
-    background: #f8f8f8;
-    border: 1px solid #ddd;
-    padding: 6px 12px;
-    border-radius: 5px;
-    margin-right: 10px;
-    cursor: pointer;
-    font-family: 'Cambria Math';
-    transition: all 0.2s ease;
-}
-
-.address-actions button:hover {
-    background: #d4a6b0;
-    color: white;
-    border-color: #d4a6b0;
-}
-
-/* Estilos para la configuración de seguridad */
-.security-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.security-info {
-    flex: 1;
-}
-
-.security-info h3 {
-    font-family: 'Bludhaven';
-    margin: 0 0 5px 0;
-    color: #333;
-}
-
-.security-info p {
-    font-family: 'Cambria Math';
-    margin: 0;
-    color: #666;
-    font-size: 14px;
-}
-
-.security-action button {
-    background: #d4a6b0;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Cambria Math';
-    transition: background 0.2s ease;
-}
-
-.security-action button:hover {
-    background: #c2939d;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .profile-content {
+    
+    .icon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .btn-small img, 
+    .address-actions button img {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .security-item {
         flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
     
-    .profile-sidebar {
+    .security-action {
         width: 100%;
-        padding: 15px 0;
     }
     
-    .profile-menu {
-        display: flex;
-        overflow-x: auto;
-        padding: 0 15px;
-    }
-    
-    .profile-menu li {
-        flex: 0 0 auto;
-    }
-    
-    .profile-menu li a {
-        white-space: nowrap;
-        border-left: none;
-        border-bottom: 3px solid transparent;
-    }
-    
-    .profile-menu li.active a {
-        border-bottom-color: #d4a6b0;
-    }
-    
-    .profile-menu li.active a:after {
-        display: none;
-    }
-    
-    .orders-table, .favorites-table {
-        display: block;
-        overflow-x: auto;
+    .security-action button {
+        width: 100%;
     }
 }
