@@ -13,7 +13,7 @@ class Usuario {
                 contrasena: usuario.contrasena
             }));
 
-            const response = await fetch('http://localhost/bloombeauty/endPointAddUsuario.php', {
+            const response = await fetch('http://localhost/bloombeauty/registro.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ class Usuario {
 
     static async validarUsuario(correo, contrasena) {
         try {
-            const response = await fetch('http://localhost/bloombeauty/endPointLoginUsuario.php', {
+            const response = await fetch('http://localhost/bloombeauty/login.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
