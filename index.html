@@ -429,5 +429,29 @@
 
 
     <script src="script.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const btnPerfil = document.getElementById('btn-perfil');
+
+  try {
+    const response = await fetch('session.php');
+    const data = await response.json();
+
+    if (data.loggedIn) {
+      btnPerfil.onclick = () => window.location.href = 'perfil.html';
+    } else {
+      btnPerfil.onclick = () => window.location.href = 'login.html';
+    }
+  } catch (error) {
+    console.error('Error al verificar sesión:', error);
+    btnPerfil.onclick = () => window.location.href = 'login.html';
+  }
+});
+</script>
+
+    <script src="https://cdn.botpress.cloud/webchat/v2.5/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/05/16/08/20250516082520-SUL9PG9Y.js"></script>
+    
+   
 </body>
 </html>
