@@ -21,6 +21,8 @@
             <button type="submit" class="btn pink">Iniciar Sesión</button>
         </form>
 
+        <p id="mensajeError" style="color: red; text-align: center;"></p>
+
         <div class="divider">o</div>
 
         <!-- Botón de Google -->
@@ -35,46 +37,39 @@
             <a href="#" onclick="parent.abrirModal('registro.html')">Crear cuenta</a>
         </p>
     </div>
-
-    <script src="Clases/Usuario.js"></script>
     <script>
-        async function iniciarSesion(event) {
-            event.preventDefault();
+  async function iniciarSesion(event) {
+  event.preventDefault();
 
-            const correo = document.getElementById('loginCorreo').value;
-            const contrasena = document.getElementById('loginContraseña').value;
+  const correo = document.getElementById('loginCorreo').value;
+  const contrasena = document.getElementById('loginContraseña').value;
+  const mensajeError = document.getElementById('mensajeError');
 
-            try {
-                const response = await fetch('http://localhost/bloombeauty/endPointLoginUsuario.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ correo, contrasena }),
-                });
+  try {
+    const response = await fetch('http://localhost/Bloom-Beauty/login.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ correo, contrasena }),
+    });
 
-                const data = await response.json();
+    console.log('response status:', response.status);
 
-                if (data.success) {
-                    sessionStorage.setItem('usuario', JSON.stringify(data.usuario));
-                    
-                    if (window.parent && window.parent.actualizarMenuUsuario) {
-                        window.parent.actualizarMenuUsuario(data.usuario.nombre);
-                    }
+    const data = await response.json();
 
-                    if (window.parent && window.parent.cerrarModal) {
-                        window.parent.cerrarModal();
-                    }
+    console.log('response data:', data);
 
-                    window.parent.location.reload();
-                } else {
-                    alert(data.error || 'Correo o contraseña incorrectos');
-                }
-            } catch (error) {
-                console.error('Error al iniciar sesión:', error);
-                alert('Hubo un problema al iniciar sesión.');
-            }
-        }
-    </script>
+    if (data.success) {
+      window.location.href = 'index.html';
+    } else {
+      mensajeError.textContent = 'Correo o contraseña incorrectos.';
+    }
+  } catch (error) {
+    console.error('Fetch error:', error);
+    mensajeError.textContent = 'Error al conectar con el servidor.';
+  }
+}
+
+</script>
+
 </body>
 </html>
