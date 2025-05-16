@@ -93,22 +93,55 @@ document.addEventListener("DOMContentLoaded", function () {
         sessionStorage.setItem('usuario', JSON.stringify(usuario));
     }
 
-
-    // Función para abrir un modal
-   
-
-// Evento del botón de perfil (debe llamar a abrirModal con 'login')
-btnPerfil.addEventListener("click", function() {
-    abrirModal("Login.html", "login");
-});
-
-    // Abrir el modal de login al hacer clic en el botón de perfil
-    btnPerfil.addEventListener("click", function () {
-        abrirModal("Login.html");
-
+    // --- MODAL LOGIN ---
+    function abrirModal(url) {
+        const modal = document.getElementById('modal-login');
+        const modalContent = modal.querySelector('.modal-content');
+        // Crear iframe para cargar el login
+        const iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.frameBorder = '0';
+        iframe.style.width = '100%';
+        iframe.style.minHeight = '500px';
+        iframe.style.border = 'none';
+        iframe.style.borderRadius = '15px';
+        // Limpiar y agregar iframe
+        modalContent.innerHTML = '';
+        modalContent.appendChild(iframe);
+        // Mostrar modal
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+    function cerrarModal() {
+        const modal = document.getElementById('modal-login');
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+    // Evento para abrir modal al dar click en el perfil
+    if (typeof btnPerfil !== 'undefined' && btnPerfil) {
+        btnPerfil.addEventListener('click', function (e) {
+            e.preventDefault();
+            abrirModal('Login.html'); // Usa siempre la mayúscula correcta
+        });
+    }
+    // Cerrar modal al hacer click fuera del contenido
+    var modalLogin = document.getElementById('modal-login');
+    if (modalLogin) {
+        modalLogin.addEventListener('click', function (e) {
+            if (e.target === this) {
+                cerrarModal();
+            }
+        });
+    }
+    // Cerrar modal con Escape
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            cerrarModal();
+        }
     });
-
-    
+    // Hacer accesible globalmente para iframe
+    window.abrirModal = abrirModal;
+    window.cerrarModal = cerrarModal;
 
     // Cargar el menú lateral desde menu.html
     document.addEventListener("DOMContentLoaded", function() {
@@ -189,70 +222,57 @@ btnPerfil.addEventListener("click", function() {
         }
     });
     
- // Funciones de modal
-function abrirModal(url) {
-    fetch(url)
-        .then(response => response.text())
-        .then(data => {
-            const modalContainer = document.getElementById("modalContainer");
-            const modalContent = document.getElementById("modalContent");
-            
-            modalContent.innerHTML = data;
-            modalContainer.classList.remove("hidden");
-            
-            // Manejar el botón brown si es login
-            if (url.includes("Login.html")) {
-                const btnBrown = modalContent.querySelector(".btn.brown");
-                if (btnBrown) {
-                    btnBrown.addEventListener("click", function(e) {
-                        e.preventDefault();
-                        abrirModal("registro.html");
-                    });
-                }
-            }
-        })
-        .catch(error => console.error("Error al cargar el modal:", error));
-}
-
-function cerrarModal() {
-    document.getElementById("modalContainer").classList.add("hidden");
-}
-
-// Evento para el botón de perfil
 document.addEventListener("DOMContentLoaded", function() {
-    const btnPerfil = document.getElementById("btn-perfil");
-    if (btnPerfil) {
-        btnPerfil.addEventListener("click", function() {
-            abrirModal("Login.html");
-        });
+    // Función para abrir modal
+    function abrirModal(url) {
+        const modal = document.getElementById('modal-login');
+        const modalContent = modal.querySelector('.modal-content');
+        
+        // Crear iframe
+        const iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.frameBorder = '0';
+        iframe.style.width = '100%';
+        iframe.style.minHeight = '500px'; // Altura mínima
+        iframe.style.border = 'none';
+        iframe.style.borderRadius = '15px';
+        
+        // Limpiar y agregar iframe
+        modalContent.innerHTML = '';
+        modalContent.appendChild(iframe);
+        
+        // Mostrar modal
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Evitar scroll del body
     }
 
-    // Cerrar modal al hacer clic en la X o fuera
-    document.addEventListener("click", function(e) {
-        const modalContainer = document.getElementById("modalContainer");
-        if (e.target.classList.contains("close-modal") || 
-            (e.target === modalContainer && !modalContainer.querySelector(".modal-content").contains(e.target))) {
+    // Función para cerrar modal
+    function cerrarModal() {
+        const modal = document.getElementById('modal-login');
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // Restaurar scroll
+    }
+
+    // Evento para botón de perfil
+    document.getElementById('btn-perfil').addEventListener('click', function(e) {
+        e.preventDefault();
+        abrirModal('login.html');
+    });
+
+    // Cerrar modal al hacer clic fuera
+    document.getElementById('modal-login').addEventListener('click', function(e) {
+        if (e.target === this) {
             cerrarModal();
         }
     });
-});
 
-
-    // Abrir el registro desde dentro del iframe (Login.html)
-    window.abrirRegister = function () {
-        cerrarModal();
-        abrirModal("Registro.html", "registro");
-    };
-    
-    
-    window.abrirLogin = function () {
-        cerrarModal();
-        abrirModal("Login.html", "login"); // vuelve al tamaño original
-    };
-    
-
-    // Función para cerrar el modal al hacer clic en el botón cerrar
-
+    // También puedes agregar esto para cerrar con Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            cerrarModal();
+        }
+    });
+})
 });
 
 // Variable global para almacenar el modal

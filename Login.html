@@ -7,38 +7,33 @@
     <link rel="stylesheet" href="estiloLogin.css">
 </head>
 <body>
-    <!-- Modal de Inicio de Sesión -->
+    <!-- Modal de Login -->
     <div class="modal-content">
+        <!-- Logo y título -->
         <div class="logo-container">
             <h1>Bloom Beauty</h1>
         </div>
 
-        <span class="cerrar" onclick="parent.cerrarModal()">&times;</span>
-
+        <!-- Formulario de Login -->
         <form id="loginForm" onsubmit="iniciarSesion(event)">
             <input type="email" id="loginCorreo" placeholder="Correo Electrónico" required>
             <input type="password" id="loginContraseña" placeholder="Contraseña" required>
             <button type="submit" class="btn pink">Iniciar Sesión</button>
         </form>
 
-        <hr>
-<button class="btn brown" id="btnRegistro">Crear Cuenta</button>
-
-<script>
-document.getElementById("btnRegistro").addEventListener("click", function(e) {
-    e.preventDefault();
-    if (window.parent && window.parent.abrirModal) {
-        window.parent.abrirModal("registro.html");
-    }
-});
-</script>
-
-
         <div class="divider">o</div>
+
+        <!-- Botón de Google -->
         <button class="btn google">
             <img src="recursos/Google.png" alt="Google">
             Iniciar sesión con Google
         </button>
+
+        <!-- Enlace para ir a Registro -->
+        <p class="switch-modal">
+            ¿No tienes cuenta? 
+            <a href="#" onclick="parent.abrirModal('registro.html')">Crear cuenta</a>
+        </p>
     </div>
 
     <script src="Clases/Usuario.js"></script>
@@ -58,27 +53,19 @@ document.getElementById("btnRegistro").addEventListener("click", function(e) {
                     body: JSON.stringify({ correo, contrasena }),
                 });
 
-                if (!response.ok) {
-                    throw new Error(`Error del servidor: ${response.status}`);
-                }
-
                 const data = await response.json();
 
                 if (data.success) {
-                    // Guardar el usuario en sessionStorage
                     sessionStorage.setItem('usuario', JSON.stringify(data.usuario));
-
-                    // Actualizar el menú con el nombre del usuario
+                    
                     if (window.parent && window.parent.actualizarMenuUsuario) {
                         window.parent.actualizarMenuUsuario(data.usuario.nombre);
                     }
 
-                    // Cerrar todos los modales
                     if (window.parent && window.parent.cerrarModal) {
                         window.parent.cerrarModal();
                     }
 
-                    // Recargar la página para reflejar los cambios
                     window.parent.location.reload();
                 } else {
                     alert(data.error || 'Correo o contraseña incorrectos');
@@ -88,20 +75,6 @@ document.getElementById("btnRegistro").addEventListener("click", function(e) {
                 alert('Hubo un problema al iniciar sesión.');
             }
         }
-
-        // Manejar el botón de crear cuenta
-        document.addEventListener("DOMContentLoaded", () => {
-            const crearCuentaBtn = document.querySelector(".btn.brown");
-            
-            crearCuentaBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                if (window.parent && window.parent.abrirModal) {
-                    window.parent.abrirModal("registro.html");
-                } else {
-                    window.location.href = "registro.html";
-                }
-            });
-        });
     </script>
 </body>
 </html>

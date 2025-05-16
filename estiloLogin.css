@@ -1,5 +1,4 @@
-/* General body styles */
-/* Fondo del body */
+/* Estilos generales */
 body {
     font-family: 'Safira March Personal Use Only', sans-serif;
     background-color: #EFEBE7;
@@ -8,226 +7,202 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
-/* Modal styles */
+/* Modal container */
 .modal {
-    /* display: none;  <-- ELIMINADO */
     position: fixed;
-    z-index: 1000;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
 }
 
+.modal.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
 
-/* Modal content - Ajustado */
+.modal:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
 .modal-content {
     width: 400px;
     max-width: 90%;
     background: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    overflow-y: auto;
-    max-height: 90vh;
-    position: relative;
-}
-
-.modal-content-registro {
-    background-color: #fff;
-    padding: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     border-radius: 15px;
-    width: 100%;
-    max-width: 450px; /* Más espacio */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     position: relative;
+    animation: fadeIn 0.3s ease-out;
 }
 
-.modal-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    cursor: pointer; /* Cambia el cursor para indicar que se puede cerrar */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.cerrar {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #333;
-}
-
-/* Logo y título */
+/* Logo y texto “BloomBeauty” */
 .logo-container {
+    /* En el navbar estaba centrado; aquí lo centramos dentro del modal */
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 150px;
-    height: 100px;
-    background: url('Recursos/Logo.png') no-repeat center;
-    background-size: 50px;
-    margin: 0px auto 0px auto; /* Ajusta los márgenes: arriba derecha abajo izquierda */
-    position: relative;
-    transition: transform 0.3s ease;
+    margin-bottom: 20px; /* separación con el formulario */
 }
 
-/* Resto de tu CSS permanece igual */
 .logo-container h1 {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     color: #000;
-    font-family: bludhaven;
+    background: url('Recursos/Logo.png') no-repeat center;
+    background-size: 40px 55px;
+    padding: 20px;
     text-align: center;
-    margin: -10;
-    padding: 0;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
+    font-family: bludhaven, 'Safira March Personal Use Only', sans-serif;
+    transition: transform 0.3s ease;
+    margin: 0;
 }
 
-.logo-container:hover {
+.logo-container:hover h1 {
     transform: scale(1.1);
 }
 
-/* Input styles */
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"],
 input[type="email"],
-input[type="password"],
-input[type="text"] {
+input[type="password"] {
     width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 14px;
-    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #E6BAA8;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(230, 186, 168, 0.2);
 }
 
 /* Button styles */
 .btn {
     width: 100%;
     padding: 12px;
-    margin: 10px 0;
     border: none;
     border-radius: 8px;
     font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn.pink {
     background-color: #ECC7CD;
-    color: #fff;
+    color: white;
 }
 
 .btn.pink:hover {
-    background-color: #d4a6b0;
-}
-
-.btn.brown {
-    background-color: #E6BAA8;
-    color: #fff;
-}
-
-.btn.brown:hover {
-    background-color: rgb(195, 147, 128);
+    background-color: #d9b1b8;
+    transform: translateY(-2px);
 }
 
 .btn.google {
-    background-color: #ffffff;
-    color: #000000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    border : 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    border: 1px solid #ddd;
 }
 
 .btn.google:hover {
-    background-color: #f0f0f0;
+    background-color: #f9f9f9;
+    transform: translateY(-2px);
 }
 
 .btn.google img {
-    margin-right: 8px;
-    width: 25px;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
 }
 
-/* Divider styles */
+/* Divider */
 .divider {
-    text-align: center;
-    margin: 0px 0;
-    font-size: 12px;
-    color: #888;
-}
-
-/* Añade estos estilos al final de tu CSS */
-
-/* Estilos específicos para el registro */
-.modal-content p {
-    margin: 15px 0;
-    color: #666;
-}
-
-/* Ajustes para múltiples campos */
-form {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    align-items: center;
+    margin: 15px 0;
+    color: #999;
+    font-size: 14px;
 }
 
-/* Estilo para el enlace de cambio entre modales */
-a {
-    transition: color 0.3s ease;
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ddd;
 }
 
-a:hover {
-    color: #d4a6b0 !important;
+.divider::before {
+    margin-right: 10px;
 }
 
-/* Ajuste de padding para formularios más largos */
-.modal-content {
-    padding: 25px 30px;
+.divider::after {
+    margin-left: 10px;
 }
 
-/* Añade esto al final de tu CSS existente */
-.modal-content iframe {
-    width: 100%;
-    border: none;
-    min-height: 500px; /* Ajusta según necesidad */
+/* Switch modal link */
+.switch-modal {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-top: 20px;
 }
 
-/* Estilos específicos para el modal de login */
-.modal-content.login {
-    width: 400px;
-    max-height: 600px;
+.switch-modal a {
+    color: #E6BAA8;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
-/* Estilos específicos para el modal de registro */
-.modal-content.registro {
-    width: 450px;
-    max-height: 700px; /* Más alto para contenido adicional */
+.switch-modal a:hover {
+    color: #d4a293;
+    text-decoration: underline;
 }
 
-/* Asegura que el contenido del modal no tenga scroll interno */
-.modal-content .modal-body {
-    overflow: visible;
+/* Close button */
+.cerrar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cerrar:hover {
+    color: #666;
 }

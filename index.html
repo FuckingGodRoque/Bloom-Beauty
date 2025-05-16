@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bloom Beauty</title>
     <link rel="stylesheet" href="estilo.css">
+
+
 </head>
 <body>
     <header>
@@ -34,12 +36,31 @@
         </nav>
     </header>
 <!-- Reemplaza tu modalContainer actual con esto -->
-<div id="modalContainer" class="modal hidden">
+<!-- Modal de Login -->
+<!-- Modal de Login (inicialmente oculto) -->
+<div id="loginModal" class="modal hidden">
   <div class="modal-content">
-    <span class="close-modal">&times;</span>
-    <div id="modalContent"></div>
+    <!-- aquí puedes hacer include de Login.html o copiar directamente su contenido: -->
+    <div class="logo-container">
+      <h1>Bloom Beauty</h1>
+    </div>
+    <form id="loginForm" onsubmit="iniciarSesion(event)">
+      <input type="email" id="loginCorreo" placeholder="Correo Electrónico" required>
+      <input type="password" id="loginContraseña" placeholder="Contraseña" required>
+      <button type="submit" class="btn pink">Iniciar Sesión</button>
+    </form>
+    <div class="divider">o</div>
+    <button class="btn google">
+      <img src="recursos/Google.png" alt="Google"> Iniciar sesión con Google
+    </button>
+    <p class="switch-modal">
+      ¿No tienes cuenta?
+      <a href="#" onclick="switchToRegistro()">Crear cuenta</a>
+    </p>
+    <span class="cerrar" onclick="cerrarModal()">×</span>
   </div>
 </div>
+
 
     <!-- Modal de vista detallada del producto -->
     <div id="producto-modal" class="modal hidden">
@@ -316,6 +337,7 @@
         </div>
     </section>
 
+    
     <section class="recomendado">
         <h2>Recomendado para usted</h2>
         <div class="recomendado-container">
@@ -386,6 +408,25 @@
           </div>
         </div>
     </div>
+
+    <script>
+  function abrirModal() {
+    document.getElementById('loginModal')
+            .classList.remove('hidden');
+  }
+
+  function cerrarModal() {
+    document.getElementById('loginModal')
+            .classList.add('hidden');
+  }
+
+
+  function switchToRegistro() {
+    cerrarModal();
+
+  }
+</script>
+
 
     <script src="script.js"></script>
 </body>
