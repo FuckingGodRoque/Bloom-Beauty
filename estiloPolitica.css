@@ -83,20 +83,52 @@ body {
     color: #7a6f6f;
 }
 
-.contacto-detalle {
-    margin-top: 20px;
-}
-
+/* Estilos para los iconos de contacto */
 .contacto-detalle h3 {
-    font-size: 18px;
-    margin: 20px 0 8px 0;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    font-size: 18px;
+    margin: 20px 0 8px 0;
+    color: #5c5c5c;
 }
 
 .icono-contacto {
-    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px; /* Tamaño fijo para todos los iconos */
+    height: 24px; /* Tamaño fijo para todos los iconos */
+}
+
+.icono-contacto img {
+    width: 100%; /* Asegura que la imagen ocupe todo el espacio del contenedor */
+    height: 100%; /* Asegura que la imagen ocupe todo el espacio del contenedor */
+    object-fit: contain; /* Mantiene la proporción de la imagen */
+}
+
+/* Ajustes para el texto junto a los iconos */
+.contacto-detalle h3 {
+    font-family: 'Safira March Personal Use Only', sans-serif;
+    font-size: 18px;
+    margin: 25px 0 10px 0;
+}
+
+.contacto-detalle p {
+    margin-left: 36px; /* 24px del icono + 12px de gap */
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/* Estilos para los enlaces de contacto */
+.contacto-detalle a {
+    color: #a97c8a;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.contacto-detalle a:hover {
+    color: #d4a6b0;
 }
 
 /* Responsive */
@@ -137,6 +169,15 @@ body {
     
     .politica-section p, .politica-section a {
         font-size: 15px;
+    }
+
+    .icono-contacto {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .contacto-detalle p {
+        margin-left: 32px; /* 20px del icono + 12px de gap */
     }
 }
 

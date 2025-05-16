@@ -218,32 +218,59 @@
         </div>
     </div>
 
-    <script>
-        function sumarCantidad(button) {
-            const quantitySpan = button.previousElementSibling;
-            let quantity = parseInt(quantitySpan.textContent);
-            quantity++;
+<script>
+    // Funciones del carrito (mantén las que ya tienes)
+    function sumarCantidad(button) {
+        const quantitySpan = button.previousElementSibling;
+        let quantity = parseInt(quantitySpan.textContent);
+        quantity++;
+        quantitySpan.textContent = quantity;
+        actualizarTotales();
+    }
+
+    function restarCantidad(button) {
+        const quantitySpan = button.nextElementSibling;
+        let quantity = parseInt(quantitySpan.textContent);
+        if (quantity > 1) {
+            quantity--;
             quantitySpan.textContent = quantity;
             actualizarTotales();
         }
+    }
 
-        function restarCantidad(button) {
-            const quantitySpan = button.nextElementSibling;
-            let quantity = parseInt(quantitySpan.textContent);
-            if (quantity > 1) {
-                quantity--;
-                quantitySpan.textContent = quantity;
-                actualizarTotales();
+    function actualizarTotales() {
+        // Lógica para actualizar precios
+    }
+
+    function toggleCheck(icon) {
+        // Lógica para alternar el estado del ícono de check
+    }
+
+    // Funcionalidad del Asesor de Belleza
+    document.addEventListener('DOMContentLoaded', function() {
+        const assistantButton = document.querySelector('.assistant-button');
+        const assistantChat = document.querySelector('.assistant-chat');
+        const closeChat = document.querySelector('.close-chat');
+        
+        // Abrir chat
+        assistantButton.addEventListener('click', function() {
+            assistantChat.classList.toggle('active');
+        });
+        
+        // Cerrar chat
+        closeChat.addEventListener('click', function() {
+            assistantChat.classList.remove('active');
+        });
+        
+        // Cerrar al hacer clic fuera del chat
+        document.addEventListener('click', function(event) {
+            if (!assistantChat.contains(event.target)) {
+                if (!assistantButton.contains(event.target)) {
+                    assistantChat.classList.remove('active');
+                }
             }
-        }
-
-        function actualizarTotales() {
-            // Lógica para actualizar precios
-        }
-
-        function toggleCheck(icon) {
-            // Lógica para alternar el estado del ícono de check
-        }
-    </script>
+        });
+    });
+</script>
 </body>
 </html>
