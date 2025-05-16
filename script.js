@@ -546,4 +546,328 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Selecciona todos los botones "Comprar ahora"
+    const comprarBtns = document.querySelectorAll('.btn-comprar');
+    const modal = document.getElementById('producto-modal');
+    const closeModal = modal.querySelector('.close-modal');
+
+    // Función para abrir el modal y rellenar datos
+    function abrirModalProducto(productoElem) {
+        // Obtener datos del producto
+        const img = productoElem.querySelector('img').src;
+        const titulo = productoElem.querySelector('h3').textContent;
+        const descripcion = productoElem.querySelector('.descripcion').textContent;
+        const precio = productoElem.querySelector('.precio').textContent;
+        const rating = productoElem.querySelector('.rating').innerHTML;
+
+        // Rellenar el modal
+        document.getElementById('modal-imagen').src = img;
+        document.getElementById('modal-titulo').textContent = titulo;
+        document.getElementById('modal-descripcion').textContent = descripcion;
+        document.getElementById('modal-precio').textContent = precio;
+        document.getElementById('modal-rating').innerHTML = rating;
+        // Opcional: limpia detalles y beneficios si no tienes datos
+        document.getElementById('modal-detalles-texto').textContent = '';
+        document.getElementById('modal-beneficios').innerHTML = '';
+
+        // Renderizar PayPal dinámicamente
+        const paypalContainer = document.getElementById('paypal-button-container');
+        paypalContainer.innerHTML = ""; // Limpia el contenedor
+
+        // Extrae solo el número del precio (ejemplo: "$240.00 MXN" => 240.00)
+        const monto = parseFloat(precio.replace(/[^0-9.]/g, ''));
+
+        if (window.paypal) {
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: monto.toFixed(2)
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
+                    });
+                }
+            }).render('#paypal-button-container');
+        }
+
+        // Mostrar el modal
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Cerrar modal
+    closeModal.addEventListener('click', function () {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    });
+
+    // Cerrar modal al hacer clic fuera del contenido
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Cerrar modal con Escape
+    document.addEventListener('keydown', function (e) {
+        if (!modal.classList.contains('hidden') && e.key === 'Escape') {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Asigna evento a cada botón "Comprar ahora"
+    comprarBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const productoElem = btn.closest('.producto');
+            abrirModalProducto(productoElem);
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Función para manejar el carrito
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    // Función para guardar el carrito en localStorage
+    function guardarCarrito() {
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+    }
+
+    // Función para mostrar notificación de carrito
+    function mostrarNotificacionCarrito() {
+        const notification = document.createElement('div');
+        notification.className = 'cart-notification';
+        notification.textContent = 'Producto añadido al carrito';
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.classList.add('fade-out');
+            setTimeout(() => notification.remove(), 500);
+        }, 2000);
+    }
+
+    // Función para añadir producto al carrito
+    function añadirAlCarrito(producto) {
+        // Buscar si el producto ya está en el carrito
+        const productoExistente = carrito.find(item => item.nombre === producto.nombre);
+        
+        if (productoExistente) {
+            productoExistente.cantidad += 1;
+        } else {
+            carrito.push({
+                ...producto,
+                cantidad: 1
+            });
+        }
+        
+        guardarCarrito();
+        mostrarNotificacionCarrito();
+    }
+
+    // Configurar botones "Añadir al carrito" en los productos
+    document.querySelectorAll('.btn-add-carrito').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const productoElem = btn.closest('.producto');
+            const producto = {
+                nombre: productoElem.querySelector('h3').textContent,
+                precio: productoElem.querySelector('.precio').textContent,
+                imagen: productoElem.querySelector('img').src,
+                descripcion: productoElem.querySelector('.descripcion').textContent
+            };
+            añadirAlCarrito(producto);
+        });
+    });
+
+    // Modal de producto
+    const comprarBtns = document.querySelectorAll('.btn-comprar');
+    const modal = document.getElementById('producto-modal');
+    const closeModal = modal.querySelector('.close-modal');
+
+    // Función para abrir el modal y rellenar datos
+    function abrirModalProducto(productoElem) {
+        // Obtener datos del producto
+        const producto = {
+            imagen: productoElem.querySelector('img').src,
+            nombre: productoElem.querySelector('h3').textContent,
+            descripcion: productoElem.querySelector('.descripcion').textContent,
+            precio: productoElem.querySelector('.precio').textContent,
+            rating: productoElem.querySelector('.rating').innerHTML
+        };
+
+        // Rellenar el modal
+        document.getElementById('modal-imagen').src = producto.imagen;
+        document.getElementById('modal-titulo').textContent = producto.nombre;
+        document.getElementById('modal-descripcion').textContent = producto.descripcion;
+        document.getElementById('modal-precio').textContent = producto.precio;
+        document.getElementById('modal-rating').innerHTML = producto.rating;
+
+        // Configurar botón "Añadir al carrito" del modal
+        const btnAddModal = document.querySelector('.btn-add-carrito-modal');
+        btnAddModal.onclick = function() {
+            añadirAlCarrito(producto);
+        };
+
+        // Configurar botón "Comprar ahora" del modal
+        const btnComprarModal = document.querySelector('.btn-comprar-ahora-modal');
+        btnComprarModal.onclick = function() {
+            añadirAlCarrito(producto);
+            window.location.href = 'carrito.html';
+        };
+
+        // Renderizar PayPal dinámicamente
+        const paypalContainer = document.getElementById('paypal-button-container');
+        paypalContainer.innerHTML = ""; // Limpia el contenedor
+
+        // Extrae solo el número del precio (ejemplo: "$240.00 MXN" => 240.00)
+        const monto = parseFloat(producto.precio.replace(/[^0-9.]/g, ''));
+
+        if (window.paypal) {
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: monto.toFixed(2)
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
+                    });
+                }
+            }).render('#paypal-button-container');
+        }
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Cerrar modal
+    closeModal.addEventListener('click', function() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    });
+
+    // Cerrar modal al hacer clic fuera del contenido
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Cerrar modal con Escape
+    document.addEventListener('keydown', function(e) {
+        if (!modal.classList.contains('hidden') && e.key === 'Escape') {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Asignar evento a cada botón "Comprar ahora"
+    comprarBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const productoElem = btn.closest('.producto');
+            abrirModalProducto(productoElem);
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const comprarBtns = document.querySelectorAll('.btn-comprar');
+    const modal = document.getElementById('producto-modal');
+    const closeModal = modal.querySelector('.close-modal');
+
+    // Función para abrir el modal y rellenar datos
+    function abrirModalProducto(productoElem) {
+        // Obtener datos del producto
+        const img = productoElem.querySelector('img').src;
+        const titulo = productoElem.querySelector('h3').textContent;
+        const descripcion = productoElem.querySelector('.descripcion').textContent;
+        const precio = productoElem.querySelector('.precio').textContent;
+        const ratingHTML = productoElem.querySelector('.rating').innerHTML;
+
+        // Rellenar el modal
+        document.getElementById('modal-imagen').src = img;
+        document.getElementById('modal-titulo').textContent = titulo;
+        document.getElementById('modal-descripcion').textContent = descripcion;
+        document.getElementById('modal-precio').textContent = precio;
+        document.getElementById('modal-rating').innerHTML = ratingHTML;
+
+        // Renderizar PayPal dinámicamente
+        const paypalContainer = document.getElementById('paypal-button-container');
+        paypalContainer.innerHTML = ""; // Limpia el contenedor
+
+        // Extrae solo el número del precio (ejemplo: "$240.00 MXN" => 240.00)
+        const monto = parseFloat(precio.replace(/[^0-9.]/g, ''));
+
+        if (window.paypal) {
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: monto.toFixed(2)
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
+                    });
+                }
+            }).render('#paypal-button-container');
+        }
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Asigna evento a cada botón "Comprar ahora"
+    comprarBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const productoElem = btn.closest('.producto');
+            abrirModalProducto(productoElem);
+        });
+    });
+
+    // Cerrar modal
+    closeModal.addEventListener('click', function () {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    });
+
+    // Cerrar modal al hacer clic fuera del contenido
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Cerrar modal con Escape
+    document.addEventListener('keydown', function (e) {
+        if (!modal.classList.contains('hidden') && e.key === 'Escape') {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    });
+});
+
+
+
 

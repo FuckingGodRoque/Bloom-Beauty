@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bloom Beauty</title>
     <link rel="stylesheet" href="estilo.css">
-
-
+    <script src="https://www.paypal.com/sdk/js?client-id=ARaTZEYBe3oPhjuRbW5Fn6tWp0CvZNzLnmdLUyIQ7oNkYfFuAyrJM2Ds9wCsBIGmQmN7NrpzEaxQaNiQ&currency=MXN"></script>
 </head>
 <body>
     <header>
@@ -61,34 +60,27 @@
   </div>
 </div>
 
-
-    <!-- Modal de vista detallada del producto -->
-    <div id="producto-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-producto">
-                <img id="modal-imagen" src="" alt="Producto">
-                <div class="modal-info">
-                    <h3 id="modal-titulo"></h3>
-                    <p id="modal-descripcion"></p>
-                    <p id="modal-precio"></p>
-                    <div class="modal-rating" id="modal-rating"></div>
-                    <div class="modal-botones">
-                            <div id="paypal-btn-modal"></div>
-    <button class="btn-add-carrito">
-        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-    </button>
-                    </div>
-                    <div class="modal-detalles">
-                        <h4>Detalles del producto</h4>
-                        <p id="modal-detalles-texto"></p>
-                        <h4>Beneficios</h4>
-                        <ul id="modal-beneficios"></ul>
-                    </div>
+<!-- Modal de vista rápida del producto -->
+<div id="producto-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-producto">
+            <img id="modal-imagen" src="" alt="Producto">
+            <div class="modal-info">
+                <h3 id="modal-titulo"></h3>
+                <div class="modal-rating" id="modal-rating"></div>
+                <p id="modal-descripcion" class="modal-descripcion"></p>
+                <p id="modal-precio" class="modal-precio"></p>
+                <div class="modal-botones">
+                    <button class="btn-add-carrito-modal">
+                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito"> Añadir al carrito
+                    </button>
+                    <div id="paypal-button-container" style="margin-top: 16px;"></div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
     <!-- Contenedor para cargar el menú lateral -->
     <div id="menu-container"></div>
@@ -275,26 +267,6 @@
                 </div>
             </div>
 <div class="producto hidden">
-                <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
-                <h3>Bloom Punch</h3>
-                <p class="descripcion">Una breve descripción del producto Bloom Punch.</p>
-                <p class="precio">$40.00 MXN</p>
-                <div class="rating">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaBlanca.png" alt="Estrella">
-                    <span>(4.0)</span>
-                </div>
-                <div class="botones">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-add-carrito">
-                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                    </button>
-                </div>
-            </div>
-            <div class="producto hidden">
                 <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
                 <h3>Bloom Punch</h3>
                 <p class="descripcion">Una breve descripción del producto Bloom Punch.</p>
