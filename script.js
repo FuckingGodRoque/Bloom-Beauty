@@ -868,6 +868,93 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Función para añadir producto al carrito (usa la misma estructura que productos.js)
+    function añadirAlCarritoIndex(producto) {
+        let carrito = JSON.parse(localStorage.getItem('cart')) || [];
+        const itemExistente = carrito.find(item => item.nombre === producto.nombre);
+        if (itemExistente) {
+            itemExistente.cantidad += 1;
+        } else {
+            carrito.push({
+                id: producto.id || Date.now(), // Usa un id si lo tienes
+                nombre: producto.nombre,
+                imagen: producto.imagen,
+                precio: parseFloat(producto.precio.replace('$', '').replace(' MXN', '')),
+                descripcion: producto.descripcion,
+                cantidad: 1
+            });
+        }
+        localStorage.setItem('cart', JSON.stringify(carrito));
+        mostrarNotificacionCarrito(producto.nombre);
+    }
+
+    // Notificación visual
+    function mostrarNotificacionCarrito(nombreProducto) {
+        const notificacion = document.createElement('div');
+        notificacion.className = 'cart-notification';
+        notificacion.textContent = `✔ ${nombreProducto} añadido al carrito`;
+        document.body.appendChild(notificacion);
+        setTimeout(() => {
+            notificacion.classList.add('fade-out');
+            setTimeout(() => notificacion.remove(), 500);
+        }, 2000);
+    }
+
+    // Asigna evento a los botones de añadir al carrito en index
+    document.querySelectorAll('.btn-add-carrito').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const productoElem = btn.closest('.producto');
+            const producto = {
+                nombre: productoElem.querySelector('h3').textContent,
+                precio: productoElem.querySelector('.precio').textContent,
+                imagen: productoElem.querySelector('img').src,
+                descripcion: productoElem.querySelector('.descripcion').textContent
+            };
+            añadirAlCarritoIndex(producto);
+        });
+    });
+
+    // También para el botón del modal
+    const btnAddModal = document.querySelector('.btn-add-carrito-modal');
+    if (btnAddModal) {
+        btnAddModal.addEventListener('click', function () {
+            const modal = document.getElementById('producto-modal');
+            const producto = {
+                nombre: document.getElementById('modal-titulo').textContent,
+                precio: document.getElementById('modal-precio').textContent,
+                imagen: document.getElementById('modal-imagen').src,
+                descripcion: document.getElementById('modal-descripcion').textContent
+            };
+            añadirAlCarritoIndex(producto);
+        });
+    }
+});
+
+// Puedes poner esto en ambos archivos, adaptando el selector del contenedor de productos
+function buscarProductos() {
+    const searchBar = document.getElementById('search-bar');
+    if (!searchBar) return;
+    searchBar.addEventListener('input', function () {
+        const query = searchBar.value.toLowerCase();
+        document.querySelectorAll('.producto').forEach(producto => {
+            const nombre = producto.querySelector('h3').textContent.toLowerCase();
+            const descripcion = producto.querySelector('.descripcion').textContent.toLowerCase();
+            if (nombre.includes(query) || descripcion.includes(query)) {
+                producto.style.display = '';
+            } else {
+                producto.style.display = 'none';
+            }
+        });
+    });
+}
+
+// Llama a la función después de renderizar los productos
+document.addEventListener('DOMContentLoaded', function () {
+    buscarProductos();
+});
+
 
 
 

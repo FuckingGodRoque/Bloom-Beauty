@@ -339,6 +339,24 @@ function configurarCarrito() {
     });
 }
 
+// Puedes poner esto en ambos archivos, adaptando el selector del contenedor de productos
+function buscarProductos() {
+    const searchBar = document.getElementById('search-bar');
+    if (!searchBar) return;
+    searchBar.addEventListener('input', function () {
+        const query = searchBar.value.toLowerCase();
+        document.querySelectorAll('.producto').forEach(producto => {
+            const nombre = producto.querySelector('h3').textContent.toLowerCase();
+            const descripcion = producto.querySelector('.descripcion').textContent.toLowerCase();
+            if (nombre.includes(query) || descripcion.includes(query)) {
+                producto.style.display = '';
+            } else {
+                producto.style.display = 'none';
+            }
+        });
+    });
+}
+
 // Inicialización
 document.addEventListener('DOMContentLoaded', () => {
     renderizarProductos();
@@ -346,4 +364,5 @@ document.addEventListener('DOMContentLoaded', () => {
     configurarModal();
     configurarCarrito();
     actualizarContadorCarrito();
+    buscarProductos();
 });
