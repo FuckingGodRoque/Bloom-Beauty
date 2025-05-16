@@ -23,10 +23,6 @@
                 <h1>Bloom Beauty</h1>
             </div>
             <div class="icons">
-                <div class="search-container">
-                    <input type="text" id="search-bar" class="search-bar" placeholder="Buscar...">
-                    <img src="Recursos/BtnSearch.png" alt="Buscar" class="icon" id="search-icon">
-                </div>
                 <img src="Recursos/BtnCarrito.png" alt="Carrito" class="icon">
                 <img src="Recursos/BtnPerfil.png" alt="Perfil" class="icon btn-user">
             </div>
@@ -44,107 +40,10 @@
             </div>
 
             <div class="cart-items-scroll">
-                <div class="cart-items">
-                    <!-- Producto 1 -->
-                    <div class="cart-item">
-                        <div class="product-image">
-                            <img src="recursos/BloomPunch.png" alt="Bloom Punch">
-                        </div>
-                        
-                        <div class="item-details">
-                            <h3>Bloom Punch</h3>
-                            <p class="product-description">Ilumina, protege y suaviza tu piel como los pétalos de flor.</p>
-                            
-                            <div class="controls-container">
-                                <div class="size-quantity">
-                                    <p class="product-size">Cont. 100 ml</p>
-                                    <div class="quantity-controls">
-                                        <button class="quantity-btn" onclick="restarCantidad(this)">−</button>
-                                        <span class="quantity">1</span>
-                                        <button class="quantity-btn" onclick="sumarCantidad(this)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="price-remove-section">
-                                    <p class="precio">$499.00 MXN</p>
-                                    <button class="remove-btn">Eliminar</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Ícono de check -->
-                        <div class="check-icon">
-                            <img src="recursos/Check.png" alt="Check" onclick="toggleCheck(this)">
-                        </div>
-                    </div>
-                
-                    <!-- Producto 2 -->
-                    <div class="cart-item">
-                        <div class="product-image">
-                            <img src="recursos/SilkGlow.png" alt="Silk Glow">
-                        </div>
-                        
-                        <div class="item-details">
-                            <h3>Silk Glow</h3>
-                            <p class="product-description">Serum iluminador de larga duración...</p>
-                            
-                            <div class="controls-container">
-                                <div class="size-quantity">
-                                    <p class="product-size">Cont. 200 ml</p>
-                                    <div class="quantity-controls">
-                                        <button class="quantity-btn" onclick="restarCantidad(this)">−</button>
-                                        <span class="quantity">2</span>
-                                        <button class="quantity-btn" onclick="sumarCantidad(this)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="price-remove-section">
-                                    <p class="precio">$899.00 MXN</p>
-                                    <button class="remove-btn">Eliminar</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Ícono de check -->
-                        <div class="check-icon">
-                            <img src="recursos/Check.png" alt="Check" onclick="toggleCheck(this)">
-                        </div>
-                    </div>
-                    
-                    <!-- Producto 3 -->
-                    <div class="cart-item">
-                        <div class="product-image">
-                            <img src="recursos/BloomPunch.png" alt="Bloom Punch">
-                        </div>
-                        
-                        <div class="item-details">
-                            <h3>Bloom Punch</h3>
-                            <p class="product-description">Ilumina, protege y suaviza tu piel como los pétalos de flor.</p>
-                            
-                            <div class="controls-container">
-                                <div class="size-quantity">
-                                    <p class="product-size">Cont. 100 ml</p>
-                                    <div class="quantity-controls">
-                                        <button class="quantity-btn" onclick="restarCantidad(this)">−</button>
-                                        <span class="quantity">1</span>
-                                        <button class="quantity-btn" onclick="sumarCantidad(this)">+</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="price-remove-section">
-                                    <p class="precio">$499.00 MXN</p>
-                                    <button class="remove-btn">Eliminar</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Ícono de check -->
-                        <div class="check-icon">
-                            <img src="recursos/Check.png" alt="Check" onclick="toggleCheck(this)">
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="cart-items">
+        <!-- Los productos se cargarán dinámicamente aquí -->
+    </div>
+</div>
 
             <div class="cart-summary">
                 <div class="summary-content">
@@ -167,10 +66,29 @@
                             <span>$1,497.00 MXN</span>
                         </div>
                     </div>
-                    
-                    <button class="checkout-btn">Pagar ahora</button>
+
+                    <div id="paypal-button-container" style="margin-top: 16px;"></div>
                 </div>
             </div>
+            <script src="https://www.paypal.com/sdk/js?client-id=ARaTZEYBe3oPhjuRbW5Fn6tWp0CvZNzLnmdLUyIQ7oNkYfFuAyrJM2Ds9wCsBIGmQmN7NrpzEaxQaNiQ&currency=MXN"></script>
+            <script>
+              paypal.Buttons({
+                createOrder: function(data, actions) {
+                  return actions.order.create({
+                    purchase_units: [{
+                      amount: {
+                        value: '1497.00'
+                      }
+                    }]
+                  });
+                },
+                onApprove: function(data, actions) {
+                  return actions.order.capture().then(function(details) {
+                    alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
+                  });
+                }
+              }).render('#paypal-button-container');
+            </script>
         </div>
     </main>
 
@@ -198,48 +116,7 @@
         </div>
 </footer>
 
-    <div class="assistant-container">
-        <button class="assistant-button">
-          <img src="Recursos/IA.png" alt="Asistente" class="assistant-icon">
-          <span>Asesor de Belleza</span>
-        </button>
-        <div class="assistant-chat hidden">
-          <div class="chat-header">
-            <h3>BeautyIA 
-            <img src="Recursos/IA.png" alt="Asistente" class="assistant-icon">
-            </h3>
-            <button class="close-chat">&times;</button>
-          </div>
-          <div class="chat-messages"></div>
-          <div class="chat-input">
-            <input type="text" placeholder="Describa su tipo de piel o preocupaciones...">
-            <button class="send-button">Enviar</button>
-          </div>
-        </div>
-    </div>
-<div id="paypal-button-container"></div>
 
-<!-- SDK de PayPal -->
-<script src="https://www.paypal.com/sdk/js?client-id=TU_CLIENT_ID&currency=USD"></script>
-
-<script>
-  paypal.Buttons({
-    createOrder: function(data, actions) {
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: '25.00' // precio del producto
-          }
-        }]
-      });
-    },
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) {
-        alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
-      });
-    }
-  }).render('#paypal-button-container');
-</script>
 <script>
     // Funciones del carrito (mantén las que ya tienes)
     function sumarCantidad(button) {
@@ -268,31 +145,7 @@
         // Lógica para alternar el estado del ícono de check
     }
 
-    // Funcionalidad del Asesor de Belleza
-    document.addEventListener('DOMContentLoaded', function() {
-        const assistantButton = document.querySelector('.assistant-button');
-        const assistantChat = document.querySelector('.assistant-chat');
-        const closeChat = document.querySelector('.close-chat');
-        
-        // Abrir chat
-        assistantButton.addEventListener('click', function() {
-            assistantChat.classList.toggle('active');
-        });
-        
-        // Cerrar chat
-        closeChat.addEventListener('click', function() {
-            assistantChat.classList.remove('active');
-        });
-        
-        // Cerrar al hacer clic fuera del chat
-        document.addEventListener('click', function(event) {
-            if (!assistantChat.contains(event.target)) {
-                if (!assistantButton.contains(event.target)) {
-                    assistantChat.classList.remove('active');
-                }
-            }
-        });
-    });
+    
 </script>
 </body>
 </html>
