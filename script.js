@@ -52,12 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const btnCarrito = document.getElementById("btn-carrito");
 
-    // Abrir carrito.html en una nueva pestaña
-    btnCarrito.addEventListener("click", function () {
-        window.open("carrito.html", "_blank");
-    });
-    
-
     document.addEventListener("DOMContentLoaded", function() {
         // ... (tu código existente)
         
@@ -442,4 +436,92 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         addMessage("¡Hola! Soy tu asesor de belleza de BloomBeauty. Puedes describirme tu tipo de piel, rostro o preocupaciones y te recomendaré los productos perfectos para ti.", 'bot-message');
     }, 1000);
+});
+
+
+// POLITICAS 
+
+// Funcionalidad para los enlaces de políticas
+document.addEventListener('DOMContentLoaded', function() {
+    // Redirigir todos los enlaces de políticas a politica.html
+    const policyLinks = document.querySelectorAll('.footer-links a');
+    policyLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'politica.html';
+        });
+    });
+
+    // Redes sociales - abrir en nueva pestaña
+    const instagramLink = document.querySelector('.footer-social a:first-child');
+    const facebookLink = document.querySelector('.footer-social a:last-child');
+    
+    // Reemplaza estas URLs con las reales de Bloom Beauty
+    instagramLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.open('https://www.instagram.com/bloombeauty', '_blank');
+    });
+    
+    facebookLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.open('https://www.facebook.com/bloombeauty', '_blank');
+    });
+
+    // Animación para el correo electrónico
+    const subscribeForm = document.querySelector('.footer-subscribe');
+    const emailInput = subscribeForm.querySelector('input[type="email"]');
+    const submitButton = subscribeForm.querySelector('button');
+    
+    submitButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Validación simple del correo
+        if (emailInput.value && emailInput.value.includes('@')) {
+            showEmailNotification();
+            emailInput.value = ''; // Limpiar el campo después de enviar
+        } else {
+            alert('Por favor ingresa un correo electrónico válido');
+        }
+    });
+    
+    function showEmailNotification() {
+        // Crear elemento de notificación
+        const notification = document.createElement('div');
+        notification.className = 'email-notification';
+        notification.textContent = '✔ Solicitud enviada. ¡En un instante nos ponemos en contacto!';
+        
+        // Estilos para la notificación
+        notification.style.position = 'fixed';
+        notification.style.bottom = '20px';
+        notification.style.right = '20px';
+        notification.style.backgroundColor = '#4CAF50';
+        notification.style.color = 'white';
+        notification.style.padding = '15px 25px';
+        notification.style.borderRadius = '5px';
+        notification.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
+        notification.style.zIndex = '1000';
+        notification.style.animation = 'slideIn 0.5s, fadeOut 0.5s 2.5s';
+        
+        // Agregar al documento
+        document.body.appendChild(notification);
+        
+        // Eliminar después de 3 segundos
+        setTimeout(() => {
+            notification.remove();
+        }, 5000);
+    }
+    
+    // Añadir los keyframes de animación dinámicamente
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
 });
