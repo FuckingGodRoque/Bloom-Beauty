@@ -280,7 +280,6 @@ let modal = null;
 
 
 
-
 document.addEventListener("DOMContentLoaded", function () {
     // Verificar sesión al cargar
     const usuario = JSON.parse(sessionStorage.getItem('usuario'));
@@ -380,7 +379,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Función para enviar mensaje a la IA
-    async function sendMessageToAI(message) {
+    async function sendMessageToAI(message = "") {
         // Mostrar indicador de que la IA está escribiendo
         const typingIndicator = showTypingIndicator();
         
@@ -591,7 +590,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(details) {
-                        alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
+                        // Limpiar carrito
+                        localStorage.removeItem('cart');
+                        mostrarPagoExitoso();
+                        setTimeout(() => location.reload(), 2500);
                     });
                 }
             }).render('#paypal-button-container');
@@ -745,7 +747,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(details) {
-                        alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
+                        // Limpiar carrito
+                        localStorage.removeItem('cart');
+                        mostrarPagoExitoso();
+                        setTimeout(() => location.reload(), 2500);
                     });
                 }
             }).render('#paypal-button-container');
@@ -827,7 +832,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(details) {
-                        alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
+                        // Limpiar carrito
+                        localStorage.removeItem('cart');
+                        mostrarPagoExitoso();
+                        setTimeout(() => location.reload(), 2500);
                     });
                 }
             }).render('#paypal-button-container');
@@ -954,6 +962,14 @@ function buscarProductos() {
 document.addEventListener('DOMContentLoaded', function () {
     buscarProductos();
 });
+
+function mostrarPagoExitoso() {
+    const pagoDiv = document.getElementById('pago-exitoso');
+    pagoDiv.classList.remove('hidden');
+    setTimeout(() => {
+        pagoDiv.classList.add('hidden');
+    }, 2500);
+}
 
 
 
