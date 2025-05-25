@@ -292,7 +292,6 @@ let modal = null;
 
 
 
-
 document.addEventListener("DOMContentLoaded", function () {
     // Verificar sesión al cargar
     const usuario = JSON.parse(sessionStorage.getItem('usuario'));

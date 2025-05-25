@@ -7,7 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bloom Beauty</title>
+    <link rel="icon" href="recursos/Logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="estilo.css">
+    <!--                                                                                          NO BORRES EL &currency=MXN AL FINAL DEL SCRIPT DE PAYPAL  -->
     <script src="https://www.paypal.com/sdk/js?client-id=ARaTZEYBe3oPhjuRbW5Fn6tWp0CvZNzLnmdLUyIQ7oNkYfFuAyrJM2Ds9wCsBIGmQmN7NrpzEaxQaNiQ&currency=MXN"></script>
 </head>
 <body>
@@ -15,7 +17,7 @@
         <nav>
             <div class="menu-section">
                 <ul class="nav-links">
-                    <li><a href="#">Inicio</a></li>
+                    <li><a href="index.html">Inicio</a></li>
                     <li><a href="productos.html">Productos</a></li>
                 </ul>
             </div>
@@ -27,9 +29,9 @@
                     <input type="text" id="search-bar" class="search-bar" placeholder="Buscar...">
                     <img src="Recursos/BtnSearch.png" alt="Buscar" class="icon" id="search-icon">
                 </div>
-               <a href="carrito.html" class="icon-link">
-  <img src="Recursos/BtnCarrito.png" alt="Carrito" class="icon" id="btn-carrito">
-</a>
+                <a href="carrito.html" class="icon-link">
+                    <img src="Recursos/BtnCarrito.png" alt="Carrito" class="icon" id="btn-carrito">
+                </a>
                 <img src="Recursos/BtnPerfil.png" alt="Perfil" class="icon btn-user" id="btn-perfil">
             </div>
         </nav>
@@ -361,25 +363,7 @@
         </div>
     </footer>
 
-    <div class="assistant-container">
-        <button class="assistant-button">
-          <img src="Recursos/IA.png" alt="Asistente" class="assistant-icon">
-          <span>Asesor de Belleza</span>
-        </button>
-        <div class="assistant-chat hidden">
-          <div class="chat-header">
-            <h3>BeautyIA 
-            <img src="Recursos/IA.png" alt="Asistente" class="assistant-icon">
-            </h3>
-            <button class="close-chat">&times;</button>
-          </div>
-          <div class="chat-messages"></div>
-          <div class="chat-input">
-            <input type="text" placeholder="Describa su tipo de piel o preocupaciones...">
-            <button class="send-button">Enviar</button>
-          </div>
-        </div>
-    </div>
+
 
     <script>
   function abrirModal() {
