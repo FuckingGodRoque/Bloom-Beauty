@@ -189,7 +189,8 @@ function renderizarBotonPaypal(producto) {
             },
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
-                    alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
+                    mostrarPagoExitoso();
+                    setTimeout(() => location.reload(), 2500);
                 });
             }
         }).render(`#paypal-btn-container-${producto.id}`);
@@ -303,7 +304,8 @@ function mostrarDetallesProducto(e) {
             },
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
-                    alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
+                    mostrarPagoExitoso();
+                    setTimeout(() => location.reload(), 2500);
                 });
             }
         }).render('#paypal-btn-modal');

@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
         actualizarTotales(subtotal);
         cartHeader.textContent = `Carrito (${carrito.reduce((total, item) => total + item.cantidad, 0)})`;
     }
+
+
     
     // Actualizar totales
     function actualizarTotales(subtotal) {

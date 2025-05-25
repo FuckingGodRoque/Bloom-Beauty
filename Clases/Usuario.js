@@ -7,18 +7,12 @@ class Usuario {
 
     static async guardarUsuario(usuario) {
         try {
-            console.log("Enviando datos:", JSON.stringify({
-                nombre: usuario.nombre,
-                correo: usuario.correo,
-                contrasena: usuario.contrasena
-            }));
-
-            const response = await fetch('http://localhost/bloombeauty/endPointAddUsuario.php', {
+            const response = await fetch('http://localhost/Bloom-Beautyy/registroUsuario.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                credentials: 'include', // Para cookies si es necesario
+                credentials: 'include',
                 body: JSON.stringify({
                     nombre: usuario.nombre,
                     correo: usuario.correo,
@@ -26,13 +20,14 @@ class Usuario {
                 })
             });
 
-            // Si hay error de CORS, mostrar mensaje específico
-            if (response.type === 'opaque') {
-                throw new Error('Problema de CORS. Verifica la configuración del servidor.');
+            const contentType = response.headers.get("content-type");
+            if (!contentType || !contentType.includes("application/json")) {
+                const texto = await response.text();
+                throw new Error("Respuesta no válida del servidor: " + texto);
             }
 
             const data = await response.json();
-            
+
             if (!response.ok) {
                 throw new Error(data.error || 'Error al registrar usuario');
             }
@@ -46,7 +41,7 @@ class Usuario {
 
     static async validarUsuario(correo, contrasena) {
         try {
-            const response = await fetch('http://localhost/bloombeauty/endPointLoginUsuario.php', {
+            const response = await fetch('http://localhost/Bloom-Beautyy/login.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,14 +53,12 @@ class Usuario {
             });
 
             const data = await response.json();
-            
+
             if (!data.success) {
                 throw new Error(data.error || 'Credenciales incorrectas');
             }
 
-            // Guardar datos del usuario en sessionStorage
             sessionStorage.setItem('usuario', JSON.stringify(data.usuario));
-            
             return data.usuario;
         } catch (error) {
             console.error('Error al validar usuario:', error);
