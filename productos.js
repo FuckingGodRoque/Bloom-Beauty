@@ -503,6 +503,3 @@ document.addEventListener('DOMContentLoaded', () => {
     configurarCarrito();
     actualizarContadorCarrito();
 });
-
-
-

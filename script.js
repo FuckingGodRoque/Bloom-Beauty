@@ -1,15 +1,3 @@
-import dotenv from "dotenv";
-import OpenAI, { OpenAI } from "openai";
-
-dotenv.config();
-
-const openai = new OpenAI({
-apikey: process.env.OPENAI_API_KEY,
-baseURL: process.env.OPENAI_BASE_URL,
-});
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const verMasBtn = document.getElementById("ver-mas");
     const productos = document.querySelectorAll("#productos-container .producto");
@@ -835,4 +823,3 @@ function mostrarPagoExitoso() {
         pagoDiv.classList.add('hidden');
     }, 2500);
 }
-
