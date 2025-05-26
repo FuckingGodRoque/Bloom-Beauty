@@ -35,15 +35,101 @@
                 <h2>Carrito</h2>
                 <div class="location-pill">
                     <img src="recursos/Gps.png" alt="GPS" class="gps-icon">
-                    <span>Enviar a Morelia</span>
+                    <span>Ubicacion </span>
                 </div>
             </div>
 
-            <div class="cart-items-scroll">
-    <div class="cart-items">
-        <!-- Los productos se cargarán dinámicamente aquí -->
-    </div>
+            <!-- Modal de Ubicación -->
+<div id="ubicacion-modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2>Información de Envío</h2>
+    <p class="modal-subtitle">Ingresa los datos para enviar tu pedido</p>
+    
+    <form id="ubicacion-form" class="ubicacion-form">
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" name="direccion" required>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ciudad">Ciudad</label>
+          <input type="text" id="ciudad" name="ciudad" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="estado">Estado</label>
+          <select id="estado" name="estado" required>
+            <option value="">Selecciona...</option>
+            <option value="AGU">Aguascalientes</option>
+            <option value="BCN">Baja California</option>
+            <option value="BCS">Baja California Sur</option>
+            <option value="CAM">Campeche</option>
+            <option value="CHP">Chiapas</option>
+            <option value="CHH">Chihuahua</option>
+            <option value="COA">Coahuila</option>
+            <option value="COL">Colima</option>
+            <option value="DIF">Ciudad de México</option>
+            <option value="DUR">Durango</option>
+            <option value="GUA">Guanajuato</option>
+            <option value="GRO">Guerrero</option>
+            <option value="HID">Hidalgo</option>
+            <option value="JAL">Jalisco</option>
+            <option value="MEX">Estado de México</option>
+            <option value="MIC">Michoacán</option>
+            <option value="MOR">Morelos</option>
+            <option value="NAY">Nayarit</option>
+            <option value="NLE">Nuevo León</option>
+            <option value="OAX">Oaxaca</option>
+            <option value="PUE">Puebla</option>
+            <option value="QUE">Querétaro</option>
+            <option value="ROO">Quintana Roo</option>
+            <option value="SLP">San Luis Potosí</option>
+            <option value="SIN">Sinaloa</option>
+            <option value="SON">Sonora</option>
+            <option value="TAB">Tabasco</option>
+            <option value="TAM">Tamaulipas</option>
+            <option value="TLA">Tlaxcala</option>
+            <option value="VER">Veracruz</option>
+            <option value="YUC">Yucatán</option>
+            <option value="ZAC">Zacatecas</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cp">Código Postal</label>
+          <input type="text" id="cp" name="cp" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="referencias">Referencias (opcional)</label>
+        <textarea id="referencias" name="referencias" rows="3"></textarea>
+      </div>
+      
+      <button type="submit" class="btn-guardar">Guardar Ubicación</button>
+    </form>
+  </div>
 </div>
+
+            <div class="cart-items-scroll">
+                <div class="cart-items">
+                <!-- Los productos se cargarán dinámicamente aquí -->
+            </div>
+                </div>
 
             <div class="cart-summary">
                 <div class="summary-content">
@@ -53,21 +139,23 @@
                     </div>
                     
                     <div class="price-breakdown">
-                        <div class="price-row">
-                            <span>Subtotal</span>
-
-                            <span>$0.00 MXN</span>
-
-                        </div>
-                        <div class="price-row">
-                            <span>Envío</span>
-                            <span>$0.00 MXN</span>
-                        </div>
-                        <div class="price-row total">
-                            <span>Total</span>
-                            <span>$0.00 MXN</span>
-                        </div>
-                    </div>
+    <div class="price-row">
+        <span>Subtotal</span>
+        <span>$0.00 MXN</span>
+    </div>
+    <div class="price-row">
+        <span>Descuento (10%)</span>
+        <span>$0.00 MXN</span> <!-- Aquí se mostrará el descuento -->
+    </div>
+    <div class="price-row">
+        <span>Envío</span>
+        <span>$99.00 MXN</span>
+    </div>
+    <div class="price-row total">
+        <span>Total</span>
+        <span>$0.00 MXN</span>
+    </div>
+</div>
 
                     <div id="paypal-button-container" style="margin-top: 16px;"></div>
                 </div>
@@ -141,6 +229,128 @@
 <script src="script.js"></script>
 <script src="carrito.js"></script>
 <script>
+    // Modal de ubicación
+    const locationPill = document.querySelector('.location-pill');
+    const ubicacionModal = document.getElementById('ubicacion-modal');
+    const closeModalBtn = document.querySelector('#ubicacion-modal .close-modal');
+    const ubicacionForm = document.getElementById('ubicacion-form');
+
+    // Abrir modal al hacer clic en la píldora de ubicación
+    locationPill.addEventListener('click', () => {
+        ubicacionModal.classList.remove('hidden');
+    });
+
+    // Cerrar modal al hacer clic en la X
+    closeModalBtn.addEventListener('click', () => {
+        ubicacionModal.classList.add('hidden');
+    });
+
+    // Cerrar modal al hacer clic fuera del contenido
+    ubicacionModal.addEventListener('click', (e) => {
+        if (e.target === ubicacionModal) {
+            ubicacionModal.classList.add('hidden');
+        }
+    });
+
+    // Manejar envío del formulario
+    ubicacionForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Obtener valores del formulario
+        const nombre = document.getElementById('nombre').value;
+        const direccion = document.getElementById('direccion').value;
+        const ciudad = document.getElementById('ciudad').value;
+        const estado = document.getElementById('estado').value;
+        const cp = document.getElementById('cp').value;
+        const telefono = document.getElementById('telefono').value;
+        const referencias = document.getElementById('referencias').value;
+
+        // Aquí puedes guardar la información en localStorage o enviarla a un servidor
+        const ubicacionInfo = {
+            nombre,
+            direccion,
+            ciudad,
+            estado,
+            cp,
+            telefono,
+            referencias
+        };
+
+        localStorage.setItem('ubicacionEnvio', JSON.stringify(ubicacionInfo));
+
+        // Actualizar la píldora de ubicación
+        const locationSpan = document.querySelector('.location-pill span');
+        locationSpan.textContent = `${ciudad}, ${estado}`;
+
+        // Mostrar notificación
+        mostrarNotificacion('Ubicación guardada correctamente');
+
+        // Cerrar el modal
+        ubicacionModal.classList.add('hidden');
+    });
+
+    function vaciarCarrito() {
+        // Eliminar el carrito del localStorage
+        localStorage.removeItem('cart');
+
+        // Actualizar la interfaz para mostrar el carrito vacío
+        const cartContainer = document.querySelector('.cart-items');
+        cartContainer.innerHTML = '<p class="empty-cart">Tu carrito está vacío</p>';
+
+        // Actualizar los totales
+        document.querySelector('.price-row:nth-child(1) span:last-child').textContent = '$0.00 MXN';
+        document.querySelector('.price-row:nth-child(2) span:last-child').textContent = '$0.00 MXN';
+        document.querySelector('.price-row.total span:last-child').textContent = '$0.00 MXN';
+
+        // Mostrar una notificación opcional
+        mostrarNotificacion('El carrito ha sido vaciado.');
+    }
+
+    // Función para mostrar notificaciones
+    function mostrarNotificacion(mensaje) {
+        const notificacion = document.createElement('div');
+        notificacion.className = 'cart-notification';
+        notificacion.textContent = mensaje;
+        document.body.appendChild(notificacion);
+
+        setTimeout(() => {
+            notificacion.classList.add('fade-out');
+            setTimeout(() => notificacion.remove(), 500);
+        }, 2000);
+    }
+
+    // Función para aplicar el código de descuento
+    function aplicarCodigoDescuento() {
+        const codigoInput = document.querySelector('.discount-section input');
+        const codigo = codigoInput.value.trim();
+
+        if (codigo === 'HOT-SALE') {
+            const subtotalElement = document.querySelector('.price-row:nth-child(1) span:last-child');
+            const descuentoElement = document.querySelector('.price-row:nth-child(2) span:last-child');
+            const totalElement = document.querySelector('.price-row.total span:last-child');
+
+            // Obtener el subtotal actual
+            const subtotal = parseFloat(subtotalElement.textContent.replace('$', '').replace('MXN', '').trim());
+
+            // Calcular el descuento
+            const descuento = subtotal * 0.10;
+            const totalConDescuento = subtotal - descuento;
+
+            // Actualizar los valores en la interfaz
+            descuentoElement.textContent = `-$${descuento.toFixed(2)} MXN`;
+            totalElement.textContent = `$${totalConDescuento.toFixed(2)} MXN`;
+
+            // Mostrar notificación de éxito
+            mostrarNotificacion('¡Código aplicado! Se ha descontado el 10% de tu compra.');
+        } else {
+            mostrarNotificacion('El código ingresado no es válido.');
+        }
+    }
+
+    // Asignar evento al botón de aplicar descuento
+    const applyButton = document.querySelector('.discount-section button');
+    applyButton.addEventListener('click', aplicarCodigoDescuento);
+
     // Funciones del carrito (mantén las que ya tienes)
     function sumarCantidad(button) {
         const quantitySpan = button.previousElementSibling;
@@ -167,8 +377,6 @@
     function toggleCheck(icon) {
         // Lógica para alternar el estado del ícono de check
     }
-
-    
 </script>
 </body>
 </html>

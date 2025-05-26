@@ -773,38 +773,39 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Puedes poner esto en ambos archivos, adaptando el selector del contenedor de productos
-function buscarProductos() {
+// Función para buscar productos en el navbar
+function buscarProductosNavbar() {
     const searchBar = document.getElementById('search-bar');
     if (!searchBar) return;
-    
+
     searchBar.addEventListener('input', function () {
         const query = searchBar.value.toLowerCase();
-        
-        // Buscar en ambos contenedores posibles
+
+        // Buscar en los contenedores de productos
         const contenedores = [
             document.getElementById('productos-container'),
-            document.getElementById('destacados-container')
+            document.getElementById('productos-populares'),
+            document.querySelector('.recomendado-container')
         ].filter(container => container);
-        
+
         contenedores.forEach(container => {
-            container.querySelectorAll('.producto').forEach(producto => {
-                const nombre = producto.querySelector('h3').textContent.toLowerCase();
-                const descripcion = producto.querySelector('.descripcion').textContent.toLowerCase();
-                
+            container.querySelectorAll('.producto, .recomendado-item').forEach(item => {
+                const nombre = item.querySelector('h3').textContent.toLowerCase();
+                const descripcion = item.querySelector('p')?.textContent.toLowerCase() || '';
+
                 if (nombre.includes(query) || descripcion.includes(query)) {
-                    producto.style.display = '';
+                    item.style.display = ''; // Mostrar el producto
                 } else {
-                    producto.style.display = 'none';
+                    item.style.display = 'none'; // Ocultar el producto
                 }
             });
         });
     });
 }
 
-// Llama a la función después de renderizar los productos
+// Llama a la función después de que el DOM esté cargado
 document.addEventListener('DOMContentLoaded', function () {
-    buscarProductos();
+    buscarProductosNavbar();
 });
 
 function mostrarPagoExitoso() {
