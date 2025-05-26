@@ -1,70 +1,113 @@
-// Datos de productos (puedes reemplazar esto con una llamada API)
 const productos = [
     {
         id: 1,
-        nombre: "Bloom Punch",
+        nombre: "Bloom Tote Bag",
         imagen: "Recursos/BloomPunch.png",
-        descripcion: "Bolsa de lino con extractos naturales para una piel radiante.",
-        precio: "$40.00 MXN",
+        descripcion: "Material: Yute orgánico (100% biodegradable) + algodón reciclado.   ",
+        precio: "$200.00 MXN",
         categoria: "accesorios",
-        detalles: "El Bloom Punch es nuestro producto estrella, formulado con ingredientes 100% naturales que nutren y revitalizan la piel. Perfecto para uso diario.",
-        rating: 4,
-        ventas: 120
+        detalles: " Material: Yute orgánico (100% biodegradable) + algodón reciclado.   - Capacidad: 35x40 cm.",
+        rating: 3,
+        ventas: 20
     },
     {
         id: 2,
-        nombre: "Glow Restore",
+        nombre: "Bloom Clarify Serum",
         imagen: "Recursos/GlowRestore.png",
-        descripcion: "Suave, bello y natural. Restaura el brillo natural de tu piel.",
+        descripcion: "Para una piel grasa",
         precio: "$240.00 MXN",
-        categoria: "maquillaje",
-        detalles: "El Glow Restore es un tratamiento intensivo que devuelve el brillo natural a tu piel en solo 7 días de uso continuo.",
-        rating: 4,
-        ventas: 95
+        categoria: "cuidado-piel",
+        detalles: "- Ingredientes: Agua de hamamelis (70%), Niacinamida (5%), Aceite de jojoba (5%), Arcilla blanca (5%).   - Vegano: Sí   ",
+        rating: 5,
+        ventas: 15
     },
     {
         id: 3,
-        nombre: "HydraBloom",
+        nombre: "Bloom Deep Hydration Serum",
         imagen: "Recursos/HydraBloom.png",
-        descripcion: "Simple y eficaz. Hidratación intensiva para pieles secas.",
+        descripcion: "Tipo de piel: Seca ",
         precio: "$140.00 MXN",
         categoria: "cuidado-piel",
-        detalles: "HydraBloom es nuestra solución para pieles secas y deshidratadas, con una fórmula que retiene la humedad por hasta 24 horas.",
+        detalles: "- Ingredientes: Ácido hialurónico (2%), Manteca de mango (10%), Aceite de argán (8%), Miel de manuka (5%).   - Vegano: No (contiene miel) ",
         rating: 4,
-        ventas: 80
+        ventas: 10
     },
     {
         id: 4,
-        nombre: "Lumi Drops",
+        nombre: "Bloom Purify Scrub",
         imagen: "Recursos/LumiDrops.png",
-        descripcion: "Gotitas de búho. Iluminación instantánea para un look fresco.",
+        descripcion: "Tipo de piel: Grasa",
         precio: "$100.00 MXN",
         categoria: "maquillaje",
-        detalles: "Las Lumi Drops son tu secreto para un cutis radiante en segundos. Fórmula ligera que no obstruye los poros.",
+        detalles: " Ingredientes: Azúcar de caña (30%), Aceite de árbol de té (5%), Jugo de limón (5%), Semillas de frambuesa (5%).   - Vegano: Sí  ",
         rating: 4,
-        ventas: 110
+        ventas: 8
     },
     {
         id: 5,
-        nombre: "Bloom Balm",
+        nombre: "Bloom Sunny Shield ",
         imagen: "Recursos/Modelo1.png",
-        descripcion: "Bálsamo nutritivo para labios y cutículas.",
+        descripcion: "Protector solar (FPS 30)",
         precio: "$60.00 MXN",
         categoria: "cuidado-piel",
-        detalles: "Bálsamo formulado con cera de abejas y aceites esenciales para hidratación profunda.",
-        rating: 4,
-        ventas: 60
+        detalles: "- Ingredientes: Óxido de zinc (15%), Aceite de zanahoria (10%), Manteca de karité (5%), Caléndula (5%).   - Vegano: Sí   .",
+        rating: 5,
+        ventas: 25
     },
     {
         id: 6,
-        nombre: "Dew Essence",
+        nombre: "Bloom Calm Wash",
         imagen: "Recursos/Modelo2.png",
-        descripcion: "Esencia ligera para hidratación instantánea.",
+        descripcion: "Tipo de piel: Seca/Sensible   ",
         precio: "$180.00 MXN",
         categoria: "cuidado-piel",
-        detalles: "Esencia ultraligera que absorbe rápidamente sin dejar residuos grasos.",
+        detalles: " Ingredientes: Leche de avena (50%), Aceite de almendras (10%), Miel (5%), Caléndula (5%).   - Vegano: No (contiene miel)   ",
+        rating: 5,
+        ventas: 12
+    },
+    {
+        id: 7,
+        nombre: "Bloom Volume Shampoo",
+        imagen: "Recursos/PureMist.png",
+        descripcion: "Tipo de cabello: Fino",
+        precio: "$110.00 MXN",
+        categoria: "maquillaje",
+        detalles: "- Ingredientes: Infusión de romero (60%), Aloe vera (20%), Proteína de quinoa (5%), Aceite de menta (3%).   - Vegano: Sí   ",
         rating: 4,
-        ventas: 70
+        ventas: 18
+    },
+    {
+        id: 8,
+        nombre: "Bloom Repair Conditioner",
+        imagen: "Recursos/SolarVeil.png",
+        descripcion: " Tipo de cabello: Dañado",
+        precio: "$130.00 MXN",
+        categoria: "maquillaje",
+        detalles: " Ingredientes: Manteca de karité (15%), Aceite de argán (10%), Keratina vegetal (5%), Leche de coco (20%).   - Vegano: Sí  ",
+        rating: 5,
+        ventas: 22  
+    },
+    {
+        id: 9,
+        nombre: "Bloom Relax Soap",
+        imagen: "Recursos/NourishBalm.png",
+        descripcion: " Aroma: Lavanda",
+        precio: "$130.00 MXN",
+        categoria: "cuidado-piel",
+        detalles: "- Ingredientes: Aceite de oliva (40%), Aceite esencial de lavanda (5%), Arcilla blanca (10%).   - Vegano: Sí   ",
+        rating: 5,
+        ventas: 30
+    },
+     {
+        id: 10,
+        nombre: "Bloom Fresh Cleanser ",
+        imagen: "Recursos/SilkGlow.png",
+        descripcion: "Tipo de piel: Mixta  ",
+        precio: "$130.00 MXN",
+        categoria: "cuidado-piel",
+        detalles: " Ingredientes: Aceite de oliva (40%), Arcilla rosa (10%), Miel (5%), Extracto de manzanilla (5%).   - Vegano: No (contiene miel)  ",
+        rating: 5   ,
+        ventas: 28
     }
 ];
 
@@ -345,30 +388,96 @@ function configurarCarrito() {
     });
 }
 
+// Función para renderizar los 4 productos más vendidos
+function renderizarProductosPopulares() {
+    const container = document.getElementById('productos-populares');
+    if (!container) return; // Si no existe el contenedor, salir
+    
+    // Ordenar productos por ventas (de mayor a menor) y tomar los primeros 4
+    const productosMasVendidos = [...productos]
+        .sort((a, b) => b.ventas - a.ventas)
+        .slice(0, 4);
+
+    container.innerHTML = '';
+
+    productosMasVendidos.forEach(producto => {
+        const productoElement = document.createElement('div');
+        productoElement.className = 'producto';
+        productoElement.innerHTML = `
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <h3>${producto.nombre}</h3>
+            <p class="descripcion">${producto.descripcion}</p>
+            <p class="precio">${producto.precio}</p>
+            <div class="rating">
+                ${generarEstrellasRating(producto.rating)}
+                <span>(${producto.rating.toFixed(1)})</span>
+            </div>
+            <div class="botones">
+                <button class="btn-ver-detalles" data-id="${producto.id}">Ver detalles</button>
+                <button class="btn-add-carrito" data-id="${producto.id}">
+                    <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
+                </button>
+            </div>
+        `;
+        container.appendChild(productoElement);
+    });
+
+    // Agregar event listeners a los botones
+    document.querySelectorAll('.btn-add-carrito').forEach(btn => {
+        btn.addEventListener('click', agregarAlCarrito);
+    });
+
+    document.querySelectorAll('.btn-ver-detalles').forEach(btn => {
+        btn.addEventListener('click', mostrarDetallesProducto);
+    });
+}
+
 // Puedes poner esto en ambos archivos, adaptando el selector del contenedor de productos
 function buscarProductos() {
     const searchBar = document.getElementById('search-bar');
     if (!searchBar) return;
-    searchBar.addEventListener('input', function () {
+    
+    searchBar.addEventListener('input', function() {
         const query = searchBar.value.toLowerCase();
-        document.querySelectorAll('.producto').forEach(producto => {
-            const nombre = producto.querySelector('h3').textContent.toLowerCase();
-            const descripcion = producto.querySelector('.descripcion').textContent.toLowerCase();
-            if (nombre.includes(query) || descripcion.includes(query)) {
-                producto.style.display = '';
-            } else {
-                producto.style.display = 'none';
-            }
+        
+        // Buscar en todos los contenedores posibles
+        const contenedores = [
+            document.getElementById('productos-container'),
+            document.querySelector('.destacados-grid'),
+            document.querySelector('.recomendado-container')
+        ].filter(container => container);
+        
+        contenedores.forEach(container => {
+            container.querySelectorAll('.producto, .recomendado-item').forEach(item => {
+                const nombre = item.querySelector('h3').textContent.toLowerCase();
+                const descripcion = item.querySelector('p')?.textContent.toLowerCase() || '';
+                
+                if (nombre.includes(query) || descripcion.includes(query)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         });
     });
 }
 
-// Inicialización
 document.addEventListener('DOMContentLoaded', () => {
-    renderizarProductos();
-    configurarFiltros();
+    if (document.getElementById('productos-populares')) {
+        renderizarProductosPopulares();
+        buscarProductos(); // <- importante: después del render
+    }
+
+    if (document.getElementById('productos-container')) {
+        renderizarProductos(); 
+        configurarFiltros();
+        buscarProductos(); // <- en productos.html se puede llamar aquí
+    }
+
     configurarModal();
     configurarCarrito();
     actualizarContadorCarrito();
-    buscarProductos();
 });
+
+
+

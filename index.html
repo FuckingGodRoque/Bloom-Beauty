@@ -9,6 +9,7 @@
     <title>Bloom Beauty</title>
     <link rel="icon" href="recursos/Logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="estiloProductos.css">
     <!--                                                                                          NO BORRES EL &currency=MXN AL FINAL DEL SCRIPT DE PAYPAL  -->
     <script src="https://www.paypal.com/sdk/js?client-id=ARaTZEYBe3oPhjuRbW5Fn6tWp0CvZNzLnmdLUyIQ7oNkYfFuAyrJM2Ds9wCsBIGmQmN7NrpzEaxQaNiQ&currency=MXN"></script>
 </head>
@@ -36,9 +37,7 @@
             </div>
         </nav>
     </header>
-<!-- Reemplaza tu modalContainer actual con esto -->
-<!-- Modal de Login -->
-<!-- Modal de Login (inicialmente oculto) -->
+
 <div id="loginModal" class="modal hidden">
   <div class="modal-content">
     <!-- aquí puedes hacer include de Login.html o copiar directamente su contenido: -->
@@ -62,30 +61,31 @@
   </div>
 </div>
 
-<!-- Modal de vista rápida del producto -->
-<div id="producto-modal" class="modal hidden">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <div class="modal-producto">
-            <img id="modal-imagen" src="" alt="Producto">
-            <div class="modal-info">
-                <h3 id="modal-titulo"></h3>
-                <div class="modal-rating" id="modal-rating"></div>
-                <p id="modal-descripcion" class="modal-descripcion"></p>
-                <p id="modal-precio" class="modal-precio"></p>
-                <div class="modal-botones">
-                    <button class="btn-add-carrito-modal">
-                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito"> Añadir al carrito
-                    </button>
-                    <div id="paypal-button-container" style="margin-top: 16px;"></div>
+<div id="modal-producto" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-producto">
+                <img id="modal-imagen" src="" alt="Producto">
+                <div class="modal-info">
+                    <h3 id="modal-titulo"></h3>
+                    <p id="modal-descripcion"></p>
+                    <p id="modal-precio"></p>
+                    <div class="modal-botones">
+                        
+                        <button class="btn-add-carrito-modal">
+                            <img src="Recursos/AddCarrito.png" alt="Añadir al carrito"> Añadir al carrito
+                        </button>
+                        <div id="paypal-btn-modal"></div>
+                    </div>
+                    <div class="modal-detalles">
+                        <h4>Detalles del producto</h4>
+                        <p id="modal-detalles-texto"></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-    <!-- Contenedor para cargar el menú lateral -->
-    <div id="menu-container"></div>
     
     <section class="contenido">
         <h2>Tu piel, tu esencia, tu belleza</h2>
@@ -105,211 +105,12 @@
         </div>
     </section>
 
-    <section class="productos-destacados">
-        <h2 class="section-title">Productos Destacados</h2>
-        <div id="destacados-container" class="destacados-grid">
-            <div class="producto">
-                <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
-                <h3>Bloom Punch</h3>
-                <p class="descripcion">Bolsa de lino.</p>
-                <p class="precio">$40.00 MXN</p>
-                <div class="rating">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaBlanca.png" alt="Estrella">
-                    <span>(4.0)</span>
-                </div>
-                <div class="botones">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-add-carrito">
-                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                    </button>
-                </div>
-            </div>
-            <div class="producto">
-                <img src="Recursos/GlowRestore.png" alt="Bloom Punch">
-                <h3>Glow Restore</h3>
-                <p class="descripcion">Suave, bello y natural.</p>
-                <p class="precio">$240.00 MXN</p>
-                <div class="rating">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaBlanca.png" alt="Estrella">
-                    <span>(4.0)</span>
-                </div>
-                <div class="botones">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-add-carrito">
-                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                    </button>
-                </div>
-            </div>
-            <div class="producto">
-                <img src="Recursos/HydraBloom.png" alt="Bloom Punch">
-                <h3>HydraBloom</h3>
-                <p class="descripcion">Simple y eficaz.</p>
-                <p class="precio">$140.00 MXN</p>
-                <div class="rating">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaBlanca.png" alt="Estrella">
-                    <span>(4.0)</span>
-                </div>
-                <div class="botones">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-add-carrito">
-                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                    </button>
-                </div>
-            </div>
-            <div class="producto">
-                <img src="Recursos/LumiDrops.png" alt="Bloom Punch">
-                <h3>Lumi Drops</h3>
-                <p class="descripcion">Gotitas de buho.</p>
-                <p class="precio">$100.00 MXN</p>
-                <div class="rating">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaBlanca.png" alt="Estrella">
-                    <span>(4.0)</span>
-                </div>
-                <div class="botones">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-add-carrito">
-                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                    </button>
-                </div>
-            </div>
-<div class="producto hidden">
-                <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
-                <h3>Bloom Punch</h3>
-                <p class="descripcion">Una breve descripción del producto Bloom Punch.</p>
-                <p class="precio">$40.00 MXN</p>
-                <div class="rating">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaBlanca.png" alt="Estrella">
-                    <span>(4.0)</span>
-                </div>
-                <div class="botones">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-add-carrito">
-                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                    </button>
-                </div>
-            </div>
-            <div class="producto hidden">
-                <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
-                <h3>Bloom Punch</h3>
-                <p class="descripcion">Una breve descripción del producto Bloom Punch.</p>
-                <p class="precio">$40.00 MXN</p>
-                <div class="rating">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaBlanca.png" alt="Estrella">
-                    <span>(4.0)</span>
-                </div>
-                <div class="botones">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-add-carrito">
-                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                    </button>
-                </div>
-            </div>
-            <div class="producto hidden">
-                <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
-                <h3>Bloom Punch</h3>
-                <p class="descripcion">Una breve descripción del producto Bloom Punch.</p>
-                <p class="precio">$40.00 MXN</p>
-                <div class="rating">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaBlanca.png" alt="Estrella">
-                    <span>(4.0)</span>
-                </div>
-                <div class="botones">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-add-carrito">
-                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                    </button>
-                </div>
-            </div>
-            <div class="producto hidden">
-                <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
-                <h3>Bloom Punch</h3>
-                <p class="descripcion">Una breve descripción del producto Bloom Punch.</p>
-                <p class="precio">$40.00 MXN</p>
-                <div class="rating">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaBlanca.png" alt="Estrella">
-                    <span>(4.0)</span>
-                </div>
-                <div class="botones">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-add-carrito">
-                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                    </button>
-                </div>
-            </div>
-<div class="producto hidden">
-                <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
-                <h3>Bloom Punch</h3>
-                <p class="descripcion">Una breve descripción del producto Bloom Punch.</p>
-                <p class="precio">$40.00 MXN</p>
-                <div class="rating">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaBlanca.png" alt="Estrella">
-                    <span>(4.0)</span>
-                </div>
-                <div class="botones">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-add-carrito">
-                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                    </button>
-                </div>
-            </div>
-            <div class="producto hidden">
-                <img src="Recursos/BloomPunch.png" alt="Bloom Punch">
-                <h3>Bloom Punch</h3>
-                <p class="descripcion">Una breve descripción del producto Bloom Punch.</p>
-                <p class="precio">$40.00 MXN</p>
-                <div class="rating">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaNegra.png" alt="Estrella">
-                    <img src="Recursos/EstrellaBlanca.png" alt="Estrella">
-                    <span>(4.0)</span>
-                </div>
-                <div class="botones">
-                    <button class="btn-comprar">Comprar ahora</button>
-                    <button class="btn-add-carrito">
-                        <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
+   <section class="productos-destacados">
+    <h2 class="section-title">Productos Populares</h2>
+    <div id="productos-populares" class="destacados-grid">
+        <!-- Los 4 productos más vendidos se cargarán aquí -->
+    </div>
+</section>
 
     
     <section class="recomendado">
@@ -363,7 +164,8 @@
         </div>
     </footer>
 
-
+<script src="productos.js"></script>
+<script src="script.js"></script>
 
     <script>
   function abrirModal() {
@@ -384,7 +186,7 @@
 </script>
 
 
-    <script src="script.js"></script>
+    
     <script>
 document.addEventListener('DOMContentLoaded', async () => {
   const btnPerfil = document.getElementById('btn-perfil');

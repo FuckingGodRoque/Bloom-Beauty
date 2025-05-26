@@ -779,16 +779,27 @@ document.addEventListener('DOMContentLoaded', function () {
 function buscarProductos() {
     const searchBar = document.getElementById('search-bar');
     if (!searchBar) return;
+    
     searchBar.addEventListener('input', function () {
         const query = searchBar.value.toLowerCase();
-        document.querySelectorAll('.producto').forEach(producto => {
-            const nombre = producto.querySelector('h3').textContent.toLowerCase();
-            const descripcion = producto.querySelector('.descripcion').textContent.toLowerCase();
-            if (nombre.includes(query) || descripcion.includes(query)) {
-                producto.style.display = '';
-            } else {
-                producto.style.display = 'none';
-            }
+        
+        // Buscar en ambos contenedores posibles
+        const contenedores = [
+            document.getElementById('productos-container'),
+            document.getElementById('destacados-container')
+        ].filter(container => container);
+        
+        contenedores.forEach(container => {
+            container.querySelectorAll('.producto').forEach(producto => {
+                const nombre = producto.querySelector('h3').textContent.toLowerCase();
+                const descripcion = producto.querySelector('.descripcion').textContent.toLowerCase();
+                
+                if (nombre.includes(query) || descripcion.includes(query)) {
+                    producto.style.display = '';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
         });
     });
 }
