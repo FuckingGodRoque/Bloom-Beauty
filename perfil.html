@@ -31,7 +31,7 @@
     </nav>
 
     <!-- Contenido del Perfil -->
-    <div class="profile-container">
+      <div class="profile-container">
         <div class="profile-content">
             <div class="profile-sidebar">
                 <ul class="profile-menu">
@@ -181,7 +181,9 @@
             });
         });
     </script>
+
     <script>
+
 document.addEventListener('DOMContentLoaded', () => {
     const btnLogout = document.getElementById('btn-logout');
     if (btnLogout) {
@@ -208,12 +210,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 </script>
-<script>
-function mostrarFormularioContrasena() {
+
+
+    <script>
+        function mostrarFormularioContrasena() {
     document.getElementById('form-cambiar-contrasena').style.display = 'block';
 }
 
-async function cambiarContrasena() {
+    async function cambiarContrasena() {
+
     const actual = document.getElementById('actualContrasena').value;
     const nueva = document.getElementById('nuevaContrasena').value;
     const mensaje = document.getElementById('mensajeCambio');
@@ -248,7 +253,6 @@ async function cambiarContrasena() {
     }
 }
 </script>
-
 
 </body>
 </html>

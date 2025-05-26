@@ -302,6 +302,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
 // POLITICAS 
 
 // Funcionalidad para los enlaces de políticas
@@ -434,7 +435,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(details) {
-                        alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
+                        // Limpiar carrito
+                        localStorage.removeItem('cart');
+                        mostrarPagoExitoso();
+                        setTimeout(() => location.reload(), 2500);
                     });
                 }
             }).render('#paypal-button-container');
@@ -588,7 +592,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(details) {
-                        alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
+                        // Limpiar carrito
+                        localStorage.removeItem('cart');
+                        mostrarPagoExitoso();
+                        setTimeout(() => location.reload(), 2500);
                     });
                 }
             }).render('#paypal-button-container');
@@ -670,7 +677,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(details) {
-                        alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
+                        // Limpiar carrito
+                        localStorage.removeItem('cart');
+                        mostrarPagoExitoso();
+                        setTimeout(() => location.reload(), 2500);
                     });
                 }
             }).render('#paypal-button-container');
@@ -809,6 +819,20 @@ document.addEventListener('DOMContentLoaded', function () {
     buscarProductos();
 });
 
+function mostrarPagoExitoso() {
+    const pagoDiv = document.getElementById('pago-exitoso');
+    pagoDiv.classList.remove('hidden');
+    setTimeout(() => {
+        pagoDiv.classList.add('hidden');
+    }, 2500);
+}
 
 
+function mostrarPagoExitoso() {
+    const pagoDiv = document.getElementById('pago-exitoso');
+    pagoDiv.classList.remove('hidden');
+    setTimeout(() => {
+        pagoDiv.classList.add('hidden');
+    }, 2500);
+}
 
