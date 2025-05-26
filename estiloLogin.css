@@ -67,10 +67,10 @@ body {
     font-weight: bold;
     color: #000;
     background: url('Recursos/Logo.png') no-repeat center;
-    background-size: 40px 55px;
+    background-size: 52px 70px;
     padding: 20px;
     text-align: center;
-    font-family: bludhaven, 'Safira March Personal Use Only', sans-serif;
+    font-family: Bludhaven;
     transition: transform 0.3s ease;
     margin: 0;
 }
@@ -90,7 +90,7 @@ form {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: 100%;
+    width: 92%;
     padding: 12px 15px;
     border: 1px solid #ddd;
     border-radius: 8px;

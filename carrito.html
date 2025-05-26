@@ -55,22 +55,27 @@
                     <div class="price-breakdown">
                         <div class="price-row">
                             <span>Subtotal</span>
-                            <span>$1,398.00 MXN</span>
+
+                            <span>$0.00 MXN</span>
+
                         </div>
                         <div class="price-row">
                             <span>Envío</span>
-                            <span>$99.00 MXN</span>
+                            <span>$0.00 MXN</span>
                         </div>
                         <div class="price-row total">
                             <span>Total</span>
-                            <span>$1,497.00 MXN</span>
+                            <span>$0.00 MXN</span>
                         </div>
                     </div>
 
                     <div id="paypal-button-container" style="margin-top: 16px;"></div>
                 </div>
             </div>
-            <script src="https://www.paypal.com/sdk/js?client-id=AZnLTTg3P_CbWuQshnBW_c-9ZhkC8h2CsZlC7HMIKvjVAwc3m621TqxvvAEVW8p1mtkVACpqToc3HLrI"></script>
+
+    <!--                                                                                          NO BORRES EL &currency=MXN AL FINAL DEL SCRIPT DE PAYPAL  -->
+    <script src="https://www.paypal.com/sdk/js?client-id=ARaTZEYBe3oPhjuRbW5Fn6tWp0CvZNzLnmdLUyIQ7oNkYfFuAyrJM2Ds9wCsBIGmQmN7NrpzEaxQaNiQ&currency=MXN"></script>
+
             <script>
               paypal.Buttons({
                 createOrder: function(data, actions) {
@@ -95,19 +100,6 @@
         </div>
     </main>
 
-<<<<<<< HEAD
-    <div id="pago-exitoso" class="pago-exitoso hidden">
-      <div class="pago-exitoso-content">
-        <div class="checkmark">
-          <svg width="80" height="80" viewBox="0 0 80 80">
-            <circle cx="40" cy="40" r="38" stroke="#4CAF50" stroke-width="4" fill="none"/>
-            <path d="M25 42 L37 54 L55 30" stroke="#4CAF50" stroke-width="5" fill="none" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>¡Pago realizado con éxito!</h3>
-      </div>
-    </div>
-=======
     <!-- Animación de pago exitoso -->
 <div id="pago-exitoso" class="pago-exitoso hidden">
   <div class="pago-exitoso-content">
@@ -120,7 +112,7 @@
     <h3>¡Pago realizado con éxito!</h3>
   </div>
 </div>
->>>>>>> 4fd8287e08cee086b254f188e08e2b74acc9b315
+
 
     <footer>
     <div class="footer-line"></div> 
@@ -147,8 +139,6 @@
 </footer>
 
 <script src="script.js"></script>
-
-    <script src="script.js"></script>
 <script src="carrito.js"></script>
 <script>
     // Funciones del carrito (mantén las que ya tienes)

@@ -7,7 +7,15 @@ class Usuario {
 
     static async guardarUsuario(usuario) {
         try {
-            const response = await fetch('http://localhost/Bloom-Beautyy/registroUsuario.php', {
+
+            console.log("Enviando datos:", JSON.stringify({
+                nombre: usuario.nombre,
+                correo: usuario.correo,
+                contrasena: usuario.contrasena
+            }));
+
+            const response = await fetch('http://localhost/bloombeautyy/registro.php', {
+
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -41,7 +49,9 @@ class Usuario {
 
     static async validarUsuario(correo, contrasena) {
         try {
+
             const response = await fetch('http://localhost/Bloom-Beautyy/login.php', {
+
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

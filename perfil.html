@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bloom Beauty - Mi Perfil</title>
+    <title>Bloom Beauty</title>
+    <link rel="icon" href="recursos/Logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="estiloPerfil.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -180,7 +181,9 @@
             });
         });
     </script>
-     <script>
+
+    <script>
+
 document.addEventListener('DOMContentLoaded', () => {
     const btnLogout = document.getElementById('btn-logout');
     if (btnLogout) {
@@ -208,12 +211,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 </script>
 
+
     <script>
         function mostrarFormularioContrasena() {
     document.getElementById('form-cambiar-contrasena').style.display = 'block';
 }
 
     async function cambiarContrasena() {
+
     const actual = document.getElementById('actualContrasena').value;
     const nueva = document.getElementById('nuevaContrasena').value;
     const mensaje = document.getElementById('mensajeCambio');
@@ -248,5 +253,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 }
 </script>
+
 </body>
 </html>

@@ -1,4 +1,3 @@
-// Datos de productos (puedes reemplazar esto con una llamada API)
 const productos = [
     {
         id: 1,
@@ -8,7 +7,11 @@ const productos = [
         precio: "$200.00 MXN",
         categoria: "accesorios",
         detalles: " Material: Yute orgánico (100% biodegradable) + algodón reciclado.   - Capacidad: 35x40 cm.",
-        rating: 3
+
+        rating: 3,
+        ventas: 20
+
+
     },
     {
         id: 2,
@@ -18,7 +21,11 @@ const productos = [
         precio: "$240.00 MXN",
         categoria: "cuidado-piel",
         detalles: "- Ingredientes: Agua de hamamelis (70%), Niacinamida (5%), Aceite de jojoba (5%), Arcilla blanca (5%).   - Vegano: Sí   ",
-        rating: 5
+
+        rating: 5,
+        ventas: 15
+
+
     },
     {
         id: 3,
@@ -28,7 +35,11 @@ const productos = [
         precio: "$140.00 MXN",
         categoria: "cuidado-piel",
         detalles: "- Ingredientes: Ácido hialurónico (2%), Manteca de mango (10%), Aceite de argán (8%), Miel de manuka (5%).   - Vegano: No (contiene miel) ",
-        rating: 4
+
+        rating: 4,
+        ventas: 10
+
+  
     },
     {
         id: 4,
@@ -38,7 +49,10 @@ const productos = [
         precio: "$100.00 MXN",
         categoria: "maquillaje",
         detalles: " Ingredientes: Azúcar de caña (30%), Aceite de árbol de té (5%), Jugo de limón (5%), Semillas de frambuesa (5%).   - Vegano: Sí  ",
-        rating: 4
+
+        rating: 4,
+        ventas: 8
+
     },
     {
         id: 5,
@@ -48,7 +62,10 @@ const productos = [
         precio: "$60.00 MXN",
         categoria: "cuidado-piel",
         detalles: "- Ingredientes: Óxido de zinc (15%), Aceite de zanahoria (10%), Manteca de karité (5%), Caléndula (5%).   - Vegano: Sí   .",
-        rating: 5
+
+        rating: 5,
+        ventas: 25
+
     },
     {
         id: 6,
@@ -58,7 +75,10 @@ const productos = [
         precio: "$180.00 MXN",
         categoria: "cuidado-piel",
         detalles: " Ingredientes: Leche de avena (50%), Aceite de almendras (10%), Miel (5%), Caléndula (5%).   - Vegano: No (contiene miel)   ",
-        rating: 5
+
+        rating: 5,
+        ventas: 12
+
     },
     {
         id: 7,
@@ -68,7 +88,10 @@ const productos = [
         precio: "$110.00 MXN",
         categoria: "maquillaje",
         detalles: "- Ingredientes: Infusión de romero (60%), Aloe vera (20%), Proteína de quinoa (5%), Aceite de menta (3%).   - Vegano: Sí   ",
-        rating: 4
+
+        rating: 4,
+        ventas: 18
+
     },
     {
         id: 8,
@@ -78,7 +101,10 @@ const productos = [
         precio: "$130.00 MXN",
         categoria: "maquillaje",
         detalles: " Ingredientes: Manteca de karité (15%), Aceite de argán (10%), Keratina vegetal (5%), Leche de coco (20%).   - Vegano: Sí  ",
-        rating: 5
+
+        rating: 5,
+        ventas: 22  
+
     },
     {
         id: 9,
@@ -88,7 +114,10 @@ const productos = [
         precio: "$130.00 MXN",
         categoria: "cuidado-piel",
         detalles: "- Ingredientes: Aceite de oliva (40%), Aceite esencial de lavanda (5%), Arcilla blanca (10%).   - Vegano: Sí   ",
-        rating: 5
+
+        rating: 5,
+        ventas: 30
+
     },
      {
         id: 10,
@@ -98,7 +127,10 @@ const productos = [
         precio: "$130.00 MXN",
         categoria: "cuidado-piel",
         detalles: " Ingredientes: Aceite de oliva (40%), Arcilla rosa (10%), Miel (5%), Extracto de manzanilla (5%).   - Vegano: No (contiene miel)  ",
-        rating: 5
+
+        rating: 5   ,
+        ventas: 28
+
     }
 ];
 
@@ -381,30 +413,96 @@ function configurarCarrito() {
     });
 }
 
+// Función para renderizar los 4 productos más vendidos
+function renderizarProductosPopulares() {
+    const container = document.getElementById('productos-populares');
+    if (!container) return; // Si no existe el contenedor, salir
+    
+    // Ordenar productos por ventas (de mayor a menor) y tomar los primeros 4
+    const productosMasVendidos = [...productos]
+        .sort((a, b) => b.ventas - a.ventas)
+        .slice(0, 4);
+
+    container.innerHTML = '';
+
+    productosMasVendidos.forEach(producto => {
+        const productoElement = document.createElement('div');
+        productoElement.className = 'producto';
+        productoElement.innerHTML = `
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <h3>${producto.nombre}</h3>
+            <p class="descripcion">${producto.descripcion}</p>
+            <p class="precio">${producto.precio}</p>
+            <div class="rating">
+                ${generarEstrellasRating(producto.rating)}
+                <span>(${producto.rating.toFixed(1)})</span>
+            </div>
+            <div class="botones">
+                <button class="btn-ver-detalles" data-id="${producto.id}">Ver detalles</button>
+                <button class="btn-add-carrito" data-id="${producto.id}">
+                    <img src="Recursos/AddCarrito.png" alt="Añadir al carrito">
+                </button>
+            </div>
+        `;
+        container.appendChild(productoElement);
+    });
+
+    // Agregar event listeners a los botones
+    document.querySelectorAll('.btn-add-carrito').forEach(btn => {
+        btn.addEventListener('click', agregarAlCarrito);
+    });
+
+    document.querySelectorAll('.btn-ver-detalles').forEach(btn => {
+        btn.addEventListener('click', mostrarDetallesProducto);
+    });
+}
+
 // Puedes poner esto en ambos archivos, adaptando el selector del contenedor de productos
 function buscarProductos() {
     const searchBar = document.getElementById('search-bar');
     if (!searchBar) return;
-    searchBar.addEventListener('input', function () {
+    
+    searchBar.addEventListener('input', function() {
         const query = searchBar.value.toLowerCase();
-        document.querySelectorAll('.producto').forEach(producto => {
-            const nombre = producto.querySelector('h3').textContent.toLowerCase();
-            const descripcion = producto.querySelector('.descripcion').textContent.toLowerCase();
-            if (nombre.includes(query) || descripcion.includes(query)) {
-                producto.style.display = '';
-            } else {
-                producto.style.display = 'none';
-            }
+        
+        // Buscar en todos los contenedores posibles
+        const contenedores = [
+            document.getElementById('productos-container'),
+            document.querySelector('.destacados-grid'),
+            document.querySelector('.recomendado-container')
+        ].filter(container => container);
+        
+        contenedores.forEach(container => {
+            container.querySelectorAll('.producto, .recomendado-item').forEach(item => {
+                const nombre = item.querySelector('h3').textContent.toLowerCase();
+                const descripcion = item.querySelector('p')?.textContent.toLowerCase() || '';
+                
+                if (nombre.includes(query) || descripcion.includes(query)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         });
     });
 }
 
-// Inicialización
 document.addEventListener('DOMContentLoaded', () => {
-    renderizarProductos();
-    configurarFiltros();
+    if (document.getElementById('productos-populares')) {
+        renderizarProductosPopulares();
+        buscarProductos(); // <- importante: después del render
+    }
+
+    if (document.getElementById('productos-container')) {
+        renderizarProductos(); 
+        configurarFiltros();
+        buscarProductos(); // <- en productos.html se puede llamar aquí
+    }
+
     configurarModal();
     configurarCarrito();
     actualizarContadorCarrito();
-    buscarProductos();
 });
+
+
+

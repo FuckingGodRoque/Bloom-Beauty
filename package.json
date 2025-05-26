@@ -1,0 +1,25 @@
+{
+  "name": "bloom-beauty",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Bloom Beauty es una marca que refleja elegancia, naturalidad y bienestar en el cuidado de la piel. Su diseño estético y sofisticado transmite pureza y armonía.",
+  "main": "checkSession.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FuckingGodRoque/Bloom-Beauty.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FuckingGodRoque/Bloom-Beauty/issues"
+  },
+  "homepage": "https://github.com/FuckingGodRoque/Bloom-Beauty#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "openai": "^4.98.0"
+  }
+}
